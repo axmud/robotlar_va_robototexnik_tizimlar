@@ -15,6 +15,21 @@
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
 )
+// ===== HOSHIYA =====
+#let info = json("fan.json")
+#let raqam = 3  // amaliyot raqami
+#set document(keywords: (info.fan,))
+#set page(header: context {
+  set text(size: 9pt, fill: luma(110))
+  grid(
+    columns: (1fr, auto, 1fr),
+    align: (left, center, right),
+    info.fan, info.semestr, [Tajriba №#raqam],
+  )
+  v(-0.5em)
+  line(length: 100%, stroke: 0.4pt + luma(170))
+})
+// ===================
 #set text(size: 12pt, lang: "uz")
 #set par(justify: true, leading: 0.65em)
 #set heading(numbering: "1.1")
@@ -97,7 +112,9 @@ Koʻp erkinlikli juftliklar:
       rect((-0.5, 0.5), (0.5, 1.1), fill: orange.lighten(65%), stroke: 0.9pt)
       line((0.0, 0.8), (1.5, 1.3), (1.4, 1.6), (-0.1, 1.1), close: true, fill: green.lighten(75%), stroke: 0.9pt)
       line((0, 0.1), (0, 2.0), stroke: (thickness: 0.6pt, dash: "dashed"))
-      arc((0, 1.75), start: -20deg, stop: 230deg, radius: (0.45, 0.15), anchor: "origin", stroke: 1pt + accent, mark: (end: "straight"))
+      arc((0, 1.75), start: -20deg, stop: 230deg, radius: (0.45, 0.15), anchor: "origin", stroke: 1pt + accent, mark: (
+        end: "straight",
+      ))
       content((-0.75, 1.85), text(size: 8pt, fill: accent)[$theta_1$])
       content((0.3, -0.95), text(weight: "bold")[(a) Aylanma juftlik (R)])
 
@@ -154,9 +171,25 @@ Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guru
 
       // (b) Parallel zanjir
       let x0 = 6.5
-      line((x0 - 0.5, 2.8), (x0 + 3.5, 2.8), (x0 + 3.3, 3.0), (x0 - 0.3, 3.0), close: true, fill: luma(200), stroke: 0.9pt)
+      line(
+        (x0 - 0.5, 2.8),
+        (x0 + 3.5, 2.8),
+        (x0 + 3.3, 3.0),
+        (x0 - 0.3, 3.0),
+        close: true,
+        fill: luma(200),
+        stroke: 0.9pt,
+      )
       content((x0 + 1.5, 3.25), [Qoʻzgʻalmas asos])
-      line((x0 + 0.5, 0.5), (x0 + 2.5, 0.5), (x0 + 2.3, 0.7), (x0 + 0.7, 0.7), close: true, fill: accent.lighten(70%), stroke: 0.9pt)
+      line(
+        (x0 + 0.5, 0.5),
+        (x0 + 2.5, 0.5),
+        (x0 + 2.3, 0.7),
+        (x0 + 0.7, 0.7),
+        close: true,
+        fill: accent.lighten(70%),
+        stroke: 0.9pt,
+      )
       content((x0 + 1.5, 0.2), [Harakatlanuvchi platforma])
       for (top, bot) in (((0.2, 2.8), (0.9, 0.6)), ((1.5, 2.8), (1.5, 0.6)), ((2.8, 2.8), (2.1, 0.6))) {
         let t = (x0 + top.at(0), top.at(1))
@@ -228,10 +261,14 @@ Robot manipulyatorining barcha mumkin boʻlgan holatlari toʻplami uning *konfig
       circle((1.5, 1.2), radius: 0.14, fill: teal.lighten(55%), stroke: 0.7pt)
       circle((2.8, 0.8), radius: 0.08, fill: accent, stroke: none)
       line((0, 0), (1.3, 0), stroke: (thickness: 0.5pt, dash: "dashed"))
-      arc((0, 0), start: 0deg, stop: 38deg, radius: 0.65, anchor: "origin", stroke: 0.9pt + red, mark: (end: "straight"))
+      arc((0, 0), start: 0deg, stop: 38deg, radius: 0.65, anchor: "origin", stroke: 0.9pt + red, mark: (
+        end: "straight",
+      ))
       content((0.95, 0.28), text(fill: red)[$theta_1$])
       line((1.5, 1.2), (2.6, 1.2), stroke: (thickness: 0.5pt, dash: "dashed"))
-      arc((1.5, 1.2), start: 0deg, stop: -17deg, radius: 0.6, anchor: "origin", stroke: 0.9pt + blue, mark: (end: "straight"))
+      arc((1.5, 1.2), start: 0deg, stop: -17deg, radius: 0.6, anchor: "origin", stroke: 0.9pt + blue, mark: (
+        end: "straight",
+      ))
       content((2.35, 1.42), text(fill: blue)[$theta_2$])
       content((1.4, 3.3), text(weight: "bold")[(a) Ishchi fazo (task space)])
 
@@ -288,7 +325,9 @@ Robot boʻgʻinlaridagi servomotorlar odatda yuqori aylanish chastotasi va nisba
       content((0, -0.15), align(center)[Harmonic Drive \ reduktor])
       // Chiqish vali
       rect((-0.3, -1.6), (0.3, -1.0), fill: accent, stroke: 0.8pt)
-      arc((0, -1.85), start: -20deg, stop: 230deg, radius: (0.5, 0.15), anchor: "origin", stroke: 1.1pt + red, mark: (end: "straight"))
+      arc((0, -1.85), start: -20deg, stop: 230deg, radius: (0.5, 0.15), anchor: "origin", stroke: 1.1pt + red, mark: (
+        end: "straight",
+      ))
 
       // Izohlar
       line((0.6, 1.67), (1.7, 1.67), stroke: 0.5pt)
@@ -371,9 +410,7 @@ $ "DoF" = 6 times (14 - 1 - 18) + 36 = 6 times (-5) + 36 = -30 + 36 = 6 $
       stroke: none,
       inset: (x: 4pt, y: 5pt),
       table.hline(stroke: 1pt),
-      table.header(
-        [*Boʻgʻin \ №*], [*Juftlik turi*], [*Harakat \ diapazoni*], [*Reduktor turi*], [*Datchik turi*],
-      ),
+      table.header([*Boʻgʻin \ №*], [*Juftlik turi*], [*Harakat \ diapazoni*], [*Reduktor turi*], [*Datchik turi*]),
       table.hline(stroke: 0.5pt),
       [1], [Aylanma (R)], [$-170 degree dots +170 degree$], [Sikloid (RV)], [Absolyut enkoder],
       [2], [Aylanma (R)], [$-100 degree dots +135 degree$], [Sikloid (RV)], [Absolyut enkoder],

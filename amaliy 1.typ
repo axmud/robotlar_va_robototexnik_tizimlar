@@ -13,6 +13,21 @@
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
 )
+// ===== HOSHIYA =====
+#let info = json("fan.json")
+#let raqam = 1  // amaliyot raqami
+#set document(keywords: (info.fan,))
+#set page(header: context {
+  set text(size: 9pt, fill: luma(110))
+  grid(
+    columns: (1fr, auto, 1fr),
+    align: (left, center, right),
+    info.fan, info.semestr, [Amaliyot №#raqam],
+  )
+  v(-0.5em)
+  line(length: 100%, stroke: 0.4pt + luma(170))
+})
+// ===================
 #set text(size: 12pt, lang: "uz")
 #set par(justify: true, leading: 0.65em)
 #set heading(numbering: "1.1")
@@ -37,7 +52,10 @@
   #set par(justify: false)
   #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №1]
   #v(0.4cm)
-  #text(size: 14pt, weight: "bold")[Mavzu: Avtomatlashtirishda robotlarning roli. Robotlar haqida umumiy tushunchalar va taʼriflar]
+  #text(
+    size: 14pt,
+    weight: "bold",
+  )[Mavzu: Avtomatlashtirishda robotlarning roli. Robotlar haqida umumiy tushunchalar va taʼriflar]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
@@ -122,11 +140,40 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
       spacing: (18mm, 12mm),
       edge-stroke: 1pt + headingblue,
 
-      node((1, -0.75), text(size: 8.5pt, weight: "bold", fill: red.darken(30%))[Kibernetik tizim (yopiq zanjir)], stroke: none, fill: none, name: <ttl>),
+      node(
+        (1, -0.75),
+        text(size: 8.5pt, weight: "bold", fill: red.darken(30%))[Kibernetik tizim (yopiq zanjir)],
+        stroke: none,
+        fill: none,
+        name: <ttl>,
+      ),
       node((0, 0), b[*Boshqaruv bloki* \ traektoriya va algoritm], width: 3.0cm, height: 1.3cm, name: <ctrl>),
-      node((1, 0), b[*Ijrochi yuritmalar* \ servomotorlar, pnevmatika], width: 3.1cm, height: 1.3cm, fill: sblue.lighten(88%), name: <act>),
-      node((2, 0), b[*Manipulyator* \ mexanik boʻgʻinlar va TCP], width: 3.1cm, height: 1.3cm, fill: accent.lighten(88%), stroke: 0.8pt + accent, name: <rob>),
-      node((1, 1), b[*Datchiklar va axborot* \ enkoderlar, kamera, kuch], width: 3.8cm, height: 1.3cm, fill: luma(235), stroke: 0.8pt + luma(80), name: <sen>),
+      node(
+        (1, 0),
+        b[*Ijrochi yuritmalar* \ servomotorlar, pnevmatika],
+        width: 3.1cm,
+        height: 1.3cm,
+        fill: sblue.lighten(88%),
+        name: <act>,
+      ),
+      node(
+        (2, 0),
+        b[*Manipulyator* \ mexanik boʻgʻinlar va TCP],
+        width: 3.1cm,
+        height: 1.3cm,
+        fill: accent.lighten(88%),
+        stroke: 0.8pt + accent,
+        name: <rob>,
+      ),
+      node(
+        (1, 1),
+        b[*Datchiklar va axborot* \ enkoderlar, kamera, kuch],
+        width: 3.8cm,
+        height: 1.3cm,
+        fill: luma(235),
+        stroke: 0.8pt + luma(80),
+        name: <sen>,
+      ),
       node(
         enclose: (<ttl>, <ctrl>, <act>, <rob>, <sen>),
         stroke: (paint: red.darken(20%), dash: "dashed"),
@@ -136,11 +183,30 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
 
       edge(<ctrl>, <act>, "-|>", label: small[$u_t$ (boshqaruv)]),
       edge(<act>, <rob>, "-|>", label: small[$F$, $M$ (moment)]),
-      edge(<rob>, (2, 1), <sen>, "-|>", stroke: 1pt + luma(60), label: small[Holat oʻzgarishi], label-pos: 0.3, label-side: left),
-      edge(<sen>, (0, 1), <ctrl>, "-|>", stroke: 1pt + accent, label: small[$z_t$ (oʻlchov)], label-pos: 0.7, label-side: left),
+      edge(
+        <rob>,
+        (2, 1),
+        <sen>,
+        "-|>",
+        stroke: 1pt + luma(60),
+        label: small[Holat oʻzgarishi],
+        label-pos: 0.3,
+        label-side: left,
+      ),
+      edge(
+        <sen>,
+        (0, 1),
+        <ctrl>,
+        "-|>",
+        stroke: 1pt + accent,
+        label: small[$z_t$ (oʻlchov)],
+        label-pos: 0.7,
+        label-side: left,
+      ),
     )
   },
   caption: [Robototexnik tizimning axborot-boshqaruv va teskari aloqa blok-sxemasi],
+  placement: auto,
 ) <fig-arch>
 
 == Fazoviy koordinata almashtirishlari va Bayes filtri
@@ -186,8 +252,10 @@ $ "TC"_A (Q) = C_"cap,A" + c_"var,A" dot Q, quad quad "TC"_B (Q) = C_"cap,B" + c
 
 - a) Ikkala xarajatni tenglashtiramiz ($"TC"_A (Q_"crit") = "TC"_B (Q_"crit")$):
   $ C_"cap,A" + c_"var,A" dot Q_"crit" = C_"cap,B" + c_"var,B" dot Q_"crit" $
-  $ Q_"crit" = (C_"cap,A" - C_"cap,B") / (c_"var,B" - c_"var,A") = (250 thin 000 - 110 thin 000) / (2.80 - 1.20) \
-    = (140 thin 000) / 1.60 = 87 thin 500 "dona/yil" $
+  $
+    Q_"crit" = (C_"cap,A" - C_"cap,B") / (c_"var,B" - c_"var,A") = (250 thin 000 - 110 thin 000) / (2.80 - 1.20) \
+    = (140 thin 000) / 1.60 = 87 thin 500 "dona/yil"
+  $
 - b) Yillik reja $Q = 120 thin 000$ dona boʻlganda umumiy xarajatlar:
   $ "TC"_A (120 thin 000) = 250 thin 000 + 1.20 times 120 thin 000 = 250 thin 000 + 144 thin 000 = \$ 394 thin 000 $
   $ "TC"_B (120 thin 000) = 110 thin 000 + 2.80 times 120 thin 000 = 110 thin 000 + 336 thin 000 = \$ 446 thin 000 $
@@ -220,12 +288,14 @@ $ R_z (theta) = mat(cos theta, -sin theta, 0; sin theta, cos theta, 0; 0, 0, 1) 
 - b) Bir jinsli transformatsiya matritsasi:
   $ T_t^s = mat(0, -1, 0, 450; 1, 0, 0, 200; 0, 0, 1, 350; 0, 0, 0, 1) $
 - c) Detalning bazaviy sistemadagi koordinatasi:
-  $ P_"detail"^({s}) = T_t^s dot P_"detail"^({t}) = mat(0, -1, 0, 450; 1, 0, 0, 200; 0, 0, 1, 350; 0, 0, 0, 1) dot vec(10, 0, 50, 1) $
+  $
+    P_"detail"^({s}) = T_t^s dot P_"detail"^({t}) = mat(0, -1, 0, 450; 1, 0, 0, 200; 0, 0, 1, 350; 0, 0, 0, 1) dot vec(10, 0, 50, 1)
+  $
   Matritsalarni koʻpaytiramiz:
   $
-    P_x^({s}) &= 0 dot 10 + (-1) dot 0 + 0 dot 50 + 450 dot 1 = 450 "mm" \
-    P_y^({s}) &= 1 dot 10 + 0 dot 0 + 0 dot 50 + 200 dot 1 = 210 "mm" \
-    P_z^({s}) &= 0 dot 10 + 0 dot 0 + 1 dot 50 + 350 dot 1 = 400 "mm"
+    P_x^({s}) & = 0 dot 10 + (-1) dot 0 + 0 dot 50 + 450 dot 1 = 450 "mm" \
+    P_y^({s}) & = 1 dot 10 + 0 dot 0 + 0 dot 50 + 200 dot 1 = 210 "mm" \
+    P_z^({s}) & = 0 dot 10 + 0 dot 0 + 1 dot 50 + 350 dot 1 = 400 "mm"
   $
 
 *Natija:* detalning bazaviy koordinatalar sistemasidagi oʻrni $P_"detail"^({s}) = [450, 210, 400]^T "mm"$.

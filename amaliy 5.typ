@@ -12,6 +12,21 @@
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
 )
+// ===== HOSHIYA =====
+#let info = json("fan.json")
+#let raqam = 5  // amaliyot raqami
+#set document(keywords: (info.fan,))
+#set page(header: context {
+  set text(size: 9pt, fill: luma(110))
+  grid(
+    columns: (1fr, auto, 1fr),
+    align: (left, center, right),
+    info.fan, info.semestr, [Amaliyot №#raqam],
+  )
+  v(-0.5em)
+  line(length: 100%, stroke: 0.4pt + luma(170))
+})
+// ===================
 #set text(size: 12pt, lang: "uz")
 #set par(justify: true, leading: 0.65em)
 #set heading(numbering: "1.1")
@@ -448,6 +463,7 @@ $ q_d (t_j + k T_s) = q_(d,j) + k / N (q_(d,j+1) - q_(d,j)), quad k = 0, 1, dots
     ))
   }),
   caption: [Yuqori daraja topshiriq nuqtalari orasida quyi darajadagi chiziqli interpolyatsiya],
+  placement: auto,
 ) <fig-interp>
 
 *Teskari aloqa datchiklari.* Har bir yuritmada ikkita datchik oʻrnatilgan. *Inkremental fotoimpulsli enkoder* dvigatel vali burilganda impulslar hosil qiladi; ularni reversiv hisoblagich yoʻnalishni hisobga olgan holda yigʻadi. Kvadratur ($times 4$) dekodlashda boʻgʻin burchagining ajratish qobiliyati:
@@ -653,30 +669,32 @@ Dastur bajarilganda manipulyator detal ustidan 50 mm balandlikka chiqadi, unga t
 
 - *Dastur.* Detallar sonini hisoblash uchun `N` oʻzgaruvchisi, idishdagi joyni oʻzgartirish uchun `SHIFT` buyrugʻi ishlatiladi (@lst-pallet). Sikl oxirida `BOX` nuqtasi dastlabki holatiga qaytariladi, aks holda dasturning keyingi ishga tushirilishida qoʻyish joyi siljib ketadi.
 
-  #figure(
-    ```text
-        SET N = 0
-        OPEN
-    10  GONEAR PART, 50
-        GOS PART
-        CLOSE
-        GOSNEAR , 150
-        GONEAR BOX, 100
-        GOS BOX
-        OPEN
-        GOSNEAR , 100
-        SHIFT BOX = 60, 0, 0
-        SET N = N + 1
-        IF N < 3 THEN JUMP 10
-        SHIFT BOX = -180, 0, 0
-        GO READY
-    ```,
-    caption: [Uchta detalni 60 mm qadam bilan taxlash dasturi],
-  ) <lst-pallet>
 
 - *Oʻrgatiladigan nuqtalar.* Dasturda faqat ikkita nuqta oʻrgatiladi: `PART` va `BOX`; qolgan holatlar (`GONEAR`, `GOSNEAR`, `SHIFT`) ulardan hisoblanadi. Shu sababli bu nuqtalar *koordinata nuqtalari* boʻlishi kerak (absolyut `#` nuqtalarni `SHIFT` bilan oʻzgartirib boʻlmaydi). Har bir nuqtani oʻrgatishda manipulyator avval JOINT rejimida ishchi zonaga chiqariladi, soʻngra WORLD yoki TOOL rejimida past tezlikda aniq joylashtiriladi va `HERE PART` (`HERE BOX`) buyrugʻi kiritiladi. Dastur bajarilayotganda pult COMP rejimida boʻladi.
 
 *Javob:* dastur @lst-pallet da keltirilgan; detallar `BOX`, `BOX` + 60 mm va `BOX` + 120 mm nuqtalarga ($X$ boʻyicha) qoʻyiladi.
+
+#figure(
+  ```text
+      SET N = 0
+      OPEN
+  10  GONEAR PART, 50
+      GOS PART
+      CLOSE
+      GOSNEAR , 150
+      GONEAR BOX, 100
+      GOS BOX
+      OPEN
+      GOSNEAR , 100
+      SHIFT BOX = 60, 0, 0
+      SET N = N + 1
+      IF N < 3 THEN JUMP 10
+      SHIFT BOX = -180, 0, 0
+      GO READY
+  ```,
+  caption: [Uchta detalni 60 mm qadam bilan taxlash dasturi],
+  placement: auto,
+) <lst-pallet>
 
 = Individual amaliy topshiriqlar
 

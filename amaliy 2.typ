@@ -13,6 +13,21 @@
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
 )
+// ===== HOSHIYA =====
+#let info = json("fan.json")
+#let raqam = 2  // amaliyot raqami
+#set document(keywords: (info.fan,))
+#set page(header: context {
+  set text(size: 9pt, fill: luma(110))
+  grid(
+    columns: (1fr, auto, 1fr),
+    align: (left, center, right),
+    info.fan, info.semestr, [Amaliyot №#raqam],
+  )
+  v(-0.5em)
+  line(length: 100%, stroke: 0.4pt + luma(170))
+})
+// ===================
 #set text(size: 12pt, lang: "uz")
 #set par(justify: true, leading: 0.65em)
 #set heading(numbering: "1.1")
@@ -37,7 +52,10 @@
   #set par(justify: false)
   #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №2]
   #v(0.4cm)
-  #text(size: 14pt, weight: "bold")[Mavzu: «Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish va analitik hisoblash]
+  #text(
+    size: 14pt,
+    weight: "bold",
+  )[Mavzu: «Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish va analitik hisoblash]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
@@ -253,15 +271,19 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
 *Hisoblash bosqichlari:*
 
 - Minimal qisish kuchi @eq-grip dagi dinamik muvozanat shartidan:
-  $ F_"grip" = (m (g + a_"max") k_"saf") / (2 mu) = (0.8 dot (9.81 + 3.5) dot 1.8) / (2 dot 0.25) \
-    = (0.8 dot 13.31 dot 1.8) / 0.5 = 19.1664 / 0.5 approx 38.33 "N" $
+  $
+    F_"grip" = (m (g + a_"max") k_"saf") / (2 mu) = (0.8 dot (9.81 + 3.5) dot 1.8) / (2 dot 0.25) \
+    = (0.8 dot 13.31 dot 1.8) / 0.5 = 19.1664 / 0.5 approx 38.33 "N"
+  $
 - Tutqich richag uzatmasi orqali pnevmotsilindrning zaruriy kuchi:
   $ F_"pnevm" = F_"grip" / k_"mech" = 38.33 / 1.4 approx 27.38 "N" $
 - Pnevmotsilindr porshen yuzasi:
   $ A_"p1" = (pi D^2) / 4 = (pi dot (0.025)^2) / 4 approx 4.9087 times 10^(-4) "m"^2 $
 - Talab etiladigan minimal manba bosimi:
-  $ P_"min" = F_"pnevm" / (A_"p1" dot eta_"mech") = 27.38 / (4.9087 times 10^(-4) dot 0.90) = 27.38 / (4.4178 times 10^(-4)) \
-    approx 61976 "Pa" approx 0.062 "MPa" thick (0.62 "bar") $
+  $
+    P_"min" = F_"pnevm" / (A_"p1" dot eta_"mech") = 27.38 / (4.9087 times 10^(-4) dot 0.90) = 27.38 / (4.4178 times 10^(-4)) \
+    approx 61976 "Pa" approx 0.062 "MPa" thick (0.62 "bar")
+  $
 
 == Masala 2: toʻgʻri kinematika va TCP koordinatalarini aniqlash
 
@@ -278,13 +300,15 @@ Tutqich markazining (TCP) dekart koordinatalarini ($P_x, P_y, P_z$) va asos koor
 
 - Toʻgʻri kinematika tenglamalariga (@eq-fk) berilgan qiymatlarni qoʻyamiz:
   $
-    P_x &= r_3 dot cos theta_1 = 280 dot cos 60 degree = 280 dot 0.5 = 140.0 "mm" \
-    P_y &= r_3 dot sin theta_1 = 280 dot sin 60 degree = 280 dot 0.8660 approx 242.49 "mm" \
-    P_z &= d_1 + z_2 = 350 + 120 = 470.0 "mm"
+    P_x & = r_3 dot cos theta_1 = 280 dot cos 60 degree = 280 dot 0.5 = 140.0 "mm" \
+    P_y & = r_3 dot sin theta_1 = 280 dot sin 60 degree = 280 dot 0.8660 approx 242.49 "mm" \
+    P_z & = d_1 + z_2 = 350 + 120 = 470.0 "mm"
   $
 - TCP nuqtasining koordinata boshidan umumiy masofasi ($P_x^2 + P_y^2 = r_3^2$ ekanligidan):
-  $ R_"TCP" = sqrt(P_x^2 + P_y^2 + P_z^2) = sqrt(r_3^2 + P_z^2) = sqrt(78400 + 220900) \
-    = sqrt(299300) approx 547.08 "mm" $
+  $
+    R_"TCP" = sqrt(P_x^2 + P_y^2 + P_z^2) = sqrt(r_3^2 + P_z^2) = sqrt(78400 + 220900) \
+    = sqrt(299300) approx 547.08 "mm"
+  $
 
 = Talabalar uchun individual amaliy topshiriqlar
 
