@@ -8,7 +8,7 @@
 
 #let headingblue = rgb(20, 50, 120)
 
-#set document(title: "«Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish")
+#set document(title: "«Elektronika-NSTM-01» sanoat robotining işlaş prinsipini örganiş")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -50,49 +50,49 @@
 // ---------------- Sarlavha ----------------
 #align(center)[
   #set par(justify: false)
-  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №2]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MAŞĞULOTI №2]
   #v(0.4cm)
   #text(
     size: 14pt,
     weight: "bold",
-  )[Mavzu: «Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish va analitik hisoblash]
+  )[Mavzu: «Elektronika-NSTM-01» sanoat robotining işlaş prinsipini örganiş va analitik hisoblaş]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Mashgʻulotning maqsadi:* talabalarda «Elektronika-NSTM-01» tipidagi sanoat robotlarining pnevmo-elektr boshqaruv tizimlari, kinematik zanjiri, pnevmotutqichlarining qisish kuchi hamda silindrik ishchi sohasi hajmini analitik hisoblash va muhandislik loyihalash koʻnikmalarini shakllantirish.
+*Maşğulotning maqsadi:* talabalarda «Elektronika-NSTM-01» tipidagi sanoat robotlarining pnevmo-elektr boşqaruv tizimlari, kinematik zanjiri, pnevmotutqiçlarining qisiş kuçi hamda silindrik işçi sohasi hajmini analitik hisoblaş va muhandislik loyihalaş könikmalarini şakllantiriş.
 
-*Kutilayotgan oʻquv va amaliy natijalar.* Ushbu amaliyot mashgʻulotini muvaffaqiyatli bajargan talaba quyidagilarni oʻrganadi:
+*Kutilayotgan öquv va amaliy natijalar.* Uşbu amaliyot maşğulotini muvaffaqiyatli bajargan talaba quyidagilarni örganadi:
 
-+ *Pnevmoyuritmalar hisobi:* pnevmotsilindrlarning porshen ($D$) va shtok ($d$) diametrlari hamda pnevmotizim ishchi bosimi ($P$) asosida ilgarilanma va qisish kuchlarini ($F_"pnevm"$, $F_"grip"$) hisoblash.
-+ *Kinematik modellashtirish:* 4-DoF ($R$-$P$-$P$-$R$) kinematik zanjirli robot uchun Denavit–Hartenberg (D-H) parametrlar jadvalini tuzish va toʻgʻri kinematika masalasi ($T_4^0$) orqali tutqichning (TCP -- _Tool Center Point_) dekart koordinatalarini ($P_x, P_y, P_z$) aniqlash.
-+ *Ishchi soha va unumdorlik:* robotning silindrik ishchi sohasi hajmi ($V_"ws"$), pnevmosiljishlar vaqti ($T_"cycle"$) va havo sarfini ($Q$) analitik hisoblash.
++ *Pnevmoyuritmalar hisobi:* pnevmotsilindrlarning porşen ($D$) va ştok ($d$) diametrlari hamda pnevmotizim işçi bosimi ($P$) asosida ilgarilanma va qisiş kuçlarini ($F_"pnevm"$, $F_"grip"$) hisoblaş.
++ *Kinematik modellaştiriş:* 4-DoF ($R$-$P$-$P$-$R$) kinematik zanjirli robot uçun Denavit–Hartenberg (D-H) parametrlar jadvalini tuziş va töğri kinematika masalasi ($T_4^0$) orqali tutqiçning (TCP -- _Tool Center Point_) dekart koordinatalarini ($P_x, P_y, P_z$) aniqlaş.
++ *Işçi soha va unumdorlik:* robotning silindrik işçi sohasi hajmi ($V_"ws"$), pnevmosiljişlar vaqti ($T_"cycle"$) va havo sarfini ($Q$) analitik hisoblaş.
 
-= Nazariy asoslar va hisoblash formulalari
+= Nazariy asoslar va hisoblaş formulalari
 
-«Elektronika-NSTM-01» sanoat roboti kichik va oʻrta oʻlchamli detallarni ($0.5 dots 1.0 "kg"$) qadoqlash, yigʻish va texnologik liniyalarga uzatish uchun moʻljallangan pnevmo-elektr yuritmalarga ega manipulyatordir.
+«Elektronika-NSTM-01» sanoat roboti kiçik va örta ölçamli detallarni ($0.5 dots 1.0 "kg"$) qadoqlaş, yiğiş va texnologik liniyalarga uzatiş uçun möljallangan pnevmo-elektr yuritmalarga ega manipulyatordir.
 
-== Pnevmotsilindr va pnevmotutqichlarning kuch hisoblari
+== Pnevmotsilindr va pnevmotutqiçlarning kuç hisoblari
 
-Robotning boʻgʻin harakatlari va tutqichining qisish kuchi pnevmotsilindrlar yordamida amalga oshiriladi.
+Robotning böğin harakatlari va tutqiçining qisiş kuçi pnevmotsilindrlar yordamida amalga oşiriladi.
 
 #set enum(numbering: "a)")
-+ *Pnevmotsilindr porshenining surishda hosil qiladigan kuchi ($F_"ext"$):*
++ *Pnevmotsilindr porşenining surişda hosil qiladigan kuçi ($F_"ext"$):*
   $ F_"ext" = P dot A_"p1" dot eta_"mech" = P dot (pi D^2) / 4 dot eta_"mech" $ <eq-fext>
-  bunda $P$ --- pnevmotizimdagi ishchi bosim (Pa yoki N/m#super[2]), $D$ --- porshen diametri (m), $eta_"mech"$ --- pnevmotsilindrning mexanik foydali ish koeffitsienti ($eta_"mech" approx 0.85 dots 0.92$).
+  bunda $P$ --- pnevmotizimdagi işçi bosim (Pa yoki N/m#super[2]), $D$ --- porşen diametri (m), $eta_"mech"$ --- pnevmotsilindrning mexanik foydali iş koeffitsienti ($eta_"mech" approx 0.85 dots 0.92$).
 
-+ *Pnevmotsilindr shtoki tortilgandagi kuch ($F_"ret"$):*
++ *Pnevmotsilindr ştoki tortilgandagi kuç ($F_"ret"$):*
   $ F_"ret" = P dot A_"p2" dot eta_"mech" = P dot (pi (D^2 - d^2)) / 4 dot eta_"mech" $ <eq-fret>
-  bunda $d$ --- shtok diametri (m).
+  bunda $d$ --- ştok diametri (m).
 
-+ *Pnevmotutqichning qisish kuchi ($F_"grip"$) va detalni ushlab turish sharti.* Tutqich qismida richag-ponali (_lever-wedge_) mexanizm qoʻllanilgan boʻlib, qisish kuchi richag uzatish koeffitsienti ($k_"mech"$) orqali aniqlanadi:
++ *Pnevmotutqiçning qisiş kuçi ($F_"grip"$) va detalni uşlab turiş şarti.* Tutqiç qismida riçag-ponali (_lever-wedge_) mexanizm qöllanilgan bölib, qisiş kuçi riçag uzatiş koeffitsienti ($k_"mech"$) orqali aniqlanadi:
   $ F_"grip" = k_"mech" dot F_"pnevm" $
-  Detal tutqichdan sirpanib ketmasligi uchun quyidagi dinamik muvozanat sharti bajarilishi shart:
+  Detal tutqiçdan sirpanib ketmasligi uçun quyidagi dinamik muvozanat şarti bajarilişi şart:
   $ 2 mu F_"grip" >= m (g + a_"max") k_"saf" quad ==> quad F_"grip" >= (m (g + a_"max") k_"saf") / (2 mu) $ <eq-grip>
-  bunda $m$ --- detal massasi (kg), $g = 9.81 "m/s"^2$, $a_"max"$ --- robot manipulyatorining maksimal tezlanishi (m/s#super[2]), $mu$ --- tutqich va detal sirti oʻrtasidagi ishqalanish koeffitsienti, $k_"saf"$ --- ehtiyotlik (xavfsizlik) koeffitsienti ($k_"saf" approx 1.5 dots 2.0$).
+  bunda $m$ --- detal massasi (kg), $g = 9.81 "m/s"^2$, $a_"max"$ --- robot manipulyatorining maksimal tezlanişi (m/s#super[2]), $mu$ --- tutqiç va detal sirti örtasidagi işqalaniş koeffitsienti, $k_"saf"$ --- ehtiyotlik (xavfsizlik) koeffitsienti ($k_"saf" approx 1.5 dots 2.0$).
 #set enum(numbering: "1.")
 
 == Robotning kinematikasi va Denavit–Hartenberg (D-H) tenglamalari
@@ -149,7 +149,7 @@ Robotning boʻgʻin harakatlari va tutqichining qisish kuchi pnevmotsilindrlar y
   caption: [«Elektronika-NSTM-01» sanoat robotining 4-DoF kinematik strukturasi va koordinata freymlari],
 ) <fig-kin>
 
-D-H matritsasining umumiy koʻrinishi:
+D-H matritsasining umumiy körinişi:
 
 $
   A_i = mat(
@@ -160,7 +160,7 @@ $
   )
 $ <eq-dh>
 
-Robot uchun umumiy transformatsiya matritsasi $T_4^0 = A_1 dot A_2 dot A_3 dot A_4$ boʻlib, tutqich markazining (TCP) dekart koordinatalari quyidagi analitik koʻrinishga ega boʻladi:
+Robot uçun umumiy transformatsiya matritsasi $T_4^0 = A_1 dot A_2 dot A_3 dot A_4$ bölib, tutqiç markazining (TCP) dekart koordinatalari quyidagi analitik körinişga ega böladi:
 
 $
   cases(
@@ -170,29 +170,29 @@ $
   )
 $ <eq-fk>
 
-bunda $d_1$ --- robot asosining oʻzgarmas balandligi, $theta_1$ --- ustunning burilish burchagi, $z_2$ --- vertikal koʻtarilish, $r_3$ --- gorizontal qoʻlning siljishi.
+bunda $d_1$ --- robot asosining özgarmas balandligi, $theta_1$ --- ustunning buriliş burçagi, $z_2$ --- vertikal kötariliş, $r_3$ --- gorizontal qölning siljişi.
 
-== Silindrik ishchi soha hajmi va pnevmotizim havo sarfi
+== Silindrik işçi soha hajmi va pnevmotizim havo sarfi
 
-Robot tutqichining harakat sohasi silindrik sektor koʻrinishida boʻlib, uning hajmi ($V_"ws"$) quyidagi ifoda orqali hisoblanadi:
+Robot tutqiçining harakat sohasi silindrik sektor körinişida bölib, uning hajmi ($V_"ws"$) quyidagi ifoda orqali hisoblanadi:
 
 $
   V_"ws" = (theta_("1,max") - theta_("1,min")) / (360 degree) dot pi (r_("3,max")^2 - r_("3,min")^2) \
   dot (z_("2,max") - z_("2,min"))
 $ <eq-vws>
 
-Pnevmotsilindrlarning bitta toʻliq sikl davomida sarflaydigan siqilgan havo hajmi ($Q_"cycle"$, erkin havo hajmiga keltirilgan):
+Pnevmotsilindrlarning bitta töliq sikl davomida sarflaydigan siqilgan havo hajmi ($Q_"cycle"$, erkin havo hajmiga keltirilgan):
 
 $
   Q_"cycle" = sum_(i=1)^k ((P_i + P_"atm") / P_"atm") dot pi / 4 \
   dot (D_i^2 L_i + (D_i^2 - d_i^2) L_i)
 $ <eq-q>
 
-bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi (xodi).
+bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yuriş masofasi (xodi).
 
-= Pnevmoavtomatika va boʻgʻinlarning grafik sxemalari
+= Pnevmoavtomatika va böğinlarning grafik sxemalari
 
-== Pnevmoavtomatik boshqaruv tizimining funksional sxemasi
+== Pnevmoavtomatik boşqaruv tizimining funksional sxemasi
 
 #figure(
   {
@@ -209,10 +209,10 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
       edge-stroke: 1pt + headingblue,
 
       node((0, 1), b[*Siqilgan havo* \ ($P = 0.5 "MPa"$)], width: 2.5cm, height: 1.1cm),
-      node((1, 1), b[*FRL bloki* \ (filtr / rostlagich)], width: 2.5cm, height: 1.1cm, fill: yellow.lighten(75%)),
-      node((2, 0), b[*5/2 taqsimlagich 1* \ ($theta_1$)], width: 3.1cm, height: 1.1cm, fill: vfill),
-      node((2, 1), b[*5/2 taqsimlagich 2* \ ($z_2$)], width: 3.1cm, height: 1.1cm, fill: vfill),
-      node((2, 2), b[*5/2 taqsimlagich 3* \ ($r_3$)], width: 3.1cm, height: 1.1cm, fill: vfill),
+      node((1, 1), b[*FRL bloki* \ (filtr / rostlagiç)], width: 2.5cm, height: 1.1cm, fill: yellow.lighten(75%)),
+      node((2, 0), b[*5/2 taqsimlagiç 1* \ ($theta_1$)], width: 3.1cm, height: 1.1cm, fill: vfill),
+      node((2, 1), b[*5/2 taqsimlagiç 2* \ ($z_2$)], width: 3.1cm, height: 1.1cm, fill: vfill),
+      node((2, 2), b[*5/2 taqsimlagiç 3* \ ($r_3$)], width: 3.1cm, height: 1.1cm, fill: vfill),
       node((3, 0), b[Pnevmomotor / \ pnevmotsilindr 1], width: 2.9cm, height: 1.1cm, fill: cfill),
       node((3, 1), b[Pnevmotsilindr 2], width: 2.9cm, height: 1.1cm, fill: cfill),
       node((3, 2), b[Pnevmotsilindr 3], width: 2.9cm, height: 1.1cm, fill: cfill),
@@ -226,10 +226,10 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
       edge((2, 2), (3, 2), "=>"),
     )
   },
-  caption: [«Elektronika-NSTM-01» pnevmoavtomatik boshqaruv tizimining funksional sxemasi],
+  caption: [«Elektronika-NSTM-01» pnevmoavtomatik boşqaruv tizimining funksional sxemasi],
 ) <fig-pneu>
 
-== Pnevmotutqichning richag-ponali mexanizmi
+== Pnevmotutqiçning riçag-ponali mexanizmi
 
 #figure(
   cetz.canvas(length: 1.25cm, {
@@ -238,7 +238,7 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
     let farrow = (stroke: 2pt + navy, mark: (end: ">", fill: navy))
 
     rect((0, 0), (2, 1), fill: luma(220), stroke: 1pt)
-    content((1, 0.5), text(size: 8pt)[Porshen shtoki])
+    content((1, 0.5), text(size: 8pt)[Porşen ştoki])
     line((2, 0.5), (3.5, 0.5), stroke: 2pt + red, mark: (end: ">", fill: red))
     content((2.75, 0.55), [$F_"pnevm"$], anchor: "south")
 
@@ -254,30 +254,30 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
     line((7.1, -0.75), (7.1, -0.15), ..farrow)
     content((7.2, -0.55), [$F_"grip"$], anchor: "west")
   }),
-  caption: [Pnevmotutqichning richag-ponali mexanizmidagi kuchlar taqsimoti sxemasi],
+  caption: [Pnevmotutqiçning riçag-ponali mexanizmidagi kuçlar taqsimoti sxemasi],
 ) <fig-wedge>
 
-= Namunaviy hisoblash misollari va amaliy masalalar yechimi
+= Namunaviy hisoblaş misollari va amaliy masalalar yeçimi
 
-== Masala 1: pnevmotutqich va detal muvozanati hisobi
+== Masala 1: pnevmotutqiç va detal muvozanati hisobi
 
-*Masala sharti:* «Elektronika-NSTM-01» robot pnevmotutqichi massasi $m = 0.8 "kg"$ boʻlgan poʻlat detalni vertikal koʻtarib koʻchirmoqda. Manipulyatorning maksimal vertikal tezlanishi $a_"max" = 3.5 "m/s"^2$. Tutqich va detal oʻrtasidagi ishqalanish koeffitsienti $mu = 0.25$, xavfsizlik koeffitsienti $k_"saf" = 1.8$.
+*Masala şarti:* «Elektronika-NSTM-01» robot pnevmotutqiçi massasi $m = 0.8 "kg"$ bölgan pölat detalni vertikal kötarib köçirmoqda. Manipulyatorning maksimal vertikal tezlanişi $a_"max" = 3.5 "m/s"^2$. Tutqiç va detal örtasidagi işqalaniş koeffitsienti $mu = 0.25$, xavfsizlik koeffitsienti $k_"saf" = 1.8$.
 
 #set enum(numbering: "a)")
-+ Detalni sirpanib ketmasdan ushlab turish uchun zarur boʻlgan minimal qisish kuchini ($F_"grip"$) hisoblang.
-+ Agar pnevmotutqichning richag uzatish koeffitsienti $k_"mech" = 1.4$, pnevmotsilindr porshen diametri $D = 25 "mm"$ va $eta_"mech" = 0.90$ boʻlsa, zaruriy minimal pnevmotizim bosimini ($P_"min"$) aniqlang.
++ Detalni sirpanib ketmasdan uşlab turiş uçun zarur bölgan minimal qisiş kuçini ($F_"grip"$) hisoblang.
++ Agar pnevmotutqiçning riçag uzatiş koeffitsienti $k_"mech" = 1.4$, pnevmotsilindr porşen diametri $D = 25 "mm"$ va $eta_"mech" = 0.90$ bölsa, zaruriy minimal pnevmotizim bosimini ($P_"min"$) aniqlang.
 #set enum(numbering: "1.")
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- Minimal qisish kuchi @eq-grip dagi dinamik muvozanat shartidan:
+- Minimal qisiş kuçi @eq-grip dagi dinamik muvozanat şartidan:
   $
     F_"grip" = (m (g + a_"max") k_"saf") / (2 mu) = (0.8 dot (9.81 + 3.5) dot 1.8) / (2 dot 0.25) \
     = (0.8 dot 13.31 dot 1.8) / 0.5 = 19.1664 / 0.5 approx 38.33 "N"
   $
-- Tutqich richag uzatmasi orqali pnevmotsilindrning zaruriy kuchi:
+- Tutqiç riçag uzatmasi orqali pnevmotsilindrning zaruriy kuçi:
   $ F_"pnevm" = F_"grip" / k_"mech" = 38.33 / 1.4 approx 27.38 "N" $
-- Pnevmotsilindr porshen yuzasi:
+- Pnevmotsilindr porşen yuzasi:
   $ A_"p1" = (pi D^2) / 4 = (pi dot (0.025)^2) / 4 approx 4.9087 times 10^(-4) "m"^2 $
 - Talab etiladigan minimal manba bosimi:
   $
@@ -285,38 +285,38 @@ bunda $P_"atm" = 0.1013 "MPa"$, $L_i$ --- $i$-pnevmotsilindrning yurish masofasi
     approx 61976 "Pa" approx 0.062 "MPa" thick (0.62 "bar")
   $
 
-== Masala 2: toʻgʻri kinematika va TCP koordinatalarini aniqlash
+== Masala 2: töğri kinematika va TCP koordinatalarini aniqlaş
 
-*Masala sharti:* «Elektronika-NSTM-01» roboti boʻgʻinlariga quyidagi umumlashtirilgan koordinatalar berilgan:
+*Masala şarti:* «Elektronika-NSTM-01» roboti böğinlariga quyidagi umumlaştirilgan koordinatalar berilgan:
 
 - asos balandligi $d_1 = 350 "mm"$;
-- ustunning burilish burchagi $theta_1 = 60 degree$;
-- vertikal koʻtarilish $z_2 = 120 "mm"$;
-- gorizontal qoʻl uzayishi $r_3 = 280 "mm"$.
+- ustunning buriliş burçagi $theta_1 = 60 degree$;
+- vertikal kötariliş $z_2 = 120 "mm"$;
+- gorizontal qöl uzayişi $r_3 = 280 "mm"$.
 
-Tutqich markazining (TCP) dekart koordinatalarini ($P_x, P_y, P_z$) va asos koordinatalar sistemasiga nisbatan umumiy masofasini ($R_"TCP"$) aniqlang.
+Tutqiç markazining (TCP) dekart koordinatalarini ($P_x, P_y, P_z$) va asos koordinatalar sistemasiga nisbatan umumiy masofasini ($R_"TCP"$) aniqlang.
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- Toʻgʻri kinematika tenglamalariga (@eq-fk) berilgan qiymatlarni qoʻyamiz:
+- Töğri kinematika tenglamalariga (@eq-fk) berilgan qiymatlarni qöyamiz:
   $
     P_x & = r_3 dot cos theta_1 = 280 dot cos 60 degree = 280 dot 0.5 = 140.0 "mm" \
     P_y & = r_3 dot sin theta_1 = 280 dot sin 60 degree = 280 dot 0.8660 approx 242.49 "mm" \
     P_z & = d_1 + z_2 = 350 + 120 = 470.0 "mm"
   $
-- TCP nuqtasining koordinata boshidan umumiy masofasi ($P_x^2 + P_y^2 = r_3^2$ ekanligidan):
+- TCP nuqtasining koordinata boşidan umumiy masofasi ($P_x^2 + P_y^2 = r_3^2$ ekanligidan):
   $
     R_"TCP" = sqrt(P_x^2 + P_y^2 + P_z^2) = sqrt(r_3^2 + P_z^2) = sqrt(78400 + 220900) \
     = sqrt(299300) approx 547.08 "mm"
   $
 
-= Talabalar uchun individual amaliy topshiriqlar
+= Talabalar uçun individual amaliy topşiriqlar
 
-Har bir talaba oʻzining variant raqami boʻyicha @tab-variants dan texnik koʻrsatkichlarni olib, quyidagi hisoblarni bajarishi shart:
+Har bir talaba özining variant raqami böyiça @tab-variants dan texnik körsatkiçlarni olib, quyidagi hisoblarni bajarişi şart:
 
-+ Detalni xavfsiz qisish uchun minimal kuch $F_"grip"$ va pnevmotizim bosimi $P_"min"$ ni hisoblash.
-+ Berilgan boʻgʻin koordinatalari boʻyicha tutqichning (TCP) dekart koordinatalarini ($P_x, P_y, P_z$) topish.
-+ Robotning silindrik ishchi sohasi hajmini ($V_"ws"$) hisoblash.
++ Detalni xavfsiz qisiş uçun minimal kuç $F_"grip"$ va pnevmotizim bosimi $P_"min"$ ni hisoblaş.
++ Berilgan böğin koordinatalari böyiça tutqiçning (TCP) dekart koordinatalarini ($P_x, P_y, P_z$) topiş.
++ Robotning silindrik işçi sohasi hajmini ($V_"ws"$) hisoblaş.
 
 #figure(
   {
@@ -354,15 +354,15 @@ Har bir talaba oʻzining variant raqami boʻyicha @tab-variants dan texnik koʻr
       table.hline(stroke: 1pt),
     )
   },
-  caption: [Individual amaliy topshiriqlar variantlari jadvali],
+  caption: [Individual amaliy topşiriqlar variantlari jadvali],
 ) <tab-variants>
 
-_Izoh:_ barcha variantlar uchun asos balandligi $d_1 = 300 "mm"$, $r_("3,min") = 100 "mm"$, $z_("2,min") = 0 "mm"$, $k_"saf" = 1.5$, $eta_"mech" = 0.90$ deb qabul qilinsin.
+_Izoh:_ barça variantlar uçun asos balandligi $d_1 = 300 "mm"$, $r_("3,min") = 100 "mm"$, $z_("2,min") = 0 "mm"$, $k_"saf" = 1.5$, $eta_"mech" = 0.90$ deb qabul qilinsin.
 
 = Nazorat savollari
 
-+ «Elektronika-NSTM-01» robotida pnevmoyuritmalar qoʻllanilishining asosiy texnik-iqtisodiy afzalliklari va cheklovlari nimada?
-+ Pnevmotsilindr porshenining surishdagi kuchi ($F_"ext"$) va shtok tortilgandagi kuchi ($F_"ret"$) nima uchun bir-biridan farq qiladi?
-+ Tutqichda detalni ushlab turuvchi ishqalanish kuchi qanday omillarga (tezlanish, ishqalanish koeffitsienti, xavfsizlik koeffitsienti) bogʻliq?
-+ Silindrik robotning toʻgʻri kinematik tenglamalari qanday tuziladi va ularni dekart koordinatalariga oʻtkazish formulalarini tushuntiring.
-+ Robotning ishchi sohasi hajmi ($V_"ws"$) boʻgʻinlarning geometrik chegaralari bilan qanday bogʻlangan?
++ «Elektronika-NSTM-01» robotida pnevmoyuritmalar qöllanilişining asosiy texnik-iqtisodiy afzalliklari va çeklovlari nimada?
++ Pnevmotsilindr porşenining surişdagi kuçi ($F_"ext"$) va ştok tortilgandagi kuçi ($F_"ret"$) nima uçun bir-biridan farq qiladi?
++ Tutqiçda detalni uşlab turuvçi işqalaniş kuçi qanday omillarga (tezlaniş, işqalaniş koeffitsienti, xavfsizlik koeffitsienti) boğliq?
++ Silindrik robotning töğri kinematik tenglamalari qanday tuziladi va ularni dekart koordinatalariga ötkaziş formulalarini tuşuntiring.
++ Robotning işçi sohasi hajmi ($V_"ws"$) böğinlarning geometrik çegaralari bilan qanday boğlangan?

@@ -10,7 +10,7 @@
 #let teal = rgb(53, 162, 159)
 #let accent = rgb(219, 100, 0)
 
-#set document(title: "Sanoat robotining kinematikasini oʻrganish")
+#set document(title: "Sanoat robotining kinematikasini örganiş")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -46,10 +46,10 @@
 
 // ---------------- Sarlavha ----------------
 #align(center)[
-  #text(size: 20pt, weight: "bold", fill: headingblue)[TAJRIBA MASHGʻULOTI №3]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[TAJRIBA MAŞĞULOTI №3]
   #v(0.4cm)
   #text(size: 14pt, weight: "bold")[
-    Mavzu: Sanoat robotining kinematikasini oʻrganish. Robot manipulyatorlarining kinematik komponovkalari va konstruktiv xususiyatlari
+    Mavzu: Sanoat robotining kinematikasini örganiş. Robot manipulyatorlarining kinematik komponovkalari va konstruktiv xususiyatlari
   ]
   #v(0.2cm)
   #text(size: 12pt, style: "italic")[1-qism: kinematik zanjir va erkinlik darajalari (DoF)]
@@ -58,47 +58,47 @@
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Mashgʻulotning maqsadi:* sanoat robot manipulyatorlarining kinematik tuzilishi, kinematik zanjir turlari, kinematik juftliklar hamda ularning erkinlik darajalarini (_degrees of freedom_ --- DoF) nazariy va amaliy jihatdan oʻrganish; Grübler--Kutzbach tenglamasi yordamida ochiq va yopiq zanjirli robotik mexanizmlarning harakatchanlik darajasini hisoblash koʻnikmalarini shakllantirish.
+*Maşğulotning maqsadi:* sanoat robot manipulyatorlarining kinematik tuzilişi, kinematik zanjir turlari, kinematik juftliklar hamda ularning erkinlik darajalarini (_degrees of freedom_ --- DoF) nazariy va amaliy jihatdan örganiş; Grübler--Kutzbach tenglamasi yordamida oçiq va yopiq zanjirli robotik mexanizmlarning harakatçanlik darajasini hisoblaş könikmalarini şakllantiriş.
 
-*Kutilayotgan oʻquv natijalari:*
+*Kutilayotgan öquv natijalari:*
 
-+ Robot manipulyatorlarining kinematik zanjir va komponovka turlarini (ketma-ket, parallel, gibrid) farqlay olish.
-+ Bir va koʻp erkinlikli kinematik juftliklarni (aylanma --- R, ilgarilanma --- P, silindrik --- C, sferik --- S) tasniflash.
-+ Fazoviy ($m = 6$) va tekislikdagi ($m = 3$) robotik mexanizmlar uchun Grübler formulasi boʻyicha erkinlik darajasini toʻgʻri hisoblash.
-+ Manipulyatorning konfiguratsiya fazosi (C-space) hamda boʻgʻinlardagi geometrik va mexanik cheklovlarni tahlil qilish.
-+ Sanoat robotlarining konstruktiv elementlari (reduktorlar, podshipniklar, boʻgʻin materiallari) va ularning dinamik xususiyatlarga taʼsirini baholash.
++ Robot manipulyatorlarining kinematik zanjir va komponovka turlarini (ketma-ket, parallel, gibrid) farqlay oliş.
++ Bir va köp erkinlikli kinematik juftliklarni (aylanma --- R, ilgarilanma --- P, silindrik --- C, sferik --- S) tasniflaş.
++ Fazoviy ($m = 6$) va tekislikdagi ($m = 3$) robotik mexanizmlar uçun Grübler formulasi böyiça erkinlik darajasini töğri hisoblaş.
++ Manipulyatorning konfiguratsiya fazosi (C-space) hamda böğinlardagi geometrik va mexanik çeklovlarni tahlil qiliş.
++ Sanoat robotlarining konstruktiv elementlari (reduktorlar, podşipniklar, böğin materiallari) va ularning dinamik xususiyatlarga taʼsirini baholaş.
 
 = Kerakli asbob-uskunalar va dasturiy taʼminot
 
 - *Laboratoriya stendi:* sanoat robotlari modellari yoki stendi (PUMA, KUKA, FANUC), ilmiy kalkulyator.
-- *Dasturiy muhit:* MATLAB (Robotics System Toolbox), CoppeliaSim, ROS --- robot modellarini yuklash va kinematik tahlil uchun.
+- *Dasturiy muhit:* MATLAB (Robotics System Toolbox), CoppeliaSim, ROS --- robot modellarini yuklaş va kinematik tahlil uçun.
 
 = Nazariy maʼlumotlar
 
-== Sanoat robotlari kinematikasiga kirish
+== Sanoat robotlari kinematikasiga kiriş
 
-Sanoat robotining kinematikasi manipulyator boʻgʻinlarining kuch va momentlarni hisobga olmagan holdagi geometrik va vaqt boʻyicha harakatini (pozitsiya, tezlik, tezlanish) oʻrganadi. Robot manipulyatori ketma-ket yoki parallel birikkan harakatlanuvchi qattiq jismlar --- *boʻgʻinlar (links)* va ularni oʻzaro bogʻlovchi *kinematik juftliklar (joints)* majmuasidan iborat.
+Sanoat robotining kinematikasi manipulyator böğinlarining kuç va momentlarni hisobga olmagan holdagi geometrik va vaqt böyiça harakatini (pozitsiya, tezlik, tezlaniş) örganadi. Robot manipulyatori ketma-ket yoki parallel birikkan harakatlanuvçi qattiq jismlar --- *böğinlar (links)* va ularni özaro boğlovçi *kinematik juftliklar (joints)* majmuasidan iborat.
 
-Kinematik tahlilda ikkita asosiy masala koʻriladi:
+Kinematik tahlilda ikkita asosiy masala köriladi:
 
-+ *Toʻgʻri kinematika masalasi (forward kinematics):* boʻgʻin koordinatalari ($theta_1, theta_2, dots, theta_n$) berilganda ishchi aʼzo yoki tutqichning (_Tool Center Point_ --- TCP) dekart koordinatalar sistemasidagi oʻrni va orientatsiyasini ($x, y, z, alpha, beta, gamma$) topish.
-+ *Teskari kinematika masalasi (inverse kinematics):* tutqichning fazodagi berilgan oʻrni va orientatsiyasiga mos keluvchi boʻgʻin burchaklari va siljishlarini ($theta_1, theta_2, dots, theta_n$) aniqlash.
++ *Töğri kinematika masalasi (forward kinematics):* böğin koordinatalari ($theta_1, theta_2, dots, theta_n$) berilganda işçi aʼzo yoki tutqiçning (_Tool Center Point_ --- TCP) dekart koordinatalar sistemasidagi örni va orientatsiyasini ($x, y, z, alpha, beta, gamma$) topiş.
++ *Teskari kinematika masalasi (inverse kinematics):* tutqiçning fazodagi berilgan örni va orientatsiyasiga mos keluvçi böğin burçaklari va siljişlarini ($theta_1, theta_2, dots, theta_n$) aniqlaş.
 
 == Kinematik juftliklar va ularning turlari
 
-Ikki qoʻshni boʻgʻinning oʻzaro nisbiy harakatiga ruxsat beruvchi harakatlanuvchi birikma *kinematik juftlik* deb ataladi. Har bir kinematik juftlik boʻgʻinlar orasida muayyan cheklovlar (_constraints_) oʻrnatadi va maʼlum erkinlik darajasini ($f_i$) beradi. Sanoat robototexnikasida eng keng tarqalgan bir erkinlikli ($f_i = 1$) juftliklar (@fig-joints):
+Ikki qöşni böğinning özaro nisbiy harakatiga ruxsat beruvçi harakatlanuvçi birikma *kinematik juftlik* deb ataladi. Har bir kinematik juftlik böğinlar orasida muayyan çeklovlar (_constraints_) örnatadi va maʼlum erkinlik darajasini ($f_i$) beradi. Sanoat robototexnikasida eng keng tarqalgan bir erkinlikli ($f_i = 1$) juftliklar (@fig-joints):
 
-- *Aylanma juftlik (revolute joint --- R):* faqat bitta oʻq atrofida nisbiy burilish ($f_i = 1$).
-- *Ilgarilanma juftlik (prismatic joint --- P):* faqat bitta oʻq boʻylab chiziqli siljish ($f_i = 1$).
-- *Vintli juftlik (helical joint --- H):* chiziqli siljish va burilish oʻzaro qatʼiy bogʻlangan birikma ($f_i = 1$).
+- *Aylanma juftlik (revolute joint --- R):* faqat bitta öq atrofida nisbiy buriliş ($f_i = 1$).
+- *Ilgarilanma juftlik (prismatic joint --- P):* faqat bitta öq böylab çiziqli siljiş ($f_i = 1$).
+- *Vintli juftlik (helical joint --- H):* çiziqli siljiş va buriliş özaro qatʼiy boğlangan birikma ($f_i = 1$).
 
-Koʻp erkinlikli juftliklar:
+Köp erkinlikli juftliklar:
 
-- *Silindrik juftlik (cylindrical joint --- C):* bir oʻq atrofida aylanma va shu oʻq boʻylab ilgarilanma harakat ($f_i = 2$).
-- *Sferik juftlik (spherical joint --- S):* bitta nuqta atrofida uch oʻlchamli burilish ($f_i = 3$).
-- *Tekislik juftligi (planar joint --- E):* tekislikda ikkita chiziqli va bitta aylanma harakat ($f_i = 3$).
+- *Silindrik juftlik (cylindrical joint --- C):* bir öq atrofida aylanma va şu öq böylab ilgarilanma harakat ($f_i = 2$).
+- *Sferik juftlik (spherical joint --- S):* bitta nuqta atrofida uç ölçamli buriliş ($f_i = 3$).
+- *Tekislik juftligi (planar joint --- E):* tekislikda ikkita çiziqli va bitta aylanma harakat ($f_i = 3$).
 
 #figure(
   {
@@ -124,24 +124,24 @@ Koʻp erkinlikli juftliklar:
       rect((x0 - 0.6, 0.2), (x0 + 0.6, 0.6), fill: white, stroke: 0.6pt)
       rect((x0 - 1.5, 0.3), (x0 + 1.5, 0.5), fill: teal.lighten(55%), stroke: 0.9pt)
       line((x0 - 1.2, 1.05), (x0 + 1.2, 1.05), stroke: 1.2pt + accent, mark: (start: "straight", end: "straight"))
-      content((x0, 1.35), text(size: 8pt)[$d_1$ siljish])
+      content((x0, 1.35), text(size: 8pt)[$d_1$ siljiş])
       content((x0, -0.95), text(weight: "bold")[(b) Ilgarilanma juftlik (P)])
     })
   },
-  caption: [Eng koʻp qoʻllaniladigan bir erkinlikli kinematik juftliklar: (a) aylanma (R); (b) ilgarilanma (P)],
+  caption: [Eng köp qöllaniladigan bir erkinlikli kinematik juftliklar: (a) aylanma (R); (b) ilgarilanma (P)],
 ) <fig-joints>
 
 == Robot manipulyatorlarining kinematik komponovkalari
 
-Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guruhga boʻlinadi (@fig-chains):
+Sanoat robotlari kinematik tuzilişiga (topologiyasiga) köra uçta asosiy guruhga bölinadi (@fig-chains):
 
-+ *Ochiq kinematik zanjirli manipulyatorlar (serial / open-chain):* boʻgʻinlar asosdan (_base_) ishchi aʼzogacha (_end-effector_) ketma-ket bogʻlangan.
-  - _Afzalliklari:_ ishchi zona (_workspace_) hajmi katta, epchilligi (_dexterity_) yuqori, konstruksiyasi tushunarli.
-  - _Kamchiliklari:_ bikrligi (_stiffness_) nisbatan past, xatoliklar zanjir boʻylab yigʻilib boradi, yuk koʻtaruvchanligining oʻz massasiga nisbati kichik.
-+ *Yopiq kinematik zanjirli robotlar (parallel / closed-chain):* ishchi aʼzo bir nechta parallel kinematik zanjirlar orqali qoʻzgʻalmas asos bilan tutashtirilgan. Masalan, Delta robotlari va Stewart--Gough platformasi (6-UPS).
-  - _Afzalliklari:_ yuqori bikrlik, katta tezlik va aniqlik, yuqori yuk koʻtarish qobiliyati.
-  - _Kamchiliklari:_ ishchi zona hajmi cheklangan, singulyarlik zonalari murakkab, kinematika va dinamikasi murakkab.
-+ *Gibrid kinematik zanjirlar (hybrid chain):* ochiq va yopiq zanjirlar birikmasidan tashkil topgan modulli konstruksiyalar.
++ *Oçiq kinematik zanjirli manipulyatorlar (serial / open-chain):* böğinlar asosdan (_base_) işçi aʼzogaça (_end-effector_) ketma-ket boğlangan.
+  - _Afzalliklari:_ işçi zona (_workspace_) hajmi katta, epçilligi (_dexterity_) yuqori, konstruksiyasi tuşunarli.
+  - _Kamçiliklari:_ bikrligi (_stiffness_) nisbatan past, xatoliklar zanjir böylab yiğilib boradi, yuk kötaruvçanligining öz massasiga nisbati kiçik.
++ *Yopiq kinematik zanjirli robotlar (parallel / closed-chain):* işçi aʼzo bir neçta parallel kinematik zanjirlar orqali qözğalmas asos bilan tutaştirilgan. Masalan, Delta robotlari va Stewart--Gough platformasi (6-UPS).
+  - _Afzalliklari:_ yuqori bikrlik, katta tezlik va aniqlik, yuqori yuk kötariş qobiliyati.
+  - _Kamçiliklari:_ işçi zona hajmi çeklangan, singulyarlik zonalari murakkab, kinematika va dinamikasi murakkab.
++ *Gibrid kinematik zanjirlar (hybrid chain):* oçiq va yopiq zanjirlar birikmasidan taşkil topgan modulli konstruksiyalar.
 
 #figure(
   {
@@ -164,10 +164,10 @@ Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guru
       circle((1.0, 1.8), radius: 0.2, fill: blue.lighten(75%), stroke: 0.8pt)
       circle((2.5, 1.5), radius: 0.18, fill: blue.lighten(75%), stroke: 0.8pt)
       content((0, -0.45), [Asos ($L_0$)])
-      content((-0.25, 1.2), [Boʻgʻin 1 ($L_1$)])
-      content((1.85, 1.95), [Boʻgʻin 2 ($L_2$)])
-      content((3.7, 2.8), [Tutqich (TCP)])
-      content((1.4, 3.6), text(size: 8pt, weight: "bold")[(a) Ketma-ket (ochiq) zanjir])
+      content((-0.25, 1.2), [Böğin 1 ($L_1$)])
+      content((1.85, 1.95), [Böğin 2 ($L_2$)])
+      content((3.7, 2.8), [Tutqiç (TCP)])
+      content((1.4, 3.6), text(size: 8pt, weight: "bold")[(a) Ketma-ket (oçiq) zanjir])
 
       // (b) Parallel zanjir
       let x0 = 6.5
@@ -180,7 +180,7 @@ Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guru
         fill: luma(200),
         stroke: 0.9pt,
       )
-      content((x0 + 1.5, 3.25), [Qoʻzgʻalmas asos])
+      content((x0 + 1.5, 3.25), [Qözğalmas asos])
       line(
         (x0 + 0.5, 0.5),
         (x0 + 2.5, 0.5),
@@ -190,7 +190,7 @@ Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guru
         fill: accent.lighten(70%),
         stroke: 0.9pt,
       )
-      content((x0 + 1.5, 0.2), [Harakatlanuvchi platforma])
+      content((x0 + 1.5, 0.2), [Harakatlanuvçi platforma])
       for (top, bot) in (((0.2, 2.8), (0.9, 0.6)), ((1.5, 2.8), (1.5, 0.6)), ((2.8, 2.8), (2.1, 0.6))) {
         let t = (x0 + top.at(0), top.at(1))
         let b = (x0 + bot.at(0), bot.at(1))
@@ -201,51 +201,51 @@ Sanoat robotlari kinematik tuzilishiga (topologiyasiga) koʻra uchta asosiy guru
       content((x0 + 1.5, 3.6), text(size: 8pt, weight: "bold")[(b) Parallel (yopiq) zanjir])
     })
   },
-  caption: [Robot manipulyatorlarining kinematik komponovkalari: (a) ketma-ket ochiq zanjirli manipulyator; (b) parallel yopiq zanjirli mexanizm],
+  caption: [Robot manipulyatorlarining kinematik komponovkalari: (a) ketma-ket oçiq zanjirli manipulyator; (b) parallel yopiq zanjirli mexanizm],
 ) <fig-chains>
 
 = Erkinlik darajalari va Grübler tenglamasi
 
-== Erkinlik darajasi tushunchasi
+== Erkinlik darajasi tuşunçasi
 
-Mexanizmning *erkinlik darajasi (DoF / mobility)* --- uning fazodagi holatini (pozitsiya va orientatsiyasini) toʻliq va bir qiymatli aniqlash uchun zarur boʻlgan mustaqil koordinatalar soni. Erkin qattiq jism:
+Mexanizmning *erkinlik darajasi (DoF / mobility)* --- uning fazodagi holatini (pozitsiya va orientatsiyasini) töliq va bir qiymatli aniqlaş uçun zarur bölgan mustaqil koordinatalar soni. Erkin qattiq jism:
 
-- tekislikda *3 ta* erkinlik darajasiga ega (2 ta chiziqli siljish $x, y$ va 1 ta burilish $theta$);
-- fazoda *6 ta* erkinlik darajasiga ega (3 ta chiziqli siljish $x, y, z$ va 3 ta burilish --- _roll, pitch, yaw_ / $alpha, beta, gamma$).
+- tekislikda *3 ta* erkinlik darajasiga ega (2 ta çiziqli siljiş $x, y$ va 1 ta buriliş $theta$);
+- fazoda *6 ta* erkinlik darajasiga ega (3 ta çiziqli siljiş $x, y, z$ va 3 ta buriliş --- _roll, pitch, yaw_ / $alpha, beta, gamma$).
 
-Mexanizm boʻgʻinlari oʻzaro kinematik juftliklar orqali biriktirilganda, har bir juftlik erkin harakat yoʻnalishlarining maʼlum qismini cheklaydi.
+Mexanizm böğinlari özaro kinematik juftliklar orqali biriktirilganda, har bir juftlik erkin harakat yönalişlarining maʼlum qismini çeklaydi.
 
 == Grübler--Kutzbach formulasi
 
-Robotik mexanizmlarning erkinlik darajasini aniqlash uchun *Grübler--Kutzbach tenglamasi* ishlatiladi:
+Robotik mexanizmlarning erkinlik darajasini aniqlaş uçun *Grübler--Kutzbach tenglamasi* işlatiladi:
 
 $ "DoF" = m (N - 1 - J) + sum_(i=1)^J f_i $
 
 bunda:
 
-- $m$ --- ishchi fazo oʻlchamligi ($m = 3$ --- tekislikdagi, $m = 6$ --- fazoviy harakat uchun);
-- $N$ --- mexanizmdagi jami boʻgʻinlar soni (qoʻzgʻalmas asos bilan birga);
+- $m$ --- işçi fazo ölçamligi ($m = 3$ --- tekislikdagi, $m = 6$ --- fazoviy harakat uçun);
+- $N$ --- mexanizmdagi jami böğinlar soni (qözğalmas asos bilan birga);
 - $J$ --- kinematik juftliklar soni;
-- $f_i$ --- $i$-chi kinematik juftlikning erkinlik darajasi (R va P juftliklar uchun $f_i = 1$).
+- $f_i$ --- $i$-çi kinematik juftlikning erkinlik darajasi (R va P juftliklar uçun $f_i = 1$).
 
-Agar barcha $J$ ta juftlik bir erkinlikli ($f_i = 1$) boʻlsa, formula soddalashadi:
+Agar barça $J$ ta juftlik bir erkinlikli ($f_i = 1$) bölsa, formula soddalaşadi:
 
 $ "DoF" = m (N - 1 - J) + J $
 
-=== Ochiq zanjirli (serial) robotlar uchun xususiy holat
+=== Oçiq zanjirli (serial) robotlar uçun xususiy holat
 
-$N - 1$ ta harakatlanuvchi boʻgʻin va $J = N - 1$ ta bir erkinlikli juftlikdan iborat ochiq zanjir uchun:
+$N - 1$ ta harakatlanuvçi böğin va $J = N - 1$ ta bir erkinlikli juftlikdan iborat oçiq zanjir uçun:
 
 $ "DoF" = m (N - 1 - (N - 1)) + sum_(i=1)^(N-1) 1 = m dot 0 + (N - 1) = N - 1 $
 
-Demak, *ochiq zanjirli manipulyatorning erkinlik darajasi harakatlanuvchi boʻgʻinlar (va juftliklar) soniga teng*.
+Demak, *oçiq zanjirli manipulyatorning erkinlik darajasi harakatlanuvçi böğinlar (va juftliklar) soniga teng*.
 
 == Konfiguratsiya fazosi (C-space)
 
-Robot manipulyatorining barcha mumkin boʻlgan holatlari toʻplami uning *konfiguratsiya fazosi (C-space)* deb ataladi (@fig-cspace):
+Robot manipulyatorining barça mumkin bölgan holatlari töplami uning *konfiguratsiya fazosi (C-space)* deb ataladi (@fig-cspace):
 
-- cheklovsiz aylanadigan $n$ ta aylanma (R) boʻgʻinli robotning C-fazosi $n$ oʻlchamli tor topologiyasiga ega: $C = SS^1 times SS^1 times dots times SS^1 = TT^n$;
-- ilgarilanma (P) boʻgʻin uchun esa toʻgʻri chiziq kesmasi ($RR^1$ ning qismi) olinadi.
+- çeklovsiz aylanadigan $n$ ta aylanma (R) böğinli robotning C-fazosi $n$ ölçamli tor topologiyasiga ega: $C = SS^1 times SS^1 times dots times SS^1 = TT^n$;
+- ilgarilanma (P) böğin uçun esa töğri çiziq kesmasi ($RR^1$ ning qismi) olinadi.
 
 #figure(
   {
@@ -270,7 +270,7 @@ Robot manipulyatorining barcha mumkin boʻlgan holatlari toʻplami uning *konfig
         end: "straight",
       ))
       content((2.35, 1.42), text(fill: blue)[$theta_2$])
-      content((1.4, 3.3), text(weight: "bold")[(a) Ishchi fazo (task space)])
+      content((1.4, 3.3), text(weight: "bold")[(a) Işçi fazo (task space)])
 
       // (b) Konfiguratsiya fazosi
       let x0 = 5.5
@@ -285,27 +285,27 @@ Robot manipulyatorining barcha mumkin boʻlgan holatlari toʻplami uning *konfig
       content((x0 + 1.5, 3.5), text(weight: "bold")[(b) Konfiguratsiya fazosi (C-space)])
     })
   },
-  caption: [2R manipulyator: (a) dekart ishchi fazosidagi holati; (b) ikki oʻlchamli $TT^2$ konfiguratsiya fazosida nuqta sifatidagi tasviri (kvadratning qarama-qarshi tomonlari aynan bir xil holatni bildiradi)],
+  caption: [2R manipulyator: (a) dekart işçi fazosidagi holati; (b) ikki ölçamli $TT^2$ konfiguratsiya fazosida nuqta sifatidagi tasviri (kvadratning qarama-qarşi tomonlari aynan bir xil holatni bildiradi)],
 ) <fig-cspace>
 
 = Robot manipulyatorlarining konstruktiv xususiyatlari
 
-Robot manipulyatorining kinematik va dinamik aniqligi, yuk koʻtaruvchanligi hamda tezkorligi uning konstruktiv elementlariga bevosita bogʻliq.
+Robot manipulyatorining kinematik va dinamik aniqligi, yuk kötaruvçanligi hamda tezkorligi uning konstruktiv elementlariga bevosita boğliq.
 
-== Boʻgʻinlar va konstruktiv materiallar
+== Böğinlar va konstruktiv materiallar
 
-Sanoat robotlarining boʻgʻinlari yuqori solishtirma bikrlik (_stiffness-to-weight ratio_) va kichik inersiya momentiga ega boʻlishi lozim:
+Sanoat robotlarining böğinlari yuqori soliştirma bikrlik (_stiffness-to-weight ratio_) va kiçik inersiya momentiga ega bölişi lozim:
 
-- *Alyuminiy qotishmalari (AL 6061-T6, AL 7075):* yengil va oʻrta yuklamali robotlarda keng qoʻllaniladi.
-- *Toblangan poʻlat va choʻyan:* yuqori yuk koʻtaruvchi (100 kg va undan ortiq) sanoat robotlarining asosi va birinchi boʻgʻinlarida ishlatiladi.
-- *Kompozit materiallar (uglerod tolasi):* oʻta yuqori tezlikda harakatlanuvchi va kichik inersiyali (Delta, SCARA) robotlarda qoʻllaniladi.
+- *Alyuminiy qotişmalari (AL 6061-T6, AL 7075):* yengil va örta yuklamali robotlarda keng qöllaniladi.
+- *Toblangan pölat va çöyan:* yuqori yuk kötaruvçi (100 kg va undan ortiq) sanoat robotlarining asosi va birinçi böğinlarida işlatiladi.
+- *Kompozit materiallar (uglerod tolasi):* öta yuqori tezlikda harakatlanuvçi va kiçik inersiyali (Delta, SCARA) robotlarda qöllaniladi.
 
 == Mexanik uzatmalar va reduktorlar
 
-Robot boʻgʻinlaridagi servomotorlar odatda yuqori aylanish chastotasi va nisbatan kichik momentga ega. Shu sababli har bir boʻgʻinga yuqori aniqlikdagi reduktor oʻrnatiladi (@fig-module):
+Robot böğinlaridagi servomotorlar odatda yuqori aylaniş çastotasi va nisbatan kiçik momentga ega. Şu sababli har bir böğinga yuqori aniqlikdagi reduktor örnatiladi (@fig-module):
 
-+ *Toʻlqinli uzatmalar (harmonic drive):* lyufti deyarli nolga teng ($< 1 "arcmin"$), bir bosqichda katta uzatish nisbatini ($1:50 dots 1:160$) beradi va oʻta ixcham.
-+ *Sikloid reduktorlar (cycloidal drive / RV reducer):* katta zarbali yuklamalar va yuqori momentlarga chidamli; sanoat robotlarining asosiy (1--3) boʻgʻinlarida qoʻllaniladi.
++ *Tölqinli uzatmalar (harmonic drive):* lyufti deyarli nolga teng ($< 1 "arcmin"$), bir bosqiçda katta uzatiş nisbatini ($1:50 dots 1:160$) beradi va öta ixçam.
++ *Sikloid reduktorlar (cycloidal drive / RV reducer):* katta zarbali yuklamalar va yuqori momentlarga çidamli; sanoat robotlarining asosiy (1--3) böğinlarida qöllaniladi.
 
 #figure(
   {
@@ -333,30 +333,30 @@ Robot boʻgʻinlaridagi servomotorlar odatda yuqori aylanish chastotasi va nisba
       line((0.6, 1.67), (1.7, 1.67), stroke: 0.5pt)
       content((1.75, 1.67), anchor: "west", [Optik enkoder])
       line((1.2, -0.85), (1.7, -0.85), stroke: 0.5pt)
-      content((1.75, -0.85), anchor: "west", [Boʻgʻin korpusi])
-      content((0.65, -1.95), anchor: "west", [Chiqish valining burilishi ($theta_i$)])
+      content((1.75, -0.85), anchor: "west", [Böğin korpusi])
+      content((0.65, -1.95), anchor: "west", [Çiqiş valining burilişi ($theta_i$)])
     })
   },
-  caption: [Sanoat roboti boʻgʻinining tipik konstruktiv moduli],
+  caption: [Sanoat roboti böğinining tipik konstruktiv moduli],
 ) <fig-module>
 
-= Grübler formulasi boʻyicha masalalar yechish
+= Grübler formulasi böyiça masalalar yeçiş
 
 == 1-masala: tekislikdagi 3R manipulyator
 
-*Sharti:* tekislikda harakatlanuvchi 3 ta aylanma juftlikli (3R) ochiq zanjirli manipulyatorning erkinlik darajasini aniqlang.
+*Şarti:* tekislikda harakatlanuvçi 3 ta aylanma juftlikli (3R) oçiq zanjirli manipulyatorning erkinlik darajasini aniqlang.
 
-*Yechish:* tekislikdagi harakat boʻlgani uchun $m = 3$. Boʻgʻinlar soni: 3 ta harakatlanuvchi boʻgʻin va asos, yaʼni $N = 4$. Juftliklar soni $J = 3$ (barchasi R, $f_i = 1$). Grübler formulasini qoʻllaymiz:
+*Yeçiş:* tekislikdagi harakat bölgani uçun $m = 3$. Böğinlar soni: 3 ta harakatlanuvçi böğin va asos, yaʼni $N = 4$. Juftliklar soni $J = 3$ (barçasi R, $f_i = 1$). Grübler formulasini qöllaymiz:
 
 $ "DoF" = m (N - 1 - J) + sum_(i=1)^J f_i = 3 times (4 - 1 - 3) + (1 + 1 + 1) = 3 times 0 + 3 = 3 $
 
-*Javob:* $"DoF" = 3$. Manipulyator tekislikdagi obyektning $x, y$ koordinatalarini va burilish burchagi $phi$ ni toʻliq boshqara oladi.
+*Javob:* $"DoF" = 3$. Manipulyator tekislikdagi obyektning $x, y$ koordinatalarini va buriliş burçagi $phi$ ni töliq boşqara oladi.
 
 == 2-masala: fazoviy 6R PUMA-560 sanoat roboti
 
-*Sharti:* 6 ta aylanma juftlikli (6R) PUMA-560 sanoat manipulyatorining erkinlik darajasini hisoblang.
+*Şarti:* 6 ta aylanma juftlikli (6R) PUMA-560 sanoat manipulyatorining erkinlik darajasini hisoblang.
 
-*Yechish:* fazoviy harakat uchun $m = 6$; boʻgʻinlar soni $N = 6 + 1 = 7$; juftliklar soni $J = 6$, har biri $f_i = 1$:
+*Yeçiş:* fazoviy harakat uçun $m = 6$; böğinlar soni $N = 6 + 1 = 7$; juftliklar soni $J = 6$, har biri $f_i = 1$:
 
 $ "DoF" = 6 times (7 - 1 - 6) + sum_(i=1)^6 1 = 6 times 0 + 6 = 6 $
 
@@ -364,41 +364,41 @@ $ "DoF" = 6 times (7 - 1 - 6) + sum_(i=1)^6 1 = 6 times 0 + 6 = 6 $
 
 == 3-masala: Stewart--Gough parallel platformasi (6-UPS)
 
-*Sharti:* Stewart--Gough platformasi qoʻzgʻalmas asos va harakatlanuvchi platformadan iborat boʻlib, ular uzunligi oʻzgaruvchan 6 ta parallel oyoq orqali bogʻlangan. Har bir oyoq asosga universal ($U$, $f = 2$), platformaga sferik ($S$, $f = 3$) juftlik bilan birikkan, oʻrtasida esa ilgarilanma ($P$, $f = 1$) juftlik bor. Platformaning erkinlik darajasini toping.
+*Şarti:* Stewart--Gough platformasi qözğalmas asos va harakatlanuvçi platformadan iborat bölib, ular uzunligi özgaruvçan 6 ta parallel oyoq orqali boğlangan. Har bir oyoq asosga universal ($U$, $f = 2$), platformaga sferik ($S$, $f = 3$) juftlik bilan birikkan, örtasida esa ilgarilanma ($P$, $f = 1$) juftlik bor. Platformaning erkinlik darajasini toping.
 
-*Yechish:*
+*Yeçiş:*
 
 - fazoviy harakat: $m = 6$;
-- boʻgʻinlar soni: asos (1) + platforma (1) + har bir oyoqda 2 tadan boʻgʻin ($6 times 2 = 12$), yaʼni $N = 14$;
+- böğinlar soni: asos (1) + platforma (1) + har bir oyoqda 2 tadan böğin ($6 times 2 = 12$), yaʼni $N = 14$;
 - juftliklar soni: 6 ta U, 6 ta P, 6 ta S, yaʼni $J = 18$;
-- erkinlik darajalari yigʻindisi:
+- erkinlik darajalari yiğindisi:
 
 $ sum f_i = 6 f_U + 6 f_P + 6 f_S = 6 times 2 + 6 times 1 + 6 times 3 = 12 + 6 + 18 = 36 $
 
-Grübler formulasi boʻyicha:
+Grübler formulasi böyiça:
 
 $ "DoF" = 6 times (14 - 1 - 18) + 36 = 6 times (-5) + 36 = -30 + 36 = 6 $
 
 *Javob:* Stewart--Gough platformasi $"DoF" = 6$ ga ega fazoviy parallel robot.
 
-= Tajriba mashgʻulotini bajarish tartibi
+= Tajriba maşğulotini bajariş tartibi
 
-== 1-bosqich: kinematik sxemalarni tahlil qilish
+== 1-bosqiç: kinematik sxemalarni tahlil qiliş
 
-+ Laboratoriya stendidagi yoki simulyatordagi robot modelini (KUKA KR6, FANUC LR Mate, ABB IRB 120) koʻzdan kechiring.
-+ Robot asosidan tutqichgacha barcha boʻgʻinlarni ($L_0, L_1, dots, L_n$) raqamlang.
-+ Har bir kinematik juftlik turini (R yoki P) va uning harakat oʻqini aniqlang.
++ Laboratoriya stendidagi yoki simulyatordagi robot modelini (KUKA KR6, FANUC LR Mate, ABB IRB 120) közdan keçiring.
++ Robot asosidan tutqiçgaça barça böğinlarni ($L_0, L_1, dots, L_n$) raqamlang.
++ Har bir kinematik juftlik turini (R yoki P) va uning harakat öqini aniqlang.
 
-== 2-bosqich: erkinlik darajasini analitik va simulyatsion aniqlash
+== 2-bosqiç: erkinlik darajasini analitik va simulyatsion aniqlaş
 
-+ Berilgan manipulyator uchun Grübler formulasini yozing va $N, J, f_i$ qiymatlarini qoʻyib DoF ni hisoblang.
++ Berilgan manipulyator uçun Grübler formulasini yozing va $N, J, f_i$ qiymatlarini qöyib DoF ni hisoblang.
 + MATLAB Robotics System Toolbox yoki CoppeliaSim muhitida robot modelini yuklang.
-+ Dasturdagi boʻgʻin oʻzgaruvchilari vektori ($q = [q_1, q_2, dots, q_n]^T$) oʻlchami analitik hisoblangan DoF ga mos kelishini tekshiring.
++ Dasturdagi böğin özgaruvçilari vektori ($q = [q_1, q_2, dots, q_n]^T$) ölçami analitik hisoblangan DoF ga mos kelişini tekşiring.
 
-== 3-bosqich: boʻgʻin cheklovlari va C-space tahlili
+== 3-bosqiç: böğin çeklovlari va C-space tahlili
 
-+ Har bir boʻgʻinning harakat chegaralarini ($theta_(i,min) <= theta_i <= theta_(i,max)$) @tab-joints ga kiriting.
-+ Boʻgʻin cheklovlari hisobiga konfiguratsiya fazosining haqiqiy sohasi va chegaralarini aniqlang.
++ Har bir böğinning harakat çegaralarini ($theta_(i,min) <= theta_i <= theta_(i,max)$) @tab-joints ga kiriting.
++ Böğin çeklovlari hisobiga konfiguratsiya fazosining haqiqiy sohasi va çegaralarini aniqlang.
 
 #figure(
   {
@@ -410,7 +410,7 @@ $ "DoF" = 6 times (14 - 1 - 18) + 36 = 6 times (-5) + 36 = -30 + 36 = 6 $
       stroke: none,
       inset: (x: 4pt, y: 5pt),
       table.hline(stroke: 1pt),
-      table.header([*Boʻgʻin \ №*], [*Juftlik turi*], [*Harakat \ diapazoni*], [*Reduktor turi*], [*Datchik turi*]),
+      table.header([*Böğin \ №*], [*Juftlik turi*], [*Harakat \ diapazoni*], [*Reduktor turi*], [*Datçik turi*]),
       table.hline(stroke: 0.5pt),
       [1], [Aylanma (R)], [$-170 degree dots +170 degree$], [Sikloid (RV)], [Absolyut enkoder],
       [2], [Aylanma (R)], [$-100 degree dots +135 degree$], [Sikloid (RV)], [Absolyut enkoder],
@@ -421,15 +421,15 @@ $ "DoF" = 6 times (14 - 1 - 18) + 36 = 6 times (-5) + 36 = -30 + 36 = 6 $
       table.hline(stroke: 1pt),
     )
   },
-  caption: [Robot boʻgʻinlarining kinematik va konstruktiv koʻrsatkichlari (namuna)],
+  caption: [Robot böğinlarining kinematik va konstruktiv körsatkiçlari (namuna)],
 ) <tab-joints>
 
 = Nazorat savollari
 
-+ Kinematik juftlik nima va u erkin qattiq jism harakatini qanday cheklaydi?
++ Kinematik juftlik nima va u erkin qattiq jism harakatini qanday çeklaydi?
 + Bir erkinlik darajali ($f_i = 1$) kinematik juftliklarga qaysi birikmalar kiradi?
-+ Fazoviy ($m = 6$) va tekislikdagi ($m = 3$) mexanizmlar uchun Grübler formulasining farqi nimada?
-+ Ketma-ket (serial) va parallel robot manipulyatorlarining konstruktiv afzalliklari va kamchiliklarini solishtiring.
-+ Konfiguratsiya fazosi (C-space) bilan dekart ishchi fazosi (task space) oʻrtasidagi farqni tushuntiring.
-+ Reduktorlardagi lyuft (_backlash_) robot tutqichining aniqligiga qanday taʼsir koʻrsatadi va u qanday kamaytiriladi?
-+ Nima uchun koʻpchilik sanoat robotlari 6 ta erkinlik darajasiga (6 DoF) ega qilib loyihalanadi?
++ Fazoviy ($m = 6$) va tekislikdagi ($m = 3$) mexanizmlar uçun Grübler formulasining farqi nimada?
++ Ketma-ket (serial) va parallel robot manipulyatorlarining konstruktiv afzalliklari va kamçiliklarini soliştiring.
++ Konfiguratsiya fazosi (C-space) bilan dekart işçi fazosi (task space) örtasidagi farqni tuşuntiring.
++ Reduktorlardagi lyuft (_backlash_) robot tutqiçining aniqligiga qanday taʼsir körsatadi va u qanday kamaytiriladi?
++ Nima uçun köpçilik sanoat robotlari 6 ta erkinlik darajasiga (6 DoF) ega qilib loyihalanadi?

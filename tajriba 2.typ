@@ -10,7 +10,7 @@
 #let accent = rgb(0, 120, 130)
 #let secondary = rgb(180, 50, 20)
 
-#set document(title: "«Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish")
+#set document(title: "«Elektronika-NSTM-01» sanoat robotining işlaş prinsipini örganiş")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -46,82 +46,82 @@
 
 // ---------------- Sarlavha ----------------
 #align(center)[
-  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIY MASHGʻULOTI №2]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIY MAŞĞULOTI №2]
   #v(0.4cm)
   #text(size: 14pt, weight: "bold")[
-    Mavzu: «Elektronika-NSTM-01» sanoat robotining ishlash prinsipini oʻrganish
+    Mavzu: «Elektronika-NSTM-01» sanoat robotining işlaş prinsipini örganiş
   ]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Mashgʻulotning maqsadi:* oʻquv va sanoat ishlab chiqarishida keng qoʻllaniladigan «Elektronika-NSTM-01» sanoat roboti manipulyatorining tuzilishi, kinematik zanjiri, pnevmatik va elektr yuritmalari, datchiklar tizimi hamda dasturlanadigan boshqaruv blokining ishlash prinsiplarini oʻrganish.
+*Maşğulotning maqsadi:* öquv va sanoat işlab çiqarişida keng qöllaniladigan «Elektronika-NSTM-01» sanoat roboti manipulyatorining tuzilişi, kinematik zanjiri, pnevmatik va elektr yuritmalari, datçiklar tizimi hamda dasturlanadigan boşqaruv blokining işlaş prinsiplarini örganiş.
 
-*Oʻquv vazifalari:*
+*Öquv vazifalari:*
 
-+ *Konstruktiv tuzilmani tahlil qilish:* «Elektronika-NSTM-01» robotining mexanik tugunlari, boʻgʻinlari va ishchi aʼzosi (tutqich --- _end-effector_) tuzilishini oʻrganish.
-+ *Kinematik tahlil va DoF hisobi:* manipulyatorning kinematik sxemasini tuzish, erkinlik darajalari sonini (_degrees of freedom_ --- DoF) Grübler--Kutzbach formulasi boʻyicha hisoblash.
-+ *Pnevmoyuritma elementlarini oʻrganish:* pnevmotsilindrlar, pnevmotaqsimlagichlar (_directional control valves_) hamda havo bosimini boshqaruvchi klapanlarning ish rejimlarini tahlil qilish.
-+ *Boshqaruv va sensorika:* dasturlanadigan boshqaruv blokida siklik buyruqlar yaratish va chekli oʻchirgichlar (_limit switches_) orqali aks aloqani oʻrganish.
-+ *Toʻgʻri kinematika masalasi:* robot tutqichining fazoviy koʻchishlarini koordinata sistemalari va transformatsiya matritsalari orqali ifodalash.
++ *Konstruktiv tuzilmani tahlil qiliş:* «Elektronika-NSTM-01» robotining mexanik tugunlari, böğinlari va işçi aʼzosi (tutqiç --- _end-effector_) tuzilişini örganiş.
++ *Kinematik tahlil va DoF hisobi:* manipulyatorning kinematik sxemasini tuziş, erkinlik darajalari sonini (_degrees of freedom_ --- DoF) Grübler--Kutzbach formulasi böyiça hisoblaş.
++ *Pnevmoyuritma elementlarini örganiş:* pnevmotsilindrlar, pnevmotaqsimlagiçlar (_directional control valves_) hamda havo bosimini boşqaruvçi klapanlarning iş rejimlarini tahlil qiliş.
++ *Boşqaruv va sensorika:* dasturlanadigan boşqaruv blokida siklik buyruqlar yaratiş va çekli öçirgiçlar (_limit switches_) orqali aks aloqani örganiş.
++ *Töğri kinematika masalasi:* robot tutqiçining fazoviy köçişlarini koordinata sistemalari va transformatsiya matritsalari orqali ifodalaş.
 
 = Kerakli asbob-uskunalar va dasturiy taʼminot
 
-- *Oʻquv-laboratoriya stendi:* «Elektronika-NSTM-01» sanoat roboti, dasturlanadigan boshqaruv pulti (_teach pendant_).
-- *Pnevmatik jihozlar:* kompressor (ishchi havo bosimi $0.5 "MPa"$), havo tayyorlash bloki (FRL).
-- *Nazorat-oʻlchov vositalari:* raqamli multimetr, pozitsiya datchiklari indikatsiya bloki, shtangensirkul.
-- *Ishchi detallar toʻplami:* silindrik va toʻrtburchak shakldagi obyektlar.
+- *Öquv-laboratoriya stendi:* «Elektronika-NSTM-01» sanoat roboti, dasturlanadigan boşqaruv pulti (_teach pendant_).
+- *Pnevmatik jihozlar:* kompressor (işçi havo bosimi $0.5 "MPa"$), havo tayyorlaş bloki (FRL).
+- *Nazorat-ölçov vositalari:* raqamli multimetr, pozitsiya datçiklari indikatsiya bloki, ştangensirkul.
+- *Işçi detallar töplami:* silindrik va törtburçak şakldagi obyektlar.
 
 = Nazariy maʼlumotlar
 
-== Sanoat robotlarining avtomatlashtirishdagi roli
+== Sanoat robotlarining avtomatlaştirişdagi roli
 
-Zamonaviy moslashuvchan ishlab chiqarish tizimlarida (FMS --- _Flexible Manufacturing Systems_) sanoat robotlari inson omilini kamaytirish, yuqori takrorlanuvchanlik va xavfsizlikni taʼminlashda hal qiluvchi rol oʻynaydi. ISO 8373 standartiga koʻra, *sanoat roboti* --- bu koʻp maqsadli, avtomatik boshqariladigan, qayta dasturlanadigan va uch yoki undan ortiq oʻq boʻyicha harakatlana oladigan manipulyatsion qurilma.
+Zamonaviy moslaşuvçan işlab çiqariş tizimlarida (FMS --- _Flexible Manufacturing Systems_) sanoat robotlari inson omilini kamaytiriş, yuqori takrorlanuvçanlik va xavfsizlikni taʼminlaşda hal qiluvçi rol öynaydi. ISO 8373 standartiga köra, *sanoat roboti* --- bu köp maqsadli, avtomatik boşqariladigan, qayta dasturlanadigan va uç yoki undan ortiq öq böyiça harakatlana oladigan manipulyatsion qurilma.
 
 == «Elektronika-NSTM-01» sanoat robotining umumiy tavsifi
 
-«Elektronika-NSTM-01» --- kichik va oʻrta oʻlchamdagi detallarni (massasi $0.5 dots 1.0 "kg"$) shtamplash, yigʻish, saralash hamda dastgohlarga oʻrnatish va olish operatsiyalarini avtomatlashtirish uchun moʻljallangan modulli sanoat roboti. Manipulyatorning asosiy xususiyatlari:
+«Elektronika-NSTM-01» --- kiçik va örta ölçamdagi detallarni (massasi $0.5 dots 1.0 "kg"$) ştamplaş, yiğiş, saralaş hamda dastgohlarga örnatiş va oliş operatsiyalarini avtomatlaştiriş uçun möljallangan modulli sanoat roboti. Manipulyatorning asosiy xususiyatlari:
 
-- *Modullilik:* har bir harakat boʻgʻini pnevmatik yoki elektr modul shaklida mustaqil yigʻilgan.
-- *Yuqori tezlik va ishonchlilik:* pnevmotsilindrlar yordamida tezkor ilgarilanma va aylanma harakatlar amalga oshiriladi.
-- *Pozitsion boshqaruv:* har bir boʻgʻin harakati chekli oʻchirgichlar yoki optoelektron datchiklar yordamida chegaralanadi.
+- *Modullilik:* har bir harakat böğini pnevmatik yoki elektr modul şaklida mustaqil yiğilgan.
+- *Yuqori tezlik va işonçlilik:* pnevmotsilindrlar yordamida tezkor ilgarilanma va aylanma harakatlar amalga oşiriladi.
+- *Pozitsion boşqaruv:* har bir böğin harakati çekli öçirgiçlar yoki optoelektron datçiklar yordamida çegaralanadi.
 
 == Kinematik struktura va erkinlik darajalari
 
-Manipulyator ochiq kinematik zanjirdan (_serial kinematic chain_) iborat boʻlib, ketma-ket ulangan boʻgʻinlar (_links_) va kinematik juftliklardan (_joints_) tashkil topgan:
+Manipulyator oçiq kinematik zanjirdan (_serial kinematic chain_) iborat bölib, ketma-ket ulangan böğinlar (_links_) va kinematik juftliklardan (_joints_) taşkil topgan:
 
-- *Aylanma juftlik (revolute --- R):* bir oʻq atrofida nisbiy burilish harakatini taʼminlaydi (1 DoF).
-- *Ilgarilanma juftlik (prismatic --- P):* bir oʻq boʻylab toʻgʻri chiziqli surilish harakatini taʼminlaydi (1 DoF).
+- *Aylanma juftlik (revolute --- R):* bir öq atrofida nisbiy buriliş harakatini taʼminlaydi (1 DoF).
+- *Ilgarilanma juftlik (prismatic --- P):* bir öq böylab töğri çiziqli suriliş harakatini taʼminlaydi (1 DoF).
 
-Fazoviy mexanizmlar uchun erkinlik darajasi *Grübler--Kutzbach formulasi* orqali hisoblanadi:
+Fazoviy mexanizmlar uçun erkinlik darajasi *Grübler--Kutzbach formulasi* orqali hisoblanadi:
 
 $ "DoF" = m (N - 1 - J) + sum_(i=1)^J f_i $
 
 bunda:
 
-- $m = 6$ --- uch oʻlchamli fazodagi jismning erkinlik darajalari soni;
-- $N$ --- mexanizmdagi jami boʻgʻinlar soni (qoʻzgʻalmas asos bilan birga);
+- $m = 6$ --- uç ölçamli fazodagi jismning erkinlik darajalari soni;
+- $N$ --- mexanizmdagi jami böğinlar soni (qözğalmas asos bilan birga);
 - $J$ --- kinematik juftliklar soni;
-- $f_i$ --- $i$-chi kinematik juftlikning erkinlik darajasi (R va P juftliklar uchun $f_i = 1$).
+- $f_i$ --- $i$-çi kinematik juftlikning erkinlik darajasi (R va P juftliklar uçun $f_i = 1$).
 
-Ochiq kinematik zanjirli manipulyatorlarda barcha $J$ ta juftlik bir erkinlikli va $N = J + 1$ boʻlsa, formula soddalashadi:
+Oçiq kinematik zanjirli manipulyatorlarda barça $J$ ta juftlik bir erkinlikli va $N = J + 1$ bölsa, formula soddalaşadi:
 
 $ "DoF" = sum_(i=1)^n f_i = n $
 
-«Elektronika-NSTM-01» roboti 4 ta asosiy harakat boʻgʻiniga hamda 1 ta tutqich qisish mexanizmiga ega, yaʼni jami $4 + 1$ erkinlik darajasi mavjud.
+«Elektronika-NSTM-01» roboti 4 ta asosiy harakat böğiniga hamda 1 ta tutqiç qisiş mexanizmiga ega, yaʼni jami $4 + 1$ erkinlik darajasi mavjud.
 
-= «Elektronika-NSTM-01» robotining kinematik sxemasi va tuzilishi
+= «Elektronika-NSTM-01» robotining kinematik sxemasi va tuzilişi
 
-«Elektronika-NSTM-01» roboti silindrik koordinata sistemasida ishlaydi. Uning kinematik harakatlari quyidagilardan iborat (@fig-kin):
+«Elektronika-NSTM-01» roboti silindrik koordinata sistemasida işlaydi. Uning kinematik harakatlari quyidagilardan iborat (@fig-kin):
 
-+ *Asos burilishi ($theta_1$):* manipulyator tanasining vertikal oʻq atrofidagi aylanma harakati ($R_1$ boʻgʻin).
-+ *Vertikal koʻtarilish/tushish ($z_2$):* manipulyator yelkasining $Z$ oʻqi boʻylab ilgarilanma koʻchishi ($P_2$ boʻgʻin).
-+ *Gorizontal uzayish ($r_3$):* qoʻlning gorizontal konsol boʻylab surilishi ($P_3$ boʻgʻin).
-+ *Tutqich burilishi ($alpha_4$):* ishchi organning (tutqichning) oʻz oʻqi atrofida burilishi ($R_4$ boʻgʻin).
-+ *Qisish harakati ($q_5$):* pnevmotutqich jagʻlarining yopilishi va ochilishi ($G_5$).
++ *Asos burilişi ($theta_1$):* manipulyator tanasining vertikal öq atrofidagi aylanma harakati ($R_1$ böğin).
++ *Vertikal kötariliş/tuşiş ($z_2$):* manipulyator yelkasining $Z$ öqi böylab ilgarilanma köçişi ($P_2$ böğin).
++ *Gorizontal uzayiş ($r_3$):* qölning gorizontal konsol böylab surilişi ($P_3$ böğin).
++ *Tutqiç burilişi ($alpha_4$):* işçi organning (tutqiçning) öz öqi atrofida burilişi ($R_4$ böğin).
++ *Qisiş harakati ($q_5$):* pnevmotutqiç jağlarining yopilişi va oçilişi ($G_5$).
 
 #figure(
   {
@@ -141,7 +141,7 @@ $ "DoF" = sum_(i=1)^n f_i = n $
 
       // Z0 oʻqi
       line((0, -0.2), (0, 3.5), stroke: (paint: secondary, thickness: 0.8pt, dash: "dashed"), mark: (end: "straight"))
-      content((0, 3.75), text(size: 7.5pt, fill: secondary)[$Z_0$ (vertikal oʻq)])
+      content((0, 3.75), text(size: 7.5pt, fill: secondary)[$Z_0$ (vertikal öq)])
 
       // theta_1
       arc((0, 1.3), start: -30deg, stop: 210deg, radius: (0.85, 0.3), anchor: "origin", stroke: 1pt + secondary, mark: (
@@ -157,7 +157,7 @@ $ "DoF" = sum_(i=1)^n f_i = n $
       // Gorizontal qoʻl (P3)
       rect((0.8, 2.4), (4.2, 2.8), fill: luma(240), stroke: 0.9pt + headingblue)
       line((1.5, 3.15), (3.8, 3.15), stroke: 1pt + headingblue, mark: (start: "straight", end: "straight"))
-      content((2.65, 3.45), text(size: 7.5pt)[$r_3$ (uzayish)])
+      content((2.65, 3.45), text(size: 7.5pt)[$r_3$ (uzayiş)])
 
       // Tutqich burilish moduli (R4)
       rect((4.2, 2.2), (4.8, 3.0), fill: secondary.lighten(75%), stroke: 0.9pt + secondary)
@@ -182,39 +182,39 @@ $ "DoF" = sum_(i=1)^n f_i = n $
       // Izoh
       rect((5.6, 0.3), (8.4, 2.6), fill: white, stroke: 0.8pt + headingblue, radius: 3pt)
       content((7.0, 1.45), align(left, text(size: 7pt)[
-        *Boʻgʻinlar:* \
-        1. Asos burilishi ($R_1$) \
-        2. Vertikal surilish ($P_2$) \
-        3. Gorizontal surilish ($P_3$) \
-        4. Tutqich burilishi ($R_4$) \
-        5. Pnevmotutqich ($G_5$)
+        *Böğinlar:* \
+        1. Asos burilişi ($R_1$) \
+        2. Vertikal suriliş ($P_2$) \
+        3. Gorizontal suriliş ($P_3$) \
+        4. Tutqiç burilişi ($R_4$) \
+        5. Pnevmotutqiç ($G_5$)
       ]))
     })
   },
-  caption: [«Elektronika-NSTM-01» sanoat robotining kinematik sxemasi va boʻgʻinlar harakati],
+  caption: [«Elektronika-NSTM-01» sanoat robotining kinematik sxemasi va böğinlar harakati],
 ) <fig-kin>
 
-= Pnevmatik yuritma va boshqaruv tizimi
+= Pnevmatik yuritma va boşqaruv tizimi
 
 == Pnevmoyuritma elementlari
 
-«Elektronika-NSTM-01» robotining asosiy ilgarilanma va qisish harakatlari *pnevmoyuritmalar* yordamida amalga oshiriladi. Pnevmoyuritmaning asosiy afzalliklari:
+«Elektronika-NSTM-01» robotining asosiy ilgarilanma va qisiş harakatlari *pnevmoyuritmalar* yordamida amalga oşiriladi. Pnevmoyuritmaning asosiy afzalliklari:
 
-- yuqori tezkorlik (porshen tezligi $1.0 dots 1.5 "m/s"$ gacha);
+- yuqori tezkorlik (porşen tezligi $1.0 dots 1.5 "m/s"$ gaça);
 - konstruksiyaning soddaligi va arzonligi;
-- ortiqcha yuklanishga (_overload_) chidamliligi;
-- ishchi muhitning (siqilgan havoning) ekologik xavfsizligi.
+- ortiqça yuklanişga (_overload_) çidamliligi;
+- işçi muhitning (siqilgan havoning) ekologik xavfsizligi.
 
-Pnevmatik tizim quyidagi asosiy bloklardan tashkil topgan:
+Pnevmatik tizim quyidagi asosiy bloklardan taşkil topgan:
 
-+ *Siqilgan havo manbai (kompressor):* ishchi bosim $P = 0.4 dots 0.6 "MPa"$ ($4 dots 6 "bar"$).
-+ *Havo tayyorlash bloki (FRL):* filtrlash, bosimni rostlash va moylash moslamasi.
-+ *Pnevmotaqsimlagichlar (directional control valves):* elektropnevmatik $5\/2$ yoki $3\/2$ yoʻlli zolotnikli klapanlar.
-+ *Pnevmotsilindrlar:* ikki tomonlama taʼsir etuvchi (_double-acting_) pnevmotsilindrlar.
++ *Siqilgan havo manbai (kompressor):* işçi bosim $P = 0.4 dots 0.6 "MPa"$ ($4 dots 6 "bar"$).
++ *Havo tayyorlaş bloki (FRL):* filtrlaş, bosimni rostlaş va moylaş moslamasi.
++ *Pnevmotaqsimlagiçlar (directional control valves):* elektropnevmatik $5\/2$ yoki $3\/2$ yölli zolotnikli klapanlar.
++ *Pnevmotsilindrlar:* ikki tomonlama taʼsir etuvçi (_double-acting_) pnevmotsilindrlar.
 
-== Datchiklar va pozitsion aks aloqa
+== Datçiklar va pozitsion aks aloqa
 
-Manipulyator boʻgʻinlarining chekka nuqtalarga yetib borganligini qayd etish uchun *chekli oʻchirgichlar (limit switches)* yoki *optoelektron datchiklar* oʻrnatilgan. Datchiklardan kelgan signal boshqaruv blokiga uzatiladi va navbatdagi pnevmoklapanga buyruq beriladi (@fig-ctrl).
+Manipulyator böğinlarining çekka nuqtalarga yetib borganligini qayd etiş uçun *çekli öçirgiçlar (limit switches)* yoki *optoelektron datçiklar* örnatilgan. Datçiklardan kelgan signal boşqaruv blokiga uzatiladi va navbatdagi pnevmoklapanga buyruq beriladi (@fig-ctrl).
 
 #figure(
   {
@@ -230,10 +230,10 @@ Manipulyator boʻgʻinlarining chekka nuqtalarga yetib borganligini qayd etish u
       spacing: (10mm, 12mm),
       edge-stroke: 1pt + headingblue,
 
-      node((1, 0), b[*Dasturlanadigan \ boshqaruv bloki* \ (PLC / mikrokontroller)], width: 3.3cm, height: 1.4cm),
+      node((1, 0), b[*Dasturlanadigan \ boşqaruv bloki* \ (PLC / mikrokontroller)], width: 3.3cm, height: 1.4cm),
       node(
         (2, 0),
-        b[*Pnevmotaqsimlagichlar* \ ($5\/2$ elektromagnit \ klapanlar)],
+        b[*Pnevmotaqsimlagiçlar* \ ($5\/2$ elektromagnit \ klapanlar)],
         width: 3.3cm,
         height: 1.4cm,
         fill: accent.lighten(88%),
@@ -252,10 +252,10 @@ Manipulyator boʻgʻinlarining chekka nuqtalarga yetib borganligini qayd etish u
         fill: accent.lighten(88%),
         stroke: 0.8pt + accent,
       ),
-      node((1, 1), b[*Manipulyator \ va tutqich* \ (mexanik tuzilma)], width: 3.3cm, height: 1.4cm),
+      node((1, 1), b[*Manipulyator \ va tutqiç* \ (mexanik tuzilma)], width: 3.3cm, height: 1.4cm),
       node(
         (0, 1),
-        b[*Chekli datchiklar* \ (limit switches)],
+        b[*Çekli datçiklar* \ (limit switches)],
         width: 3cm,
         height: 1.4cm,
         fill: orange.lighten(85%),
@@ -265,7 +265,7 @@ Manipulyator boʻgʻinlarining chekka nuqtalarga yetib borganligini qayd etish u
       edge((1, 0), (2, 0), "-|>", label: small[elektr signal], label-sep: 12pt),
       edge((2, -1), (2, 0), "-|>", stroke: (paint: luma(90), thickness: 1pt, dash: "dashed")),
       edge((2, 0), (2, 1), "-|>", stroke: 1pt + accent, label: small[siqilgan havo], label-side: left, label-sep: 8pt),
-      edge((2, 1), (1, 1), "-|>", stroke: 1pt + accent, label: small[mexanik kuch], label-sep: 12pt),
+      edge((2, 1), (1, 1), "-|>", stroke: 1pt + accent, label: small[mexanik kuç], label-sep: 12pt),
       edge((1, 1), (0, 1), "-|>", stroke: 1pt + orng, label: small[pozitsiya], label-sep: 12pt),
       edge(
         (0, 1),
@@ -279,21 +279,21 @@ Manipulyator boʻgʻinlarining chekka nuqtalarga yetib borganligini qayd etish u
       ),
     )
   },
-  caption: [«Elektronika-NSTM-01» robotining pnevmo-elektr va aks aloqali boshqaruv strukturasi],
+  caption: [«Elektronika-NSTM-01» robotining pnevmo-elektr va aks aloqali boşqaruv strukturasi],
 ) <fig-ctrl>
 
-= Matematik va kinematik modellashtirish
+= Matematik va kinematik modellaştiriş
 
 == Denavit--Hartenberg (D-H) parametrlari
 
-Manipulyatorning har bir boʻgʻiniga oʻng qoʻl koordinatalar sistemasi $\{i\}$ bogʻlanadi. Ikki qoʻshni koordinata sistemasi orasidagi transformatsiya matritsasi $T_i^(i-1)$ toʻrtta D-H parametri orqali aniqlanadi:
+Manipulyatorning har bir böğiniga öng qöl koordinatalar sistemasi $\{i\}$ boğlanadi. Ikki qöşni koordinata sistemasi orasidagi transformatsiya matritsasi $T_i^(i-1)$ törtta D-H parametri orqali aniqlanadi:
 
-- $a_i$ --- $Z_(i-1)$ va $Z_i$ oʻqlari orasidagi masofa ($X_i$ boʻylab);
-- $alpha_i$ --- $Z_(i-1)$ va $Z_i$ oʻqlari orasidagi burchak ($X_i$ atrofida);
-- $d_i$ --- $X_(i-1)$ va $X_i$ oʻqlari orasidagi masofa ($Z_(i-1)$ boʻylab);
-- $theta_i$ --- $X_(i-1)$ va $X_i$ oʻqlari orasidagi burchak ($Z_(i-1)$ atrofida).
+- $a_i$ --- $Z_(i-1)$ va $Z_i$ öqlari orasidagi masofa ($X_i$ böylab);
+- $alpha_i$ --- $Z_(i-1)$ va $Z_i$ öqlari orasidagi burçak ($X_i$ atrofida);
+- $d_i$ --- $X_(i-1)$ va $X_i$ öqlari orasidagi masofa ($Z_(i-1)$ böylab);
+- $theta_i$ --- $X_(i-1)$ va $X_i$ öqlari orasidagi burçak ($Z_(i-1)$ atrofida).
 
-Bir sistemadan ikkinchisiga oʻtishning umumiy bir jinsli transformatsiya matritsasi (_homogeneous transformation matrix_):
+Bir sistemadan ikkinçisiga ötişning umumiy bir jinsli transformatsiya matritsasi (_homogeneous transformation matrix_):
 
 $
   T_i^(i-1) = mat(
@@ -305,7 +305,7 @@ $
   )
 $
 
-«Elektronika-NSTM-01» robotining RPP-R kinematik zanjiri uchun D-H parametrlari @tab-dh da keltirilgan ($*$ belgisi --- oʻzgaruvchi boʻgʻin parametri).
+«Elektronika-NSTM-01» robotining RPP-R kinematik zanjiri uçun D-H parametrlari @tab-dh da keltirilgan ($*$ belgisi --- özgaruvçi böğin parametri).
 
 #figure(
   {
@@ -317,7 +317,7 @@ $
       stroke: none,
       inset: (x: 4pt, y: 5pt),
       table.hline(stroke: 1pt),
-      table.header([*Boʻgʻin \ ($i$)*], [*Boʻgʻin turi*], [*$a_i$*], [*$alpha_i$*], [*$d_i$*], [*$theta_i$*]),
+      table.header([*Böğin \ ($i$)*], [*Böğin turi*], [*$a_i$*], [*$alpha_i$*], [*$d_i$*], [*$theta_i$*]),
       table.hline(stroke: 0.5pt),
       [1], [Aylanma ($R_1$)], [$0$], [$0 degree$], [$d_1$], [$theta_1^*$],
       [2], [Ilgarilanma ($P_2$)], [$0$], [$-90 degree$], [$z_2^*$], [$-90 degree$],
@@ -329,13 +329,13 @@ $
   caption: [«Elektronika-NSTM-01» manipulyatorining D-H parametrlari],
 ) <tab-dh>
 
-== Toʻgʻri kinematika masalasi
+== Töğri kinematika masalasi
 
-Toʻgʻri kinematika masalasi --- boʻgʻin parametrlarining berilgan qiymatlari ($theta_1, z_2, r_3, alpha_4$) boʻyicha robot tutqichining (TCP --- _Tool Center Point_) bazaviy koordinata sistemasidagi ($X_0, Y_0, Z_0$) holati va orientatsiyasini topish. Toʻliq transformatsiya matritsasi alohida matritsalar koʻpaytmasiga teng:
+Töğri kinematika masalasi --- böğin parametrlarining berilgan qiymatlari ($theta_1, z_2, r_3, alpha_4$) böyiça robot tutqiçining (TCP --- _Tool Center Point_) bazaviy koordinata sistemasidagi ($X_0, Y_0, Z_0$) holati va orientatsiyasini topiş. Töliq transformatsiya matritsasi alohida matritsalar köpaytmasiga teng:
 
 $ T_4^0 = T_1^0 (theta_1) dot T_2^1 (z_2) dot T_3^2 (r_3) dot T_4^3 (alpha_4) $
 
-Koʻpaytirish natijasida tutqich koordinatalari quyidagi analitik koʻrinishga ega boʻladi:
+Köpaytiriş natijasida tutqiç koordinatalari quyidagi analitik körinişga ega böladi:
 
 $ P_x = r_3 cos theta_1 + a_4 cos(theta_1 + alpha_4) $
 
@@ -343,9 +343,9 @@ $ P_y = r_3 sin theta_1 + a_4 sin(theta_1 + alpha_4) $
 
 $ P_z = d_1 + z_2 $
 
-== Robotning ishchi sohasi
+== Robotning işçi sohasi
 
-Silindrik konfiguratsiyali «Elektronika-NSTM-01» robotining ishchi sohasi ichki va tashqi radiusli halqasimon silindr sektori shakliga ega (@fig-ws).
+Silindrik konfiguratsiyali «Elektronika-NSTM-01» robotining işçi sohasi içki va taşqi radiusli halqasimon silindr sektori şakliga ega (@fig-ws).
 
 #figure(
   {
@@ -383,33 +383,33 @@ Silindrik konfiguratsiyali «Elektronika-NSTM-01» robotining ishchi sohasi ichk
       ))
       content((0, 2.5), box(fill: white, inset: 2pt)[$Delta theta_1 = 270 degree$])
 
-      content((0, -3.1), text(size: 7.5pt, weight: "bold")[Gorizontal ishchi zona (yuqoridan koʻrinish)])
+      content((0, -3.1), text(size: 7.5pt, weight: "bold")[Gorizontal işçi zona (yuqoridan köriniş)])
     })
   },
-  caption: [«Elektronika-NSTM-01» robotining gorizontal tekislikdagi ishchi sohasi],
+  caption: [«Elektronika-NSTM-01» robotining gorizontal tekislikdagi işçi sohasi],
 ) <fig-ws>
 
-Ishchi soha hajmi quyidagi formula orqali hisoblanadi:
+Işçi soha hajmi quyidagi formula orqali hisoblanadi:
 
 $ V_"ws" = (Delta theta_1) / (360 degree) dot pi dot (R_"max"^2 - R_"min"^2) dot Delta z_2 $
 
-= Tajriba mashgʻulotini bajarish tartibi
+= Tajriba maşğulotini bajariş tartibi
 
-== 1-bosqich: xavfsizlik texnikasi va stendni tayyorlash
+== 1-bosqiç: xavfsizlik texnikasi va stendni tayyorlaş
 
-- Laboratoriya stendining yerga ulanganligini va elektr kabellarining butunligini tekshiring.
-- Kompressorni yoqing va pnevmotizimda havo bosimi $0.4 dots 0.5 "MPa"$ oraligʻida ekanligini qayd eting.
-- Avariya toʻxtatish tugmasi (_E-Stop_) ishchi holatda ekanligiga ishonch hosil qiling.
+- Laboratoriya stendining yerga ulanganligini va elektr kabellarining butunligini tekşiring.
+- Kompressorni yoqing va pnevmotizimda havo bosimi $0.4 dots 0.5 "MPa"$ oraliğida ekanligini qayd eting.
+- Avariya töxtatiş tugmasi (_E-Stop_) işçi holatda ekanligiga işonç hosil qiling.
 
-== 2-bosqich: qoʻlda boshqarish rejimida boʻgʻinlarni sinash
+== 2-bosqiç: qölda boşqariş rejimida böğinlarni sinaş
 
-- Boshqaruv pultini *Manual / Teach* rejimiga oʻtkazing.
-- Har bir boʻgʻinni ($R_1, P_2, P_3, R_4, G_5$) navbatma-navbat harakatlantiruvchi tugmalarni bosing.
-- Boʻgʻinlar chekka holatga yetganda mos chekli oʻchirgichlar va svetodiod indikatorlarining yonishini kuzating.
+- Boşqaruv pultini *Manual / Teach* rejimiga ötkazing.
+- Har bir böğinni ($R_1, P_2, P_3, R_4, G_5$) navbatma-navbat harakatlantiruvçi tugmalarni bosing.
+- Böğinlar çekka holatga yetganda mos çekli öçirgiçlar va svetodiod indikatorlarining yonişini kuzating.
 
-== 3-bosqich: boshqaruv dasturini yozish va xotiraga kiritish
+== 3-bosqiç: boşqaruv dasturini yoziş va xotiraga kiritiş
 
-Kichik detalni A nuqtadan B nuqtaga koʻchirish operatsiyasi uchun buyruqlar ketma-ketligi (sikli) dasturlanadi (@tab-prog).
+Kiçik detalni A nuqtadan B nuqtaga köçiriş operatsiyasi uçun buyruqlar ketma-ketligi (sikli) dasturlanadi (@tab-prog).
 
 #figure(
   {
@@ -421,67 +421,67 @@ Kichik detalni A nuqtadan B nuqtaga koʻchirish operatsiyasi uchun buyruqlar ket
       stroke: none,
       inset: (x: 4pt, y: 5pt),
       table.hline(stroke: 1pt),
-      table.header([*Qadam*], [*Buyruq*], [*Ijrochi organ / datchik*], [*Kutish \ vaqti $t$ [s]*]),
+      table.header([*Qadam*], [*Buyruq*], [*Ijroçi organ / datçik*], [*Kutiş \ vaqti $t$ [s]*]),
       table.hline(stroke: 0.5pt),
-      [1], [Boshlangʻich holatga kelish (_Home_)], [Barcha chekli oʻchirgichlar faol], [1.0],
-      [2], [A nuqtaga burilish ($theta_1 = 45 degree$)], [$R_1$ pnevmoyuritmasi], [1.5],
-      [3], [Pastga tushish ($z_2 = -150 "mm"$)], [$P_2$ pnevmotsilindri], [1.0],
-      [4], [Detalni qisish (_gripper close_)], [$G_5$ pnevmotutqich], [0.8],
-      [5], [Yuqoriga koʻtarilish ($z_2 = 0$)], [$P_2$ pnevmotsilindri], [1.0],
-      [6], [B nuqtaga burilish ($theta_1 = 135 degree$)], [$R_1$ pnevmoyuritmasi], [2.0],
-      [7], [Detalni qoʻyib yuborish (_gripper open_)], [$G_5$ pnevmotutqich], [0.8],
-      [8], [Boshlangʻich holatga qaytish], [$R_1, P_2, P_3 -> "Home"$], [2.0],
+      [1], [Boşlanğiç holatga keliş (_Home_)], [Barça çekli öçirgiçlar faol], [1.0],
+      [2], [A nuqtaga buriliş ($theta_1 = 45 degree$)], [$R_1$ pnevmoyuritmasi], [1.5],
+      [3], [Pastga tuşiş ($z_2 = -150 "mm"$)], [$P_2$ pnevmotsilindri], [1.0],
+      [4], [Detalni qisiş (_gripper close_)], [$G_5$ pnevmotutqiç], [0.8],
+      [5], [Yuqoriga kötariliş ($z_2 = 0$)], [$P_2$ pnevmotsilindri], [1.0],
+      [6], [B nuqtaga buriliş ($theta_1 = 135 degree$)], [$R_1$ pnevmoyuritmasi], [2.0],
+      [7], [Detalni qöyib yuboriş (_gripper open_)], [$G_5$ pnevmotutqiç], [0.8],
+      [8], [Boşlanğiç holatga qaytiş], [$R_1, P_2, P_3 -> "Home"$], [2.0],
       table.hline(stroke: 1pt),
     )
   },
-  caption: [«Elektronika-NSTM-01» roboti uchun buyruqlar sikli dasturi],
+  caption: [«Elektronika-NSTM-01» roboti uçun buyruqlar sikli dasturi],
 ) <tab-prog>
 
-== 4-bosqich: avtomatik rejimda ishga tushirish va xatolikni oʻlchash
+== 4-bosqiç: avtomatik rejimda işga tuşiriş va xatolikni ölçaş
 
-- Boshqaruv pultini *Auto / Run* rejimiga oʻtkazing.
+- Boşqaruv pultini *Auto / Run* rejimiga ötkazing.
 - Avtomatik sikllar sonini $N = 10$ ga sozlang va *Start* tugmasini bosing.
-- Sikl davomiyligini ($T_"sikl"$) va tutqichning B nuqtadagi absolyut pozitsiyalash xatoligini ($Delta x, Delta y$) shtangensirkul yordamida oʻlchang.
+- Sikl davomiyligini ($T_"sikl"$) va tutqiçning B nuqtadagi absolyut pozitsiyalaş xatoligini ($Delta x, Delta y$) ştangensirkul yordamida ölçang.
 
-= Amaliy masalalar va yechimlar
+= Amaliy masalalar va yeçimlar
 
-== Masala 1: pnevmotutqichning qisish kuchini hisoblash
+== Masala 1: pnevmotutqiçning qisiş kuçini hisoblaş
 
-*Sharti:* «Elektronika-NSTM-01» robotining pnevmotutqichi porshen diametri $D = 30 "mm"$ boʻlgan ikki tomonlama pnevmotsilindr bilan harakatlantiriladi. Pnevmotizimdagi havo bosimi $P = 0.5 "MPa"$ ($5 dot 10^5 "Pa"$). Tutqich mexanizmining richag uzatish koeffitsienti $k = 1.2$, mexanik foydali ish koeffitsienti $eta = 0.9$. Tutqichning qisish kuchini ($F_"grip"$) hisoblang.
+*Şarti:* «Elektronika-NSTM-01» robotining pnevmotutqiçi porşen diametri $D = 30 "mm"$ bölgan ikki tomonlama pnevmotsilindr bilan harakatlantiriladi. Pnevmotizimdagi havo bosimi $P = 0.5 "MPa"$ ($5 dot 10^5 "Pa"$). Tutqiç mexanizmining riçag uzatiş koeffitsienti $k = 1.2$, mexanik foydali iş koeffitsienti $eta = 0.9$. Tutqiçning qisiş kuçini ($F_"grip"$) hisoblang.
 
-*Yechish:*
+*Yeçiş:*
 
-- Pnevmotsilindr porshenining yuzasi:
+- Pnevmotsilindr porşenining yuzasi:
   $ A = (pi D^2) / 4 = (3.14159 dot (0.03)^2) / 4 approx 7.0685 dot 10^(-4) "m"^2 $
-- Porshen hosil qiladigan nazariy kuch:
+- Porşen hosil qiladigan nazariy kuç:
   $ F_"cyl" = P dot A = 5 dot 10^5 "Pa" dot 7.0685 dot 10^(-4) "m"^2 approx 353.42 "N" $
-- Richag va FIK ni hisobga olgan holda real qisish kuchi:
+- Riçag va FIK ni hisobga olgan holda real qisiş kuçi:
   $ F_"grip" = F_"cyl" dot k dot eta = 353.42 "N" dot 1.2 dot 0.9 approx 381.7 "N" $
 
-*Javob:* pnevmotutqichning real qisish kuchi $F_"grip" approx 381.7 "N"$.
+*Javob:* pnevmotutqiçning real qisiş kuçi $F_"grip" approx 381.7 "N"$.
 
-== Masala 2: manipulyator ishchi sohasining hajmini hisoblash
+== Masala 2: manipulyator işçi sohasining hajmini hisoblaş
 
-*Sharti:* «Elektronika-NSTM-01» robotining minimal radiusi $R_"min" = 200 "mm"$, konsolning maksimal uzayishidagi radiusi $R_"max" = 500 "mm"$, vertikal koʻtarilish masofasi $Delta z_2 = 300 "mm"$, asosning maksimal burilish burchagi $Delta theta_1 = 270 degree$. Robot ishchi sohasining hajmini ($V_"ws"$) kub metrda hisoblang.
+*Şarti:* «Elektronika-NSTM-01» robotining minimal radiusi $R_"min" = 200 "mm"$, konsolning maksimal uzayişidagi radiusi $R_"max" = 500 "mm"$, vertikal kötariliş masofasi $Delta z_2 = 300 "mm"$, asosning maksimal buriliş burçagi $Delta theta_1 = 270 degree$. Robot işçi sohasining hajmini ($V_"ws"$) kub metrda hisoblang.
 
-*Yechish:*
+*Yeçiş:*
 
-- Oʻlchamlarni SI sistemasiga oʻtkazamiz: $R_"min" = 0.2 "m"$, $R_"max" = 0.5 "m"$, $Delta z_2 = 0.3 "m"$, $Delta theta_1 \/ 360 degree = 270 \/ 360 = 0.75$.
-- Formula boʻyicha hisoblaymiz:
+- Ölçamlarni SI sistemasiga ötkazamiz: $R_"min" = 0.2 "m"$, $R_"max" = 0.5 "m"$, $Delta z_2 = 0.3 "m"$, $Delta theta_1 \/ 360 degree = 270 \/ 360 = 0.75$.
+- Formula böyiça hisoblaymiz:
   $ V_"ws" = 0.75 dot pi dot (R_"max"^2 - R_"min"^2) dot Delta z_2 = 0.75 dot 3.14159 dot (0.5^2 - 0.2^2) dot 0.3 $
   $ V_"ws" = 2.3562 dot (0.25 - 0.04) dot 0.3 = 2.3562 dot 0.21 dot 0.3 approx 0.1484 "m"^3 $
 
-*Javob:* robot ishchi sohasining hajmi $V_"ws" approx 0.148 "m"^3$ ($148.4$ litr).
+*Javob:* robot işçi sohasining hajmi $V_"ws" approx 0.148 "m"^3$ ($148.4$ litr).
 
 = Nazorat savollari
 
-+ Avtomatlashtirishning qanday turlari (qatʼiy, moslashuvchan) mavjud va «Elektronika-NSTM-01» qaysi biriga kiradi?
-+ «Elektronika-NSTM-01» sanoat robotida nechta erkinlik darajasi (DoF) bor va har bir boʻgʻin qanday harakat bajaradi?
-+ Grübler formulasi boʻyicha fazoviy va tekislikdagi mexanizmlarning erkinlik darajasi qanday aniqlanadi?
-+ Pnevmatik yuritmalarning elektr va gidravlik yuritmalarga nisbatan afzalliklari va kamchiliklari nimada?
-+ $5\/2$ pnevmotaqsimlagich klapanining vazifasi va ishlash prinsipi nimadan iborat?
++ Avtomatlaştirişning qanday turlari (qatʼiy, moslaşuvçan) mavjud va «Elektronika-NSTM-01» qaysi biriga kiradi?
++ «Elektronika-NSTM-01» sanoat robotida neçta erkinlik darajasi (DoF) bor va har bir böğin qanday harakat bajaradi?
++ Grübler formulasi böyiça fazoviy va tekislikdagi mexanizmlarning erkinlik darajasi qanday aniqlanadi?
++ Pnevmatik yuritmalarning elektr va gidravlik yuritmalarga nisbatan afzalliklari va kamçiliklari nimada?
++ $5\/2$ pnevmotaqsimlagiç klapanining vazifasi va işlaş prinsipi nimadan iborat?
 + Denavit--Hartenberg (D-H) koordinata sistemasi va parametrlari nimani ifodalaydi?
-+ Toʻgʻri va teskari kinematika masalalarining bir-biridan farqi nimada?
-+ Robot tutqichining pozitsiyalash aniqligi (_accuracy_) va takrorlanuvchanligi (_repeatability_) tushunchalari nimani bildiradi?
-+ Ishchi soha (_workspace envelope_) turlari va ularning geometrik shakllari qanday aniqlanadi?
-+ Sanoat robotlarini dasturlashda oʻrgatish pulti (_teach pendant_) va avtomatik sikllarning roli nimadan iborat?
++ Töğri va teskari kinematika masalalarining bir-biridan farqi nimada?
++ Robot tutqiçining pozitsiyalaş aniqligi (_accuracy_) va takrorlanuvçanligi (_repeatability_) tuşunçalari nimani bildiradi?
++ Işçi soha (_workspace envelope_) turlari va ularning geometrik şakllari qanday aniqlanadi?
++ Sanoat robotlarini dasturlaşda örgatiş pulti (_teach pendant_) va avtomatik sikllarning roli nimadan iborat?

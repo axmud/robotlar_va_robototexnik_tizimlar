@@ -8,7 +8,7 @@
 
 #let headingblue = rgb(20, 50, 120)
 
-#set document(title: "Avtomatlashtirishda robotlarning roli")
+#set document(title: "Avtomatlaştirişda robotlarning roli")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -50,40 +50,40 @@
 // ---------------- Sarlavha ----------------
 #align(center)[
   #set par(justify: false)
-  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №1]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MAŞĞULOTI №1]
   #v(0.4cm)
   #text(
     size: 14pt,
     weight: "bold",
-  )[Mavzu: Avtomatlashtirishda robotlarning roli. Robotlar haqida umumiy tushunchalar va taʼriflar]
+  )[Mavzu: Avtomatlaştirişda robotlarning roli. Robotlar haqida umumiy tuşunçalar va taʼriflar]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Mashgʻulotning maqsadi:* talabalarda avtomatlashtirilgan ishlab chiqarish tizimlarida sanoat va xizmat koʻrsatuvchi robotlarning iqtisodiy-texnik rolini baholash, xalqaro ISO 8373 hamda RIA standartlari asosida robototexnik tizimlar parametrlarini analitik hisoblash, fazoviy almashtirishlar hamda datchiklar noaniqligi sharoitida holatni baholash boʻyicha amaliy koʻnikmalarni shakllantirish.
+*Maşğulotning maqsadi:* talabalarda avtomatlaştirilgan işlab çiqariş tizimlarida sanoat va xizmat körsatuvçi robotlarning iqtisodiy-texnik rolini baholaş, xalqaro ISO 8373 hamda RIA standartlari asosida robototexnik tizimlar parametrlarini analitik hisoblaş, fazoviy almaştirişlar hamda datçiklar noaniqligi şaroitida holatni baholaş böyiça amaliy könikmalarni şakllantiriş.
 
-*Oʻquv vazifalari:*
+*Öquv vazifalari:*
 
-+ Qatʼiy (_fixed_) va moslashuvchan (_flexible_) avtomatlashtirish texnologiyalarining iqtisodiy samaradorligi hamda oʻzini qoplash muddatini ($T_"payback"$) hisoblashni oʻrganish.
-+ ISO 8373 va RIA (_Robot Industries Association_) standartlari boʻyicha robotlarni turlarga ajratish va ularning funksional komponentlarini analitik tahlil qilish.
-+ Asosiy va ishchi koordinata sistemalari oʻrtasidagi transformatsiya matritsalarini ($T_b^s$) tuzish hamda TCP (_Tool Center Point_) holatini aniqlash.
-+ Stoxastik muhitda robot holatini Bayes filtri orqali ehtimollik asosida yangilash ($"bel"(x_t)$) boʻyicha amaliy masalalarni yechish.
++ Qatʼiy (_fixed_) va moslaşuvçan (_flexible_) avtomatlaştiriş texnologiyalarining iqtisodiy samaradorligi hamda özini qoplaş muddatini ($T_"payback"$) hisoblaşni örganiş.
++ ISO 8373 va RIA (_Robot Industries Association_) standartlari böyiça robotlarni turlarga ajratiş va ularning funksional komponentlarini analitik tahlil qiliş.
++ Asosiy va işçi koordinata sistemalari örtasidagi transformatsiya matritsalarini ($T_b^s$) tuziş hamda TCP (_Tool Center Point_) holatini aniqlaş.
++ Stoxastik muhitda robot holatini Bayes filtri orqali ehtimollik asosida yangilaş ($"bel"(x_t)$) böyiça amaliy masalalarni yeçiş.
 
 = Kerakli jihozlar va dasturiy taʼminot
 
-- *Hisoblash vositalari:* muhandislik kalkulyatori, hisoblash jadvallari.
+- *Hisoblaş vositalari:* muhandislik kalkulyatori, hisoblaş jadvallari.
 - *Dasturiy muhit:* MATLAB, Python (NumPy).
 
-= Nazariy rezyume va metodik koʻrsatmalar
+= Nazariy rezyume va metodik körsatmalar
 
-Sanoatni avtomatlashtirish jarayonida texnologik uskunalar va avtomatlashtirish turlari uchta asosiy toifaga boʻlinadi (@fig-auto):
+Sanoatni avtomatlaştiriş jarayonida texnologik uskunalar va avtomatlaştiriş turlari uçta asosiy toifaga bölinadi (@fig-auto):
 
-- *Qatʼiy avtomatlashtirish (_fixed automation_):* maxsus moʻljallangan agregat stanoklar va ketma-ket avtomat liniyalar. Ishlab chiqarish hajmi juda yuqori ($Q > 10^5$ dona/yil), ammo mahsulot nomenklaturasi oʻzgarmas.
-- *Dasturlanadigan avtomatlashtirish (_programmed automation_):* sonli boshqariladigan (NC/CNC) stanoklar. Partiya oʻzgarganda dasturni qayta yuklash va mexanik sozlash talab etiladi.
-- *Moslashuvchan avtomatlashtirish (_flexible automation_ / FMS):* sanoat robotlari, AGV (_Automated Guided Vehicles_) va moslashuvchan ishlab chiqarish modullari. Ishlab chiqarish jarayonini toʻxtatmasdan mahsulot turini oʻzgartirish imkonini beradi.
+- *Qatʼiy avtomatlaştiriş (_fixed automation_):* maxsus möljallangan agregat stanoklar va ketma-ket avtomat liniyalar. Işlab çiqariş hajmi juda yuqori ($Q > 10^5$ dona/yil), ammo mahsulot nomenklaturasi özgarmas.
+- *Dasturlanadigan avtomatlaştiriş (_programmed automation_):* sonli boşqariladigan (NC/CNC) stanoklar. Partiya özgarganda dasturni qayta yuklaş va mexanik sozlaş talab etiladi.
+- *Moslaşuvçan avtomatlaştiriş (_flexible automation_ / FMS):* sanoat robotlari, AGV (_Automated Guided Vehicles_) va moslaşuvçan işlab çiqariş modullari. Işlab çiqariş jarayonini töxtatmasdan mahsulot turini özgartiriş imkonini beradi.
 
 #figure(
   cetz.canvas(length: 1.3cm, {
@@ -94,7 +94,7 @@ Sanoatni avtomatlashtirish jarayonida texnologik uskunalar va avtomatlashtirish 
     // Oʻqlar
     line((0, 0), (10, 0), stroke: 1.2pt, mark: (end: ">", fill: black))
     line((0, 0), (0, 6), stroke: 1.2pt, mark: (end: ">", fill: black))
-    content((10, -0.1), text(size: 9pt)[*Ishlab chiqarish hajmi ($Q$, dona/yil)*], anchor: "north-east")
+    content((10, -0.1), text(size: 9pt)[*Işlab çiqariş hajmi ($Q$, dona/yil)*], anchor: "north-east")
     content((0, 6.05), align(center, text(size: 9pt)[*Mahsulot xilma-xilligi* \ *nomenklatura ($P$)*]), anchor: "south")
 
     // Yordamchi chiziqlar
@@ -108,23 +108,23 @@ Sanoatni avtomatlashtirish jarayonida texnologik uskunalar va avtomatlashtirish 
     rect((0.5, 3.5), (3.5, 5.5), fill: pblue.lighten(85%), stroke: 1.2pt + pblue)
     rect((2.5, 1.5), (6.5, 4.0), fill: sblue.lighten(80%).transparentize(15%), stroke: 1.2pt + sblue)
     rect((5.5, 0.2), (9.2, 2.0), fill: accent.lighten(85%).transparentize(15%), stroke: 1.2pt + accent)
-    content((2, 4.75), lbl[Yakkalik / kichik \ partiyali][CNC stanoklar, \ qoʻl mehnati])
-    content((4.5, 2.75), lbl[Moslashuvchan (FMS)][*Sanoat robotlari*])
+    content((2, 4.75), lbl[Yakkalik / kiçik \ partiyali][CNC stanoklar, \ qöl mehnati])
+    content((4.5, 2.75), lbl[Moslaşuvçan (FMS)][*Sanoat robotlari*])
     content((7.35, 1.1), lbl[Qatʼiy (fixed)][Avtomat liniyalar])
   }),
-  caption: [Avtomatlashtirish turlarining mahsulot nomenklaturasi va ishlab chiqarish hajmi boʻyicha taqsimlanishi],
+  caption: [Avtomatlaştiriş turlarining mahsulot nomenklaturasi va işlab çiqariş hajmi böyiça taqsimlanişi],
 ) <fig-auto>
 
 == Robototexnika taʼriflari va tizim arxitekturasi
 
-*ISO 8373 standarti boʻyicha taʼrif:* sanoat roboti --- bu koʻp maqsadli, qayta dasturlanadigan, uch yoki undan ortiq erkinlik darajasiga ega boʻlgan, avtomatlashtirishda harakatsiz yoki harakatlanuvchi tarzda qoʻllaniladigan avtomatik boshqariluvchi manipulyatordir.
+*ISO 8373 standarti böyiça taʼrif:* sanoat roboti --- bu köp maqsadli, qayta dasturlanadigan, uç yoki undan ortiq erkinlik darajasiga ega bölgan, avtomatlaştirişda harakatsiz yoki harakatlanuvçi tarzda qöllaniladigan avtomatik boşqariluvçi manipulyatordir.
 
-Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integratsiyasidan tashkil topadi (@fig-arch):
+Sanoat roboti quyidagi 4 ta asosiy kiçik tizimning (_subsystems_) özaro integratsiyasidan taşkil topadi (@fig-arch):
 
-+ *Mexanik manipulyator (kinematik zanjir):* boʻgʻinlar (_links_) va kinematik juftliklar (_joints_) toʻplami.
-+ *Ijrochi yuritmalar (_actuators_):* elektr (servodvigatellar), pnevmatik yoki gidravlik dvigatellar.
-+ *Sensor va axborot tizimi (_sensors_):* ichki (enkoderlar, taxogeneratorlar) va tashqi (videokamera, kuch-moment datchiklari, ultratovush) datchiklar.
-+ *Boshqaruv va hisoblash bloki (_controller_):* traektoriyani rejalashtirish, teskari aloqani qayta ishlash hamda datchiklar shovqinini Bayes filtri orqali filtrlash algoritmlari.
++ *Mexanik manipulyator (kinematik zanjir):* böğinlar (_links_) va kinematik juftliklar (_joints_) töplami.
++ *Ijroçi yuritmalar (_actuators_):* elektr (servodvigatellar), pnevmatik yoki gidravlik dvigatellar.
++ *Sensor va axborot tizimi (_sensors_):* içki (enkoderlar, taxogeneratorlar) va taşqi (videokamera, kuç-moment datçiklari, ultratovuş) datçiklar.
++ *Boşqaruv va hisoblaş bloki (_controller_):* traektoriyani rejalaştiriş, teskari aloqani qayta işlaş hamda datçiklar şovqinini Bayes filtri orqali filtrlaş algoritmlari.
 
 #figure(
   {
@@ -147,10 +147,10 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
         fill: none,
         name: <ttl>,
       ),
-      node((0, 0), b[*Boshqaruv bloki* \ traektoriya va algoritm], width: 3.0cm, height: 1.3cm, name: <ctrl>),
+      node((0, 0), b[*Boşqaruv bloki* \ traektoriya va algoritm], width: 3.0cm, height: 1.3cm, name: <ctrl>),
       node(
         (1, 0),
-        b[*Ijrochi yuritmalar* \ servomotorlar, pnevmatika],
+        b[*Ijroçi yuritmalar* \ servomotorlar, pnevmatika],
         width: 3.1cm,
         height: 1.3cm,
         fill: sblue.lighten(88%),
@@ -158,7 +158,7 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
       ),
       node(
         (2, 0),
-        b[*Manipulyator* \ mexanik boʻgʻinlar va TCP],
+        b[*Manipulyator* \ mexanik böğinlar va TCP],
         width: 3.1cm,
         height: 1.3cm,
         fill: accent.lighten(88%),
@@ -167,7 +167,7 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
       ),
       node(
         (1, 1),
-        b[*Datchiklar va axborot* \ enkoderlar, kamera, kuch],
+        b[*Datçiklar va axborot* \ enkoderlar, kamera, kuç],
         width: 3.8cm,
         height: 1.3cm,
         fill: luma(235),
@@ -181,7 +181,7 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
         inset: 12pt,
       ),
 
-      edge(<ctrl>, <act>, "-|>", label: small[$u_t$ (boshqaruv)]),
+      edge(<ctrl>, <act>, "-|>", label: small[$u_t$ (boşqaruv)]),
       edge(<act>, <rob>, "-|>", label: small[$F$, $M$ (moment)]),
       edge(
         <rob>,
@@ -189,7 +189,7 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
         <sen>,
         "-|>",
         stroke: 1pt + luma(60),
-        label: small[Holat oʻzgarishi],
+        label: small[Holat özgarişi],
         label-pos: 0.3,
         label-side: left,
       ),
@@ -199,19 +199,19 @@ Sanoat roboti quyidagi 4 ta asosiy kichik tizimning (_subsystems_) oʻzaro integ
         <ctrl>,
         "-|>",
         stroke: 1pt + accent,
-        label: small[$z_t$ (oʻlchov)],
+        label: small[$z_t$ (ölçov)],
         label-pos: 0.7,
         label-side: left,
       ),
     )
   },
-  caption: [Robototexnik tizimning axborot-boshqaruv va teskari aloqa blok-sxemasi],
+  caption: [Robototexnik tizimning axborot-boşqaruv va teskari aloqa blok-sxemasi],
   placement: auto,
 ) <fig-arch>
 
-== Fazoviy koordinata almashtirishlari va Bayes filtri
+== Fazoviy koordinata almaştirişlari va Bayes filtri
 
-Robot manipulyatori boʻgʻinlari va obyektlarining uch oʻlchamli fazodagi holati ($P$) va orientatsiyasi ($R$) $4 times 4$ oʻlchamli bir jinsli transformatsiya matritsasi (_homogeneous transformation matrix_) orqali ifodalanadi:
+Robot manipulyatori böğinlari va obyektlarining uç ölçamli fazodagi holati ($P$) va orientatsiyasi ($R$) $4 times 4$ ölçamli bir jinsli transformatsiya matritsasi (_homogeneous transformation matrix_) orqali ifodalanadi:
 
 $
   T_b^s = mat(R_(3 times 3), P_(3 times 1); 0_(1 times 3), 1)
@@ -223,67 +223,67 @@ $
   )
 $ <eq-T>
 
-Stoxastik muhitda datchiklardagi shovqin va harakatdagi noaniqliklarni hisobga olgan holda robotning joriy holatiga boʻlgan ishonch taqsimoti (_belief distribution_) rekursiv *Bayes filtri* tenglamasi orqali hisoblanadi:
+Stoxastik muhitda datçiklardagi şovqin va harakatdagi noaniqliklarni hisobga olgan holda robotning joriy holatiga bölgan işonç taqsimoti (_belief distribution_) rekursiv *Bayes filtri* tenglamasi orqali hisoblanadi:
 
 $ "bel"(x_t) = eta dot p(z_t mid(|) x_t) integral p(x_t mid(|) u_t, x_(t-1)) dot "bel"(x_(t-1)) dif x_(t-1) $ <eq-bayes>
 
-bunda $x_t$ --- $t$ vaqtdagi robot holati (pozitsiya / orientatsiya), $u_t$ --- $t$ vaqtdagi boshqaruv taʼsiri (_control action_), $z_t$ --- $t$ vaqtdagi datchik oʻlchov koʻrsatkichlari (_sensor measurement_), $p(z_t mid(|) x_t)$ --- datchik oʻlchov modeli (_measurement model_), $p(x_t mid(|) u_t, x_(t-1))$ --- robot harakat dinamikasi modeli (_motion model_), $eta$ --- normalashtiruvchi koeffitsient ($eta = 1 \/ p(z_t mid(|) z_(1:t-1))$).
+bunda $x_t$ --- $t$ vaqtdagi robot holati (pozitsiya / orientatsiya), $u_t$ --- $t$ vaqtdagi boşqaruv taʼsiri (_control action_), $z_t$ --- $t$ vaqtdagi datçik ölçov körsatkiçlari (_sensor measurement_), $p(z_t mid(|) x_t)$ --- datçik ölçov modeli (_measurement model_), $p(x_t mid(|) u_t, x_(t-1))$ --- robot harakat dinamikasi modeli (_motion model_), $eta$ --- normalaştiruvçi koeffitsient ($eta = 1 \/ p(z_t mid(|) z_(1:t-1))$).
 
-= Namunaviy masalalar va ularning toʻliq analitik yechimlari
+= Namunaviy masalalar va ularning töliq analitik yeçimlari
 
-== Masala 1: avtomatlashtirish samaradorligi va breakeven tahlili
+== Masala 1: avtomatlaştiriş samaradorligi va breakeven tahlili
 
-*Masala sharti:* sanoat korxonasida detallarga ishlov berish operatsiyasini bajarish uchun ikkita variant koʻrib chiqilmoqda:
+*Masala şarti:* sanoat korxonasida detallarga işlov beriş operatsiyasini bajariş uçun ikkita variant körib çiqilmoqda:
 
-- *A varianti (qatʼiy avtomatlashtirish):* boshlangʻich kapital xarajat $C_"cap,A" = \$ 250 thin 000$, bir dona mahsulot uchun ekspluatatsiya xarajati $c_"var,A" = \$ 1.20$/dona.
-- *B varianti (sanoat roboti bilan moslashuvchan avtomatlashtirish):* boshlangʻich kapital xarajat $C_"cap,B" = \$ 110 thin 000$, bir dona mahsulot uchun ekspluatatsiya xarajati $c_"var,B" = \$ 2.80$/dona.
+- *A varianti (qatʼiy avtomatlaştiriş):* boşlanğiç kapital xarajat $C_"cap,A" = \$ 250 thin 000$, bir dona mahsulot uçun ekspluatatsiya xarajati $c_"var,A" = \$ 1.20$/dona.
+- *B varianti (sanoat roboti bilan moslaşuvçan avtomatlaştiriş):* boşlanğiç kapital xarajat $C_"cap,B" = \$ 110 thin 000$, bir dona mahsulot uçun ekspluatatsiya xarajati $c_"var,B" = \$ 2.80$/dona.
 
 #set enum(numbering: "a)")
-+ Yillik ishlab chiqarish hajmining qanday kritik qiymatida ($Q_"crit"$) ikkala variant xarajatlari tenglashadi (_breakeven point_)?
-+ Agar yillik reja $Q = 120 thin 000$ dona boʻlsa, qaysi avtomatlashtirish varianti iqtisodiy jihatdan afzalroq?
-+ A variantiga qoʻshimcha kiritilgan kapital qoʻyilmaning (B variantiga nisbatan) oʻzini oqlash muddatini ($T_"payback"$) hisoblang.
++ Yillik işlab çiqariş hajmining qanday kritik qiymatida ($Q_"crit"$) ikkala variant xarajatlari tenglaşadi (_breakeven point_)?
++ Agar yillik reja $Q = 120 thin 000$ dona bölsa, qaysi avtomatlaştiriş varianti iqtisodiy jihatdan afzalroq?
++ A variantiga qöşimça kiritilgan kapital qöyilmaning (B variantiga nisbatan) özini oqlaş muddatini ($T_"payback"$) hisoblang.
 #set enum(numbering: "1.")
 
-*Yechish va formulalar:*
+*Yeçiş va formulalar:*
 
 $ "TC"_A (Q) = C_"cap,A" + c_"var,A" dot Q, quad quad "TC"_B (Q) = C_"cap,B" + c_"var,B" dot Q $
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- a) Ikkala xarajatni tenglashtiramiz ($"TC"_A (Q_"crit") = "TC"_B (Q_"crit")$):
+- a) Ikkala xarajatni tenglaştiramiz ($"TC"_A (Q_"crit") = "TC"_B (Q_"crit")$):
   $ C_"cap,A" + c_"var,A" dot Q_"crit" = C_"cap,B" + c_"var,B" dot Q_"crit" $
   $
     Q_"crit" = (C_"cap,A" - C_"cap,B") / (c_"var,B" - c_"var,A") = (250 thin 000 - 110 thin 000) / (2.80 - 1.20) \
     = (140 thin 000) / 1.60 = 87 thin 500 "dona/yil"
   $
-- b) Yillik reja $Q = 120 thin 000$ dona boʻlganda umumiy xarajatlar:
+- b) Yillik reja $Q = 120 thin 000$ dona bölganda umumiy xarajatlar:
   $ "TC"_A (120 thin 000) = 250 thin 000 + 1.20 times 120 thin 000 = 250 thin 000 + 144 thin 000 = \$ 394 thin 000 $
   $ "TC"_B (120 thin 000) = 110 thin 000 + 2.80 times 120 thin 000 = 110 thin 000 + 336 thin 000 = \$ 446 thin 000 $
-  $Q = 120 thin 000 > 87 thin 500$ boʻlgani uchun *A varianti (qatʼiy avtomatlashtirish)* yiliga $\$ 52 thin 000$ tejamkorlik beradi va afzalroq.
-- c) A variantiga qoʻshimcha kapital qoʻyilma $Delta C = \$ 140 thin 000$, yillik ekspluatatsiya tejami esa $Delta c dot Q = 1.60 times 120 thin 000 = \$ 192 thin 000$/yil. Oʻzini oqlash muddati:
+  $Q = 120 thin 000 > 87 thin 500$ bölgani uçun *A varianti (qatʼiy avtomatlaştiriş)* yiliga $\$ 52 thin 000$ tejamkorlik beradi va afzalroq.
+- c) A variantiga qöşimça kapital qöyilma $Delta C = \$ 140 thin 000$, yillik ekspluatatsiya tejami esa $Delta c dot Q = 1.60 times 120 thin 000 = \$ 192 thin 000$/yil. Özini oqlaş muddati:
   $ T_"payback" = (Delta C) / (Delta c dot Q) = (140 thin 000) / (192 thin 000) approx 0.73 "yil" approx 8.75 "oy" $
-  Demak, B varianti (robot) faqat moslashuvchanlik zarur boʻlganda, yaʼni mahsulot nomenklaturasi tez-tez oʻzgarganda yoki $Q < Q_"crit"$ boʻlganda oʻzini oqlaydi.
+  Demak, B varianti (robot) faqat moslaşuvçanlik zarur bölganda, yaʼni mahsulot nomenklaturasi tez-tez özgarganda yoki $Q < Q_"crit"$ bölganda özini oqlaydi.
 
-== Masala 2: koordinata almashtirishlari va robot tutqichi (TCP) hisobi
+== Masala 2: koordinata almaştirişlari va robot tutqiçi (TCP) hisobi
 
-*Masala sharti:* sanoat roboti asosiy koʻchirishni tugatgandan soʻng, uning bazaviy ${s}$ koordinata sistemasiga nisbatan tutqich (TCP) freymi ${t}$ quyidagicha joylashgan:
+*Masala şarti:* sanoat roboti asosiy köçirişni tugatgandan söng, uning bazaviy ${s}$ koordinata sistemasiga nisbatan tutqiç (TCP) freymi ${t}$ quyidagiça joylaşgan:
 
-- tutqich freymi ${t}$ bazaviy freym ${s}$ ning $Z$-oʻqi atrofida $theta = 90 degree$ ga burilgan;
-- robot bazasidan TCP markazigacha boʻlgan siljish vektori $P = [450, 200, 350]^T "mm"$.
+- tutqiç freymi ${t}$ bazaviy freym ${s}$ ning $Z$-öqi atrofida $theta = 90 degree$ ga burilgan;
+- robot bazasidan TCP markazigaça bölgan siljiş vektori $P = [450, 200, 350]^T "mm"$.
 
 #set enum(numbering: "a)")
-+ $Z$-oʻqi atrofidagi burilish matritsasi $R_z (90 degree)$ ni tuzing.
++ $Z$-öqi atrofidagi buriliş matritsasi $R_z (90 degree)$ ni tuzing.
 + $4 times 4$ bir jinsli transformatsiya matritsasi $T_t^s$ ni hisoblang.
-+ Detal ${t}$ freymida $P_"detail"^({t}) = [10, 0, 50, 1]^T "mm"$ koordinataga ega boʻlsa, ushbu detalning bazaviy ${s}$ sistemadagi $P_"detail"^({s})$ koordinatasini toping.
++ Detal ${t}$ freymida $P_"detail"^({t}) = [10, 0, 50, 1]^T "mm"$ koordinataga ega bölsa, uşbu detalning bazaviy ${s}$ sistemadagi $P_"detail"^({s})$ koordinatasini toping.
 #set enum(numbering: "1.")
 
-*Yechish va formulalar:*
+*Yeçiş va formulalar:*
 
 $ R_z (theta) = mat(cos theta, -sin theta, 0; sin theta, cos theta, 0; 0, 0, 1) $
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- a) $theta = 90 degree$ boʻlganda ($cos 90 degree = 0$, $sin 90 degree = 1$):
+- a) $theta = 90 degree$ bölganda ($cos 90 degree = 0$, $sin 90 degree = 1$):
   $ R_z (90 degree) = mat(0, -1, 0; 1, 0, 0; 0, 0, 1) $
 - b) Bir jinsli transformatsiya matritsasi:
   $ T_t^s = mat(0, -1, 0, 450; 1, 0, 0, 200; 0, 0, 1, 350; 0, 0, 0, 1) $
@@ -291,45 +291,45 @@ $ R_z (theta) = mat(cos theta, -sin theta, 0; sin theta, cos theta, 0; 0, 0, 1) 
   $
     P_"detail"^({s}) = T_t^s dot P_"detail"^({t}) = mat(0, -1, 0, 450; 1, 0, 0, 200; 0, 0, 1, 350; 0, 0, 0, 1) dot vec(10, 0, 50, 1)
   $
-  Matritsalarni koʻpaytiramiz:
+  Matritsalarni köpaytiramiz:
   $
     P_x^({s}) & = 0 dot 10 + (-1) dot 0 + 0 dot 50 + 450 dot 1 = 450 "mm" \
     P_y^({s}) & = 1 dot 10 + 0 dot 0 + 0 dot 50 + 200 dot 1 = 210 "mm" \
     P_z^({s}) & = 0 dot 10 + 0 dot 0 + 1 dot 50 + 350 dot 1 = 400 "mm"
   $
 
-*Natija:* detalning bazaviy koordinatalar sistemasidagi oʻrni $P_"detail"^({s}) = [450, 210, 400]^T "mm"$.
+*Natija:* detalning bazaviy koordinatalar sistemasidagi örni $P_"detail"^({s}) = [450, 210, 400]^T "mm"$.
 
-== Masala 3: stoxastik Bayes filtri orqali robot holatini baholash
+== Masala 3: stoxastik Bayes filtri orqali robot holatini baholaş
 
-*Masala sharti:* avtonom mobil sanoat roboti (AGV) sex ichida harakatlanmoqda. Dastlabki vaqt momentida robotning $x_1$ pozitsiyada boʻlishining apriori ehtimolligi $"bel"(x_1) = 0.60$, $x_2$ pozitsiyada boʻlishiniki esa $"bel"(x_2) = 0.40$. Robot ultratovushli masofa oʻlchagich orqali toʻsiqqacha boʻlgan masofani oʻlchadi ($z$). Datchikning oʻlchov modellari (_likelihood_) quyidagicha berilgan:
+*Masala şarti:* avtonom mobil sanoat roboti (AGV) sex içida harakatlanmoqda. Dastlabki vaqt momentida robotning $x_1$ pozitsiyada bölişining apriori ehtimolligi $"bel"(x_1) = 0.60$, $x_2$ pozitsiyada bölişiniki esa $"bel"(x_2) = 0.40$. Robot ultratovuşli masofa ölçagiç orqali tösiqqaça bölgan masofani ölçadi ($z$). Datçikning ölçov modellari (_likelihood_) quyidagiça berilgan:
 
-- $p(z mid(|) x_1) = 0.80$ --- robot $x_1$ da boʻlganda ushbu koʻrsatkichni berish ehtimoli;
-- $p(z mid(|) x_2) = 0.20$ --- robot $x_2$ da boʻlganda ushbu koʻrsatkichni berish ehtimoli.
+- $p(z mid(|) x_1) = 0.80$ --- robot $x_1$ da bölganda uşbu körsatkiçni beriş ehtimoli;
+- $p(z mid(|) x_2) = 0.20$ --- robot $x_2$ da bölganda uşbu körsatkiçni beriş ehtimoli.
 
-Datchik koʻrsatkichidan soʻng Bayes qoidasi orqali aposterior ishonch taqsimotlarini ($"bel"'(x_1)$ va $"bel"'(x_2)$) hisoblang.
+Datçik körsatkiçidan söng Bayes qoidasi orqali aposterior işonç taqsimotlarini ($"bel"'(x_1)$ va $"bel"'(x_2)$) hisoblang.
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- Har bir holat uchun normalashtirilmagan ehtimolliklar:
+- Har bir holat uçun normalaştirilmagan ehtimolliklar:
   $ overline("bel")(x_1) = p(z mid(|) x_1) dot "bel"(x_1) = 0.80 times 0.60 = 0.48 $
   $ overline("bel")(x_2) = p(z mid(|) x_2) dot "bel"(x_2) = 0.20 times 0.40 = 0.08 $
-- Normalashtiruvchi koeffitsient $eta$ (toʻliq oʻlchov ehtimoli $p(z)$):
+- Normalaştiruvçi koeffitsient $eta$ (töliq ölçov ehtimoli $p(z)$):
   $ p(z) = overline("bel")(x_1) + overline("bel")(x_2) = 0.48 + 0.08 = 0.56 $
   $ eta = 1 / p(z) = 1 / 0.56 approx 1.7857 $
-- Yangi (aposterior) ishonch taqsimotlari:
+- Yangi (aposterior) işonç taqsimotlari:
   $ "bel"'(x_1) = eta dot overline("bel")(x_1) = 0.48 / 0.56 = 6 / 7 approx 0.8571 thick (85.71 %) $
   $ "bel"'(x_2) = eta dot overline("bel")(x_2) = 0.08 / 0.56 = 1 / 7 approx 0.1429 thick (14.29 %) $
 
-*Natija:* yangi datchik axboroti olingandan soʻng robotning $x_1$ nuqtada joylashganligiga boʻlgan ishonch ehtimoli $60 %$ dan $85.71 %$ gacha oshdi.
+*Natija:* yangi datçik axboroti olingandan söng robotning $x_1$ nuqtada joylaşganligiga bölgan işonç ehtimoli $60 %$ dan $85.71 %$ gaça oşdi.
 
-= Talabalar uchun individual amaliy topshiriqlar
+= Talabalar uçun individual amaliy topşiriqlar
 
-Har bir talaba oʻzining tartib raqamiga mos keluvchi variant koʻrsatkichlari (@tab-variants) boʻyicha quyidagi hisoblashlarni bajarishi lozim:
+Har bir talaba özining tartib raqamiga mos keluvçi variant körsatkiçlari (@tab-variants) böyiça quyidagi hisoblaşlarni bajarişi lozim:
 
-+ Qatʼiy va moslashuvchan avtomatlashtirish breakeven nuqtasi ($Q_"crit"$) hamda berilgan $Q_"plan"$ hajmdagi tejamkorlikni aniqlash.
-+ Berilgan siljish va $Z$-oʻqi atrofidagi burilish burchagi $theta$ boʻyicha $T_t^s$ matritsasini tuzish hamda berilgan nuqta koordinatasini hisoblash.
-+ Bayes filtri boʻyicha aposterior ehtimollik $"bel"'(x_1)$ ni topish.
++ Qatʼiy va moslaşuvçan avtomatlaştiriş breakeven nuqtasi ($Q_"crit"$) hamda berilgan $Q_"plan"$ hajmdagi tejamkorlikni aniqlaş.
++ Berilgan siljiş va $Z$-öqi atrofidagi buriliş burçagi $theta$ böyiça $T_t^s$ matritsasini tuziş hamda berilgan nuqta koordinatasini hisoblaş.
++ Bayes filtri böyiça aposterior ehtimollik $"bel"'(x_1)$ ni topiş.
 
 #figure(
   {
@@ -348,7 +348,7 @@ Har bir talaba oʻzining tartib raqamiga mos keluvchi variant koʻrsatkichlari (
         [*$C_"cap,B"$ \ [\$]*],
         [*$c_"var,B"$ \ [\$]*],
         [*$theta$ \ [°]*],
-        [*Siljish $P$ \ [mm]*],
+        [*Siljiş $P$ \ [mm]*],
         [*$"bel"(x_1)$*],
         [*$p(z mid(|) x_1)$*],
       ),
@@ -366,13 +366,13 @@ Har bir talaba oʻzining tartib raqamiga mos keluvchi variant koʻrsatkichlari (
       table.hline(stroke: 1pt),
     )
   },
-  caption: [Individual amaliy hisoblash topshiriqlari variantlari],
+  caption: [Individual amaliy hisoblaş topşiriqlari variantlari],
 ) <tab-variants>
 
 = Nazorat savollari
 
-+ ISO 8373 boʻyicha sanoat roboti taʼrifining asosiy 3 ta mezonini tushuntirib bering.
-+ Qatʼiy avtomatlashtirish (_fixed_) qanday hollarda moslashuvchan avtomatlashtirishdan (_flexible_) iqtisodiy jihatdan afzalroq boʻladi?
++ ISO 8373 böyiça sanoat roboti taʼrifining asosiy 3 ta mezonini tuşuntirib bering.
++ Qatʼiy avtomatlaştiriş (_fixed_) qanday hollarda moslaşuvçan avtomatlaştirişdan (_flexible_) iqtisodiy jihatdan afzalroq böladi?
 + Bir jinsli transformatsiya matritsasida $R_(3 times 3)$ va $P_(3 times 1)$ bloklari nimani anglatadi?
-+ Nima uchun real dunyo robototexnikasida datchiklar axborotini qayta ishlashda stoxastik va Bayes usullari qoʻllaniladi?
-+ RIA tasnifiga koʻra sanoat robotlarining boshqaruv turlari boʻyicha avlodlarini taʼriflang.
++ Nima uçun real dunyo robototexnikasida datçiklar axborotini qayta işlaşda stoxastik va Bayes usullari qöllaniladi?
++ RIA tasnifiga köra sanoat robotlarining boşqaruv turlari böyiça avlodlarini taʼriflang.

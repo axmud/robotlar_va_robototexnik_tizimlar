@@ -7,7 +7,7 @@
 
 #let headingblue = rgb(20, 50, 120)
 
-#set document(title: "Sanoat robotining kinematikasini oʻrganish. 2-qism")
+#set document(title: "Sanoat robotining kinematikasini örganiş. 2-qism")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -66,49 +66,49 @@
 // ---------------- Sarlavha ----------------
 #align(center)[
   #set par(justify: false)
-  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №4]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MAŞĞULOTI №4]
   #v(0.4cm)
   #text(
     size: 14pt,
     weight: "bold",
-  )[Mavzu: Sanoat robotining kinematikasini oʻrganish. 2-qism: Koordinatalar tizimlari, D-H parametrlari va ishchi zona topologiyasi]
+  )[Mavzu: Sanoat robotining kinematikasini örganiş. 2-qism: Koordinatalar tizimlari, D-H parametrlari va işçi zona topologiyasi]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Mashgʻulotning maqsadi:* talabalarda sanoat robotlarida qoʻllaniladigan koordinatalar tizimlarini (bazaviy, boʻgʻin, tutqich va obyekt freymlari) toʻgʻri oʻrnatish, *Denavit–Hartenberg (D-H)* standart konvensiyasi boʻyicha kinematik zanjirlarni parametrlash hamda robot manipulyatorining *ishchi zonasini* (_workspace_) va uning chegaraviy qobigʻini analitik hisoblash koʻnikmalarini shakllantirish.
+*Maşğulotning maqsadi:* talabalarda sanoat robotlarida qöllaniladigan koordinatalar tizimlarini (bazaviy, böğin, tutqiç va obyekt freymlari) töğri örnatiş, *Denavit–Hartenberg (D-H)* standart konvensiyasi böyiça kinematik zanjirlarni parametrlaş hamda robot manipulyatorining *işçi zonasini* (_workspace_) va uning çegaraviy qobiğini analitik hisoblaş könikmalarini şakllantiriş.
 
-*Oʻquv vazifalari va kutilayotgan natijalar:*
+*Öquv vazifalari va kutilayotgan natijalar:*
 
-- *Koordinata freymlarini oʻrnatish:* bazaviy ${s}$, manipulyator korpusi ${b}$, bilak/flanets ${e}$ va ishchi asbob TCP ${t}$ freymlari oʻrtasidagi transformatsiya zanjirlarini tuzish.
-- *D-H parametrlash:* $a_i$ (boʻgʻin uzunligi), $alpha_i$ (boʻgʻin buralishi), $d_i$ (boʻgʻin siljishi) va $theta_i$ (boʻgʻin burchagi) parametrlarini aniqlash va bir jinsli transformatsiya matritsalarini ($A_i^(i-1) in "SE"(3)$) shakllantirish.
-- *Ishchi zona topologiyasi:* erishiladigan (_reachable_, $cal(W)_R$) va epchillik / orientatsion (_dextrous_, $cal(W)_D$) ishchi sohalarini farqlash hamda 3D qobiq hajmini ($cal(V)_"ws"$) analitik hisoblash.
-- *Singulyarlik va chegaralar:* Yakobi matritsasining singulyar holatlarini ($det J(q) = 0$) va ularning ishchi soha chegaralariga taʼsirini tahlil qilish.
+- *Koordinata freymlarini örnatiş:* bazaviy ${s}$, manipulyator korpusi ${b}$, bilak/flanets ${e}$ va işçi asbob TCP ${t}$ freymlari örtasidagi transformatsiya zanjirlarini tuziş.
+- *D-H parametrlaş:* $a_i$ (böğin uzunligi), $alpha_i$ (böğin buralişi), $d_i$ (böğin siljişi) va $theta_i$ (böğin burçagi) parametrlarini aniqlaş va bir jinsli transformatsiya matritsalarini ($A_i^(i-1) in "SE"(3)$) şakllantiriş.
+- *Işçi zona topologiyasi:* erişiladigan (_reachable_, $cal(W)_R$) va epçillik / orientatsion (_dextrous_, $cal(W)_D$) işçi sohalarini farqlaş hamda 3D qobiq hajmini ($cal(V)_"ws"$) analitik hisoblaş.
+- *Singulyarlik va çegaralar:* Yakobi matritsasining singulyar holatlarini ($det J(q) = 0$) va ularning işçi soha çegaralariga taʼsirini tahlil qiliş.
 
 = Nazariy asoslar va analitik formulalar
 
 == Sanoat robotlarida koordinata tizimlari va transformatsiyalar
 
-Robot manipulyatori fazoda harakatlanganda uning har bir boʻgʻini hamda atrof-muhitdagi obyektlar maxsus koordinata freymlari orqali tasvirlanadi.
+Robot manipulyatori fazoda harakatlanganda uning har bir böğini hamda atrof-muhitdagi obyektlar maxsus koordinata freymlari orqali tasvirlanadi.
 
-*Taʼrif.* *Oʻng qoʻl koordinata freymi* ($cal(F)$) --- 3D Evklid fazosidagi $O X Y Z$ dekart koordinata tizimi boʻlib, uning birlik vektorlari $hat(x), hat(y), hat(z)$ uchun $hat(z) = hat(x) times hat(y)$ sharti bajariladi.
+*Taʼrif.* *Öng qöl koordinata freymi* ($cal(F)$) --- 3D Evklid fazosidagi $O X Y Z$ dekart koordinata tizimi bölib, uning birlik vektorlari $hat(x), hat(y), hat(z)$ uçun $hat(z) = hat(x) times hat(y)$ şarti bajariladi.
 
-Sanoat robototexnikasida quyidagi asosiy freymlar kaskadi qoʻllaniladi:
+Sanoat robototexnikasida quyidagi asosiy freymlar kaskadi qöllaniladi:
 
-+ *Bazaviy / statsionar freym* (${s}$ -- _base frame_): robot asosining markazida joylashtiriladi.
-+ *Boʻgʻin freymlari* (${i}$ -- _link frames_): har bir $i$-boʻgʻinga mahkamlangan lokal koordinata tizimlari.
-+ *Bilak / flanets freymi* (${e}$ -- _wrist / flange frame_): manipulyatorning oxirgi mexanik flanetsida joylashadi.
-+ *Asbob markaziy nuqtasi freymi* (${t}$ -- _TCP frame_): payvandlash gorelkasi uchi, pnevmotutqich markazi yoki lazer boshi kabi ishchi asbobga biriktirilgan freym.
-+ *Obyekt / ishchi maydon freymi* (${o}$ -- _object / world frame_): konveyer, ishlov beriladigan detal yoki stol markazidagi koordinata tizimi.
++ *Bazaviy / statsionar freym* (${s}$ -- _base frame_): robot asosining markazida joylaştiriladi.
++ *Böğin freymlari* (${i}$ -- _link frames_): har bir $i$-böğinga mahkamlangan lokal koordinata tizimlari.
++ *Bilak / flanets freymi* (${e}$ -- _wrist / flange frame_): manipulyatorning oxirgi mexanik flanetsida joylaşadi.
++ *Asbob markaziy nuqtasi freymi* (${t}$ -- _TCP frame_): payvandlaş gorelkasi uçi, pnevmotutqiç markazi yoki lazer boşi kabi işçi asbobga biriktirilgan freym.
++ *Obyekt / işçi maydon freymi* (${o}$ -- _object / world frame_): konveyer, işlov beriladigan detal yoki stol markazidagi koordinata tizimi.
 
 Transformatsiya zanjiri quyidagi tenglama bilan ifodalanadi:
 
 $ T_"object"^"base" = T_"body"^"base" (q) dot T_"flange"^"body" dot T_"tcp"^"flange" dot T_"object"^"tcp" $ <eq-chain>
 
-Bir jinsli transformatsiya matritsasi $T in "SE"(3)$ pozitsiya vektori $P in bb(R)^3$ va rotatsiya matritsasi $R in "SO"(3)$ dan tashkil topadi:
+Bir jinsli transformatsiya matritsasi $T in "SE"(3)$ pozitsiya vektori $P in bb(R)^3$ va rotatsiya matritsasi $R in "SO"(3)$ dan taşkil topadi:
 
 $
   T = mat(R, P; 0_(1 times 3), 1) = mat(
@@ -119,17 +119,17 @@ $
   )
 $ <eq-T>
 
-bunda $R^T R = I_(3 times 3)$ va $det R = +1$ ortonormallik shartlari bajariladi.
+bunda $R^T R = I_(3 times 3)$ va $det R = +1$ ortonormallik şartlari bajariladi.
 
-== Denavit–Hartenberg (D-H) parametrlash konvensiyasi
+== Denavit–Hartenberg (D-H) parametrlaş konvensiyasi
 
-Denavit va Hartenberg taklif etgan konvensiyaga muvofiq har bir kinematik boʻgʻinga koordinata freymi quyidagi qatʼiy qoidalar asosida oʻrnatiladi:
+Denavit va Hartenberg taklif etgan konvensiyaga muvofiq har bir kinematik böğinga koordinata freymi quyidagi qatʼiy qoidalar asosida örnatiladi:
 
-+ $z_i$ oʻqi $(i+1)$-boʻgʻinning harakat oʻqi (aylanma yoki ilgarilanma) boʻylab yoʻnaltiriladi.
-+ $x_i$ oʻqi $z_(i-1)$ va $z_i$ oʻqlari orasidagi umumiy perpendikulyar ($x_i perp z_(i-1)$ va $x_i perp z_i$) boʻylab yoʻnaltiriladi.
-+ $y_i$ oʻqi oʻng qoʻl qoidasi boʻyicha $y_i = z_i times x_i$ sifatida aniqlanadi.
++ $z_i$ öqi $(i+1)$-böğinning harakat öqi (aylanma yoki ilgarilanma) böylab yönaltiriladi.
++ $x_i$ öqi $z_(i-1)$ va $z_i$ öqlari orasidagi umumiy perpendikulyar ($x_i perp z_(i-1)$ va $x_i perp z_i$) böylab yönaltiriladi.
++ $y_i$ öqi öng qöl qoidasi böyiça $y_i = z_i times x_i$ sifatida aniqlanadi.
 
-D-H konvensiyasidagi freymlar va 4 ta kinematik parametr @fig-dh da koʻrsatilgan.
+D-H konvensiyasidagi freymlar va 4 ta kinematik parametr @fig-dh da körsatilgan.
 
 #figure(
   cetz.canvas(length: 1cm, {
@@ -191,22 +191,22 @@ D-H konvensiyasidagi freymlar va 4 ta kinematik parametr @fig-dh da koʻrsatilga
       inset: 6pt,
       align(left, text(size: 9pt)[
         $a_i$: $z_(i-1)$ va $z_i$ orasidagi masofa \
-        $alpha_i$: $z_(i-1)$ va $z_i$ orasidagi burchak \
-        $d_i$: $x_(i-1)$ va $x_i$ orasidagi siljish \
-        $theta_i$: $x_(i-1)$ va $x_i$ orasidagi burchak
+        $alpha_i$: $z_(i-1)$ va $z_i$ orasidagi burçak \
+        $d_i$: $x_(i-1)$ va $x_i$ orasidagi siljiş \
+        $theta_i$: $x_(i-1)$ va $x_i$ orasidagi burçak
       ]),
     ))
   }),
-  caption: [D-H konvensiyasiga muvofiq freymlarni joylashtirish va 4 ta kinematik parametr],
+  caption: [D-H konvensiyasiga muvofiq freymlarni joylaştiriş va 4 ta kinematik parametr],
 ) <fig-dh>
 
-Ikki qoʻshni ${i-1}$ va ${i}$ freymlar orasidagi transformatsiya matritsasi $A_i^(i-1)$ 4 ta elementar operatsiyaning koʻpaytmasidan iborat:
+Ikki qöşni ${i-1}$ va ${i}$ freymlar orasidagi transformatsiya matritsasi $A_i^(i-1)$ 4 ta elementar operatsiyaning köpaytmasidan iborat:
 
 $
   A_i^(i-1) = bold("Rot")_(z, theta_i) dot bold("Trans")_(z, d_i) dot bold("Trans")_(x, a_i) dot bold("Rot")_(x, alpha_i)
 $
 
-Matritsa shaklida:
+Matritsa şaklida:
 
 $
   A_i^(i-1) = mat(
@@ -217,9 +217,9 @@ $
   )
 $ <eq-dh>
 
-== Robot ishchi zonasi topologiyasi va uning chegaraviy qobigʻi
+== Robot işçi zonasi topologiyasi va uning çegaraviy qobiği
 
-Sanoat robotining ishchi sohasi ($cal(W)$) --- asbob markaziy nuqtasi (TCP) yetib borishi mumkin boʻlgan fazoviy nuqtalar toʻplami (@fig-ws).
+Sanoat robotining işçi sohasi ($cal(W)$) --- asbob markaziy nuqtasi (TCP) yetib borişi mumkin bölgan fazoviy nuqtalar töplami (@fig-ws).
 
 #figure(
   cetz.canvas(length: 0.95cm, {
@@ -249,24 +249,24 @@ Sanoat robotining ishchi sohasi ($cal(W)$) --- asbob markaziy nuqtasi (TCP) yeti
     circle(TCP, radius: 0.1, fill: red)
     content(TCP, text(size: 9pt)[TCP], anchor: "north-west")
 
-    content((2.6, 4.25), text(size: 9pt, fill: cprim)[$cal(W)_R$ (tashqi chegara)], anchor: "south-west")
-    content((-1.05, 1.2), text(size: 9pt, fill: cacc)[$cal(W)_"in"$ (ichki chegara)], anchor: "east")
+    content((2.6, 4.25), text(size: 9pt, fill: cprim)[$cal(W)_R$ (taşqi çegara)], anchor: "south-west")
+    content((-1.05, 1.2), text(size: 9pt, fill: cacc)[$cal(W)_"in"$ (içki çegara)], anchor: "east")
   }),
-  caption: [Planar manipulyatorning erishiladigan va ichkaridan chegaralangan ishchi sohasi],
+  caption: [Planar manipulyatorning erişiladigan va içkaridan çegaralangan işçi sohasi],
 ) <fig-ws>
 
-Ishchi zonalarning tasnifi:
+Işçi zonalarning tasnifi:
 
-+ *Erishiladigan ishchi zona* (_reachable workspace_, $cal(W)_R$): TCP hech boʻlmaganda bitta orientatsiya bilan yetib boradigan sohaning toʻliq hajmi.
-+ *Epchillik (orientatsion) ishchi zona* (_dextrous workspace_, $cal(W)_D$): TCP barcha ixtiyoriy orientatsiyalarda ($forall R in "SO"(3)$) yetib boradigan ichki toʻplam: $cal(W)_D subset.eq cal(W)_R$.
++ *Erişiladigan işçi zona* (_reachable workspace_, $cal(W)_R$): TCP heç bölmaganda bitta orientatsiya bilan yetib boradigan sohaning töliq hajmi.
++ *Epçillik (orientatsion) işçi zona* (_dextrous workspace_, $cal(W)_D$): TCP barça ixtiyoriy orientatsiyalarda ($forall R in "SO"(3)$) yetib boradigan içki töplam: $cal(W)_D subset.eq cal(W)_R$.
 
-Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifodalari @tab-vol da keltirilgan.
+Turli kinematik komponovkalar işçi zona hajmining ($cal(V)_"ws"$) analitik ifodalari @tab-vol da keltirilgan.
 
 #figure(
   btable(
     columns: (auto, auto, 1fr),
     align: (left + horizon, center + horizon, left + horizon),
-    ([*Komponovka*], [*Kinematika*], [*Ishchi zona hajmi ($cal(V)_"ws"$) tenglamasi*]),
+    ([*Komponovka*], [*Kinematika*], [*Işçi zona hajmi ($cal(V)_"ws"$) tenglamasi*]),
     [Dekart],
     [PPP],
     [$cal(V)_"ws" = Delta X dot Delta Y dot Delta Z$],
@@ -281,31 +281,31 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
     [$cal(V)_"ws" = pi ((l_1 + l_2)^2 - (l_1 - l_2)^2) Delta Z = 4 pi l_1 l_2 Delta Z$],
     [Antropomorf],
     [6R],
-    [$cal(V)_"ws" = 4 / 3 pi R_"max"^3 -$ singulyar ichki boʻshliqlar],
+    [$cal(V)_"ws" = 4 / 3 pi R_"max"^3 -$ singulyar içki böşliqlar],
   ),
-  caption: [Kinematik komponovkalar ishchi zonasi hajmining tenglamalari],
+  caption: [Kinematik komponovkalar işçi zonasi hajmining tenglamalari],
 ) <tab-vol>
 
-= Namunaviy masalalar va ularning yechimlari
+= Namunaviy masalalar va ularning yeçimlari
 
-== Masala 1: 2R planar manipulyatorning D-H parametrlari va ishchi yuzasi
+== Masala 1: 2R planar manipulyatorning D-H parametrlari va işçi yuzasi
 
-*Masala sharti:* tekislikdagi 2R manipulyatorning boʻgʻin uzunliklari $l_1 = 0.45 "m"$ va $l_2 = 0.30 "m"$. Boʻgʻin burchaklarining harakat diapazoni: $theta_1 in [0, pi]$ rad va $theta_2 in [-3 pi \/ 4, 3 pi \/ 4]$ rad.
+*Masala şarti:* tekislikdagi 2R manipulyatorning böğin uzunliklari $l_1 = 0.45 "m"$ va $l_2 = 0.30 "m"$. Böğin burçaklarining harakat diapazoni: $theta_1 in [0, pi]$ rad va $theta_2 in [-3 pi \/ 4, 3 pi \/ 4]$ rad.
 
 #set enum(numbering: "a)")
 + D-H parametrlar jadvalini tuzing.
-+ $T_2^0$ toʻgʻri kinematika matritsasini simvolik koʻrinishda chiqaring.
-+ Manipulyatorning erishiladigan ishchi yuzasini ($S_"ws"$) hisoblang.
++ $T_2^0$ töğri kinematika matritsasini simvolik körinişda çiqaring.
++ Manipulyatorning erişiladigan işçi yuzasini ($S_"ws"$) hisoblang.
 #set enum(numbering: "1.")
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- *D-H parametrlar jadvali.* Boʻgʻinlar tekislikda joylashgani sababli barcha $z_i$ oʻqlari chizma tekisligiga perpendikulyar ($alpha_i = 0$, $d_i = 0$):
+- *D-H parametrlar jadvali.* Böğinlar tekislikda joylaşgani sababli barça $z_i$ öqlari çizma tekisligiga perpendikulyar ($alpha_i = 0$, $d_i = 0$):
 
   #figure(
     btable(
       columns: 5,
-      ([*Boʻgʻin $i$*], [*$a_i$ \[m\]*], [*$alpha_i$ \[rad\]*], [*$d_i$ \[m\]*], [*$theta_i$ \[rad\]*]),
+      ([*Böğin $i$*], [*$a_i$ \[m\]*], [*$alpha_i$ \[rad\]*], [*$d_i$ \[m\]*], [*$theta_i$ \[rad\]*]),
       [1],
       [$l_1 = 0.45$],
       [0],
@@ -320,12 +320,12 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
     caption: [2R planar manipulyatorning D-H parametrlari],
   )
 
-- *Bir jinsli transformatsiya matritsalari* ($c_i = cos theta_i$, $s_i = sin theta_i$, $c_(12) = cos(theta_1 + theta_2)$, $s_(12) = sin(theta_1 + theta_2)$ belgilashlari bilan):
+- *Bir jinsli transformatsiya matritsalari* ($c_i = cos theta_i$, $s_i = sin theta_i$, $c_(12) = cos(theta_1 + theta_2)$, $s_(12) = sin(theta_1 + theta_2)$ belgilaşlari bilan):
   $
     A_1^0 = mat(c_1, -s_1, 0, l_1 c_1; s_1, c_1, 0, l_1 s_1; 0, 0, 1, 0; 0, 0, 0, 1), quad
     A_2^1 = mat(c_2, -s_2, 0, l_2 c_2; s_2, c_2, 0, l_2 s_2; 0, 0, 1, 0; 0, 0, 0, 1)
   $
-  Toʻliq transformatsiya matritsasi $T_2^0 = A_1^0 A_2^1$:
+  Töliq transformatsiya matritsasi $T_2^0 = A_1^0 A_2^1$:
   $
     T_2^0 = mat(
       c_(12), -s_(12), 0, l_1 c_1 + l_2 c_(12);
@@ -337,7 +337,7 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
   TCP koordinatalari:
   $ P_x = l_1 cos theta_1 + l_2 cos(theta_1 + theta_2), quad P_y = l_1 sin theta_1 + l_2 sin(theta_1 + theta_2) $
 
-- *Ishchi zona yuzasi.* Maksimal tashqi radius: $R_"out" = l_1 + l_2 = 0.45 + 0.30 = 0.75 "m"$. Minimal ichki radius ($abs(theta_2) = 3 pi \/ 4 = 135 degree$ boʻlganda):
+- *Işçi zona yuzasi.* Maksimal taşqi radius: $R_"out" = l_1 + l_2 = 0.45 + 0.30 = 0.75 "m"$. Minimal içki radius ($abs(theta_2) = 3 pi \/ 4 = 135 degree$ bölganda):
   $
     R_"in" = sqrt(l_1^2 + l_2^2 - 2 l_1 l_2 cos(pi - abs(theta_(2,max)))) \
     = sqrt(0.45^2 + 0.30^2 - 2 dot 0.45 dot 0.30 dot cos 45 degree)
@@ -352,25 +352,25 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
     = pi / 2 (0.5625 - 0.1016) = 3.14159 / 2 dot 0.4609 approx 0.724 "m"^2
   $
 
-*Javob:* $R_"out" = 0.75 "m"$, $R_"in" approx 0.319 "m"$, $S_"ws" approx 0.724 "m"^2$ (halqa sektori yaqinlashuvida).
+*Javob:* $R_"out" = 0.75 "m"$, $R_"in" approx 0.319 "m"$, $S_"ws" approx 0.724 "m"^2$ (halqa sektori yaqinlaşuvida).
 
-== Masala 2: SCARA robotining D-H parametrlari va ishchi zona hajmi
+== Masala 2: SCARA robotining D-H parametrlari va işçi zona hajmi
 
-*Masala sharti:* SCARA ($R R P$) sanoat roboti quyidagi oʻlchamlarga ega: $a_1 = 0.40 "m"$, $a_2 = 0.30 "m"$, ustun balandligi $d_1 = 0.50 "m"$; birinchi va ikkinchi boʻgʻinlarning burilish diapazonlari $theta_1 in [-120 degree, 120 degree]$, $theta_2 in [-140 degree, 140 degree]$; vertikal ilgarilanma boʻgʻin harakati $d_3 in [0, 0.25] "m"$.
+*Masala şarti:* SCARA ($R R P$) sanoat roboti quyidagi ölçamlarga ega: $a_1 = 0.40 "m"$, $a_2 = 0.30 "m"$, ustun balandligi $d_1 = 0.50 "m"$; birinçi va ikkinçi böğinlarning buriliş diapazonlari $theta_1 in [-120 degree, 120 degree]$, $theta_2 in [-140 degree, 140 degree]$; vertikal ilgarilanma böğin harakati $d_3 in [0, 0.25] "m"$.
 
 #set enum(numbering: "a)")
 + D-H parametrlar jadvalini tuzing.
-+ Ishchi zona hajmini ($cal(V)_"ws"$) analitik hisoblang.
++ Işçi zona hajmini ($cal(V)_"ws"$) analitik hisoblang.
 #set enum(numbering: "1.")
 
-*Hisoblash bosqichlari:*
+*Hisoblaş bosqiçlari:*
 
-- *D-H parametrlar jadvali.* SCARA robotida $z_0, z_1, z_2$ oʻqlari oʻzaro parallel va vertikal yoʻnalgan, $z_3$ esa vertikal siljish oʻqi:
+- *D-H parametrlar jadvali.* SCARA robotida $z_0, z_1, z_2$ öqlari özaro parallel va vertikal yönalgan, $z_3$ esa vertikal siljiş öqi:
 
   #figure(
     btable(
       columns: 5,
-      ([*Boʻgʻin $i$*], [*$a_i$ \[m\]*], [*$alpha_i$ \[rad\]*], [*$d_i$ \[m\]*], [*$theta_i$ \[rad\]*]),
+      ([*Böğin $i$*], [*$a_i$ \[m\]*], [*$alpha_i$ \[rad\]*], [*$d_i$ \[m\]*], [*$theta_i$ \[rad\]*]),
       [1],
       [$a_1 = 0.40$],
       [0],
@@ -390,7 +390,7 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
     caption: [SCARA robotining D-H parametrlari],
   )
 
-- *Ishchi zona hajmi.* SCARA robotining ishchi sohasi gorizontal tekislikdagi figura yuzasi $S_(x y)$ ning vertikal yoʻl $Delta Z = d_(3,max) - d_(3,min) = 0.25 "m"$ ga koʻpaytmasiga teng:
+- *Işçi zona hajmi.* SCARA robotining işçi sohasi gorizontal tekislikdagi figura yuzasi $S_(x y)$ ning vertikal yöl $Delta Z = d_(3,max) - d_(3,min) = 0.25 "m"$ ga köpaytmasiga teng:
   $ cal(V)_"ws" = S_(x y) dot Delta Z $
   Gorizontal tekislikdagi maksimal va minimal radiuslar:
   $ R_"max" = a_1 + a_2 = 0.40 + 0.30 = 0.70 "m" $
@@ -402,23 +402,23 @@ Turli kinematik komponovkalar ishchi zona hajmining ($cal(V)_"ws"$) analitik ifo
     R_"min" = sqrt(0.16 + 0.09 - 0.24 dot 0.7660) = sqrt(0.25 - 0.1838) \
     = sqrt(0.0662) approx 0.2572 "m"
   $
-  Burilish sektori $Delta theta_1 = 240 degree = 4 pi \/ 3$ rad:
+  Buriliş sektori $Delta theta_1 = 240 degree = 4 pi \/ 3$ rad:
   $
     S_(x y) = (Delta theta_1) / (2 pi) dot pi (R_"max"^2 - R_"min"^2) = (4 pi \/ 3) / (2 pi) dot pi (0.70^2 - 0.2572^2) \
     = 2 / 3 pi (0.49 - 0.0662) approx 0.8877 "m"^2
   $
-  Ishchi zona hajmi:
+  Işçi zona hajmi:
   $ cal(V)_"ws" = 0.8877 "m"^2 dot 0.25 "m" approx 0.2219 "m"^3 approx 221.9 "litr" $
 
 *Javob:* $R_"max" = 0.70 "m"$, $R_"min" approx 0.257 "m"$, $cal(V)_"ws" approx 0.222 "m"^3$.
 
-= Individual amaliy topshiriqlar
+= Individual amaliy topşiriqlar
 
-Har bir talaba oʻz variant raqamiga mos robot koʻrsatkichlari (@tab-variants) boʻyicha quyidagilarni bajarishi lozim:
+Har bir talaba öz variant raqamiga mos robot körsatkiçlari (@tab-variants) böyiça quyidagilarni bajarişi lozim:
 
-+ D-H parametrlar jadvalini tuzish.
-+ Toʻgʻri kinematika tenglamalarini ($P_x, P_y, P_z$) shakllantirish.
-+ Ishchi zona hajmini ($cal(V)_"ws"$) va maksimal erishish radiusini ($R_"max"$) analitik hisoblash.
++ D-H parametrlar jadvalini tuziş.
++ Töğri kinematika tenglamalarini ($P_x, P_y, P_z$) şakllantiriş.
++ Işçi zona hajmini ($cal(V)_"ws"$) va maksimal erişiş radiusini ($R_"max"$) analitik hisoblaş.
 
 #figure(
   btable(
@@ -512,14 +512,14 @@ Har bir talaba oʻz variant raqamiga mos robot koʻrsatkichlari (@tab-variants) 
     [$plus.minus 125 degree$],
     [0.38],
   ),
-  caption: [Talabalar uchun individual hisoblash topshiriqlari],
+  caption: [Talabalar uçun individual hisoblaş topşiriqlari],
 ) <tab-variants>
 
 = Nazorat savollari
 
-+ Bazaviy koordinatalar tizimi (${s}$) va TCP freymi (${t}$) oʻrtasidagi asosiy farqlar nimadan iborat?
-+ D-H konvensiyasida $x_i$ oʻqining yoʻnalishini tanlash boʻyicha qanday cheklovlar mavjud?
-+ Erishiladigan ($cal(W)_R$) va epchillik ($cal(W)_D$) ishchi zonalari bir-biridan nimasi bilan farq qiladi?
-+ Robot manipulyatorida kinematik singulyarlik yuz berganda ishchi soha chegarasida nima kuzatiladi?
-+ SCARA va antropomorf robotlarning ishchi zona shakli va samaradorlik koʻrsatkichlarini solishtiring.
-+ Bir jinsli transformatsiya matritsasi $T in "SE"(3)$ ning teskari matritsasi $T^(-1)$ qanday sodda koʻrinishda topiladi?
++ Bazaviy koordinatalar tizimi (${s}$) va TCP freymi (${t}$) örtasidagi asosiy farqlar nimadan iborat?
++ D-H konvensiyasida $x_i$ öqining yönalişini tanlaş böyiça qanday çeklovlar mavjud?
++ Erişiladigan ($cal(W)_R$) va epçillik ($cal(W)_D$) işçi zonalari bir-biridan nimasi bilan farq qiladi?
++ Robot manipulyatorida kinematik singulyarlik yuz berganda işçi soha çegarasida nima kuzatiladi?
++ SCARA va antropomorf robotlarning işçi zona şakli va samaradorlik körsatkiçlarini soliştiring.
++ Bir jinsli transformatsiya matritsasi $T in "SE"(3)$ ning teskari matritsasi $T^(-1)$ qanday sodda körinişda topiladi?

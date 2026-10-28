@@ -8,7 +8,7 @@
 
 #let headingblue = rgb(20, 50, 120)
 
-#set document(title: "Avtomatlashtirishda robotlarning roli")
+#set document(title: "Avtomatlaştirişda robotlarning roli")
 #set page(
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2cm),
@@ -44,49 +44,49 @@
 
 // ---------------- Sarlavha ----------------
 #align(center)[
-  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MASHGʻULOTI №1]
+  #text(size: 20pt, weight: "bold", fill: headingblue)[AMALIYOT MAŞĞULOTI №1]
   #v(0.4cm)
   #text(size: 14pt, weight: "bold")[
-    Mavzu: Avtomatlashtirishda robotlarning roli. Robotlar haqida umumiy tushunchalar va taʼriflar
+    Mavzu: Avtomatlaştirişda robotlarning roli. Robotlar haqida umumiy tuşunçalar va taʼriflar
   ]
   #v(0.6cm)
   #line(length: 100%, stroke: 1pt)
 ]
 #v(0.3cm)
 
-= Ishning maqsadi
+= Işning maqsadi
 
-*Amaliy maqsad:* sanoat ishlab chiqarishini avtomatlashtirishda robotlarning oʻrni va texnik-iqtisodiy rolini tahlil qilish, robot manipulyatorlarining kinematik strukturasi, erkinlik darajalari va ishchi sohasi toʻgʻrisidagi nazariy bilimlarni amaliy hisoblashlar bilan mustahkamlash.
+*Amaliy maqsad:* sanoat işlab çiqarişini avtomatlaştirişda robotlarning örni va texnik-iqtisodiy rolini tahlil qiliş, robot manipulyatorlarining kinematik strukturasi, erkinlik darajalari va işçi sohasi töğrisidagi nazariy bilimlarni amaliy hisoblaşlar bilan mustahkamlaş.
 
-*Oʻquv vazifalari:*
+*Öquv vazifalari:*
 
-+ Sanoat ishlab chiqarishini avtomatlashtirishda robotlarning oʻrni va iqtisodiy hamda texnik rolini tahlil qilish.
-+ ISO 8373 va RIA xalqaro standartlari boʻyicha „robot" va „robototexnika" tushunchalariga akademik taʼrif berish.
-+ Robot manipulyatorlarining kinematik strukturasi, boʻgʻinlari hamda erkinlik darajalarini (DoF) Grübler formulasi orqali hisoblashni oʻrganish.
-+ Sanoat robotlarining asosiy geometrik konfiguratsiyalari va ishchi sohasini (_workspace_) geometrik baholash.
++ Sanoat işlab çiqarişini avtomatlaştirişda robotlarning örni va iqtisodiy hamda texnik rolini tahlil qiliş.
++ ISO 8373 va RIA xalqaro standartlari böyiça „robot" va „robototexnika" tuşunçalariga akademik taʼrif beriş.
++ Robot manipulyatorlarining kinematik strukturasi, böğinlari hamda erkinlik darajalarini (DoF) Grübler formulasi orqali hisoblaşni örganiş.
++ Sanoat robotlarining asosiy geometrik konfiguratsiyalari va işçi sohasini (_workspace_) geometrik baholaş.
 
 = Kerakli asbob-uskunalar va dasturiy taʼminot
 
-- *Hisoblash texnikasi:* shaxsiy kompyuter yoki ish stansiyasi, ilmiy kalkulyator, chizmachilik qurollari.
-- *Modellashtirish dasturlari:* ROS (Robot Operating System), MATLAB / Simulink (Robotics System Toolbox), CoppeliaSim (V-REP).
-- *Yordamchi materiallar:* sanoat robotlari (PUMA 560, FANUC, ABB, KUKA) texnik pasportlari va kinematik sxemalari.
+- *Hisoblaş texnikasi:* şaxsiy kompyuter yoki iş stansiyasi, ilmiy kalkulyator, çizmaçilik qurollari.
+- *Modellaştiriş dasturlari:* ROS (Robot Operating System), MATLAB / Simulink (Robotics System Toolbox), CoppeliaSim (V-REP).
+- *Yordamçi materiallar:* sanoat robotlari (PUMA 560, FANUC, ABB, KUKA) texnik pasportlari va kinematik sxemalari.
 
-= Kirish va nazariy qism
+= Kiriş va nazariy qism
 
-== Avtomatlashtirish tushunchasi va sanoat robotlarining rivojlanish tarixi
+== Avtomatlaştiriş tuşunçasi va sanoat robotlarining rivojlaniş tarixi
 
-Zamonaviy sanoat ishlab chiqarish jarayonlarini avtomatlashtirish mehnat unumdorligini keskin oshirish, mahsulot sifatini kafolatlash hamda xavfli, ogʻir va bir xil takrorlanuvchi (monoton) mehnat sharoitlaridan insonni ozod etishning asosiy texnik omilidir. Sanoat avtomatlashtirish texnikasi oʻz rivojlanishida ikkita yirik va tubdan farq qiluvchi bosqichni bosib oʻtdi:
+Zamonaviy sanoat işlab çiqariş jarayonlarini avtomatlaştiriş mehnat unumdorligini keskin oşiriş, mahsulot sifatini kafolatlaş hamda xavfli, oğir va bir xil takrorlanuvçi (monoton) mehnat şaroitlaridan insonni ozod etişning asosiy texnik omilidir. Sanoat avtomatlaştiriş texnikasi öz rivojlanişida ikkita yirik va tubdan farq qiluvçi bosqiçni bosib ötdi:
 
-+ *Qatʼiy (fiksatsiyalangan) avtomatlashtirish (fixed / hard automation):* maxsus loyihalangan mexanik liniyalar va avtomat-stanoklar majmuasi. Ular faqat bitta turdagi mahsulotni oʻta katta hajmda (_mass production_) ishlab chiqarishga moʻljallangan. Yuqori unumdorlikka ega boʻlsa-da, moslashuvchanlikdan mahrum: mahsulot shakli, oʻlchami yoki konstruksiyasi oʻzgarganda butun liniyani qayta jihozlash (_retooling_) katta moliyaviy xarajat va uzoq vaqt talab etadi.
-+ *Moslashuvchan (dasturlanadigan) avtomatlashtirish (flexible / programmable automation):* dasturiy taʼminot orqali harakat trayektoriyasi, tezligi va texnologik vazifasi tezda oʻzgartiriladigan raqamli boshqariluvchi mexanizmlar. Sanoat robotlari moslashuvchan avtomatlashtirishning markaziy poydevori hisoblanadi.
++ *Qatʼiy (fiksatsiyalangan) avtomatlaştiriş (fixed / hard automation):* maxsus loyihalangan mexanik liniyalar va avtomat-stanoklar majmuasi. Ular faqat bitta turdagi mahsulotni öta katta hajmda (_mass production_) işlab çiqarişga möljallangan. Yuqori unumdorlikka ega bölsa-da, moslaşuvçanlikdan mahrum: mahsulot şakli, ölçami yoki konstruksiyasi özgarganda butun liniyani qayta jihozlaş (_retooling_) katta moliyaviy xarajat va uzoq vaqt talab etadi.
++ *Moslaşuvçan (dasturlanadigan) avtomatlaştiriş (flexible / programmable automation):* dasturiy taʼminot orqali harakat trayektoriyasi, tezligi va texnologik vazifasi tezda özgartiriladigan raqamli boşqariluvçi mexanizmlar. Sanoat robotlari moslaşuvçan avtomatlaştirişning markaziy poydevori hisoblanadi.
 
-Sanoat robotlarining rivojlanish tarixi 1960-yillardan boshlanadi. Dastlabki sanoat roboti --- _Unimate_ (1961-yilda George Devol va Joseph Engelberger tomonidan yaratilgan) General Motors zavodida issiq metall quyish va nuqtaviy payvandlash ishlariga joriy etilgan. 1970--1980-yillarda kompyuter yordamida loyihalash (CAD --- _Computer-Aided Design_) va kompyuter yordamida ishlab chiqarish (CAM --- _Computer-Aided Manufacturing_) tizimlarining jadal rivojlanishi sanoat robotlarini yagona moslashuvchan ishlab chiqarish tizimlariga (FMS --- _Flexible Manufacturing Systems_) birlashtirish imkonini berdi.
+Sanoat robotlarining rivojlaniş tarixi 1960-yillardan boşlanadi. Dastlabki sanoat roboti --- _Unimate_ (1961-yilda George Devol va Joseph Engelberger tomonidan yaratilgan) General Motors zavodida issiq metall quyiş va nuqtaviy payvandlaş işlariga joriy etilgan. 1970--1980-yillarda kompyuter yordamida loyihalaş (CAD --- _Computer-Aided Design_) va kompyuter yordamida işlab çiqariş (CAM --- _Computer-Aided Manufacturing_) tizimlarining jadal rivojlanişi sanoat robotlarini yagona moslaşuvçan işlab çiqariş tizimlariga (FMS --- _Flexible Manufacturing Systems_) birlaştiriş imkonini berdi.
 
-Dunyo iqtisodiyotidagi demografik oʻzgarishlar, yaʼni ishchi kuchi narxining yildan-yilga oshishi hamda mikroelektronika va robototexnik qurilmalar narxining nisbiy arzonlashishi sanoat robotlarining ommalashuviga kuchli turtki boʻldi. Sanoat robotlarining aksariyati payvandlash (_welding_), materiallarni koʻchirish va yuklash (_material handling_), yigʻuv (_assembly_) hamda sirtlarga ishlov berish operatsiyalarida qoʻllaniladi.
+Dunyo iqtisodiyotidagi demografik özgarişlar, yaʼni işçi kuçi narxining yildan-yilga oşişi hamda mikroelektronika va robototexnik qurilmalar narxining nisbiy arzonlaşişi sanoat robotlarining ommalaşuviga kuçli turtki böldi. Sanoat robotlarining aksariyati payvandlaş (_welding_), materiallarni köçiriş va yuklaş (_material handling_), yiğuv (_assembly_) hamda sirtlarga işlov beriş operatsiyalarida qöllaniladi.
 
 == Robot va robototexnik tizim taʼriflari
 
-„Robot" soʻzi ilk bor 1921-yilda chex dramaturgi Karel Čapekning „R.U.R." (_Rossum's Universal Robots_) pyesasida qoʻllanilgan boʻlib, chexcha _robota_ (majburiy mehnat, qullik) soʻzidan olingan. Bugungi kunda „robot" tushunchasiga aniq standartlashtirilgan taʼriflar berilgan.
+„Robot" sözi ilk bor 1921-yilda çex dramaturgi Karel Čapekning „R.U.R." (_Rossum's Universal Robots_) pyesasida qöllanilgan bölib, çexça _robota_ (majburiy mehnat, qullik) sözidan olingan. Bugungi kunda „robot" tuşunçasiga aniq standartlaştirilgan taʼriflar berilgan.
 
 #block(
   width: 100%,
@@ -95,7 +95,7 @@ Dunyo iqtisodiyotidagi demografik oʻzgarishlar, yaʼni ishchi kuchi narxining y
   inset: 10pt,
   radius: 2pt,
 )[
-  *Xalqaro standartlashtirish tashkiloti (ISO 8373) taʼrifi.* _Sanoat roboti_ --- bu avtomatik boshqariladigan, qayta dasturlanadigan, koʻp maqsadli, uch yoki undan ortiq oʻqda dasturlana oladigan, fiksatsiyalangan yoki harakatlanuvchi platformaga oʻrnatilgan hamda sanoat avtomatlashtirish ilovalarida qoʻllaniladigan manipulyatsiyalash mexanizmidir.
+  *Xalqaro standartlaştiriş taşkiloti (ISO 8373) taʼrifi.* _Sanoat roboti_ --- bu avtomatik boşqariladigan, qayta dasturlanadigan, köp maqsadli, uç yoki undan ortiq öqda dasturlana oladigan, fiksatsiyalangan yoki harakatlanuvçi platformaga örnatilgan hamda sanoat avtomatlaştiriş ilovalarida qöllaniladigan manipulyatsiyalaş mexanizmidir.
 ]
 
 #v(0.2cm)
@@ -107,26 +107,26 @@ Dunyo iqtisodiyotidagi demografik oʻzgarishlar, yaʼni ishchi kuchi narxining y
   inset: 10pt,
   radius: 2pt,
 )[
-  *Amerika robototexnika sanoati assotsiatsiyasi (RIA) taʼrifi.* _Robot_ --- bu turli materiallar, detallar, asboblar va maxsus moslamalarni har xil dasturlanadigan harakatlar orqali koʻchirish hamda berilgan texnologik topshiriqni bajarish uchun moʻljallangan qayta dasturlanuvchi koʻp funksiyali manipulyatordir.
+  *Amerika robototexnika sanoati assotsiatsiyasi (RIA) taʼrifi.* _Robot_ --- bu turli materiallar, detallar, asboblar va maxsus moslamalarni har xil dasturlanadigan harakatlar orqali köçiriş hamda berilgan texnologik topşiriqni bajariş uçun möljallangan qayta dasturlanuvçi köp funksiyali manipulyatordir.
 ]
 
-*Robototexnika (_robotics_)* --- robotlarni loyihalash, konstruksiyalash, ularni boshqarish, datchiklar maʼlumotlarini qayta ishlash hamda dasturiy taʼminotini yaratish bilan shugʻullanuvchi kompleks fan va texnika sohasi. Robototexnika toʻrtta asosiy ustunga tayanadi:
+*Robototexnika (_robotics_)* --- robotlarni loyihalaş, konstruksiyalaş, ularni boşqariş, datçiklar maʼlumotlarini qayta işlaş hamda dasturiy taʼminotini yaratiş bilan şuğullanuvçi kompleks fan va texnika sohasi. Robototexnika törtta asosiy ustunga tayanadi:
 
-- *Mexanik manipulyatsiya (mechanical manipulation):* kinematika, dinamika, mexanizmlar va materiallar qarshiligi.
-- *Harakatlanish (locomotion):* mobil robotlar, gʻildirakli va oyoqli tizimlar navigatsiyasi.
-- *Kompyuterli koʻrish va sensorika (computer vision & sensing):* atrof-muhitni idrok etish, obyektlarni tanish.
-- *Sunʼiy intellekt va avtonomlik (artificial intelligence & planning):* harakat trayektoriyasini optimallashtirish, qaror qabul qilish.
+- *Mexanik manipulyatsiya (mechanical manipulation):* kinematika, dinamika, mexanizmlar va materiallar qarşiligi.
+- *Harakatlaniş (locomotion):* mobil robotlar, ğildirakli va oyoqli tizimlar navigatsiyasi.
+- *Kompyuterli köriş va sensorika (computer vision & sensing):* atrof-muhitni idrok etiş, obyektlarni taniş.
+- *Sunʼiy intellekt va avtonomlik (artificial intelligence & planning):* harakat trayektoriyasini optimallaştiriş, qaror qabul qiliş.
 
-= Robototexnik tizimning tuzilishi va tarkibiy qismlari
+= Robototexnik tizimning tuzilişi va tarkibiy qismlari
 
 == Robototexnik tizimning funksional strukturasi
 
-Robototexnik tizim --- bu tashqi muhit bilan uzviy bogʻliqlikda ishlovchi murakkab mexatronik majmua boʻlib, toʻrtta asosiy tarkibiy qismdan tashkil topadi (@fig-block):
+Robototexnik tizim --- bu taşqi muhit bilan uzviy boğliqlikda işlovçi murakkab mexatronik majmua bölib, törtta asosiy tarkibiy qismdan taşkil topadi (@fig-block):
 
-+ *Mexanik manipulyator (manipulator arm):* kinematik juftliklar orqali ketma-ket (yoki parallel) bogʻlangan qattiq boʻgʻinlar (_links_) majmuasi. U asos (_base_) bilan ishchi aʼzo oʻrtasida harakat uzatish vazifasini bajaradi.
-+ *Ishchi aʼzo (end-effector / TCP):* manipulyatorning oxirgi boʻgʻiniga oʻrnatiladigan va texnologik operatsiyani bevosita bajaruvchi moslama (qisqich, payvandlash gorelkasi, boʻyoq purkagichi, lazerli kalla va h.k.).
-+ *Ijrochi mexanizmlar va datchiklar (actuators & sensors):* boʻgʻinlarni harakatga keltiruvchi elektr dvigatellar (DC, BLDC, servo, qadamli), gidravlik va pnevmatik silindrlar; boʻgʻinlar burchagini oʻlchovchi enkoderlar, potensiometrlar hamda kuch-moment datchiklari.
-+ *Boshqaruv tizimi (controller):* mikrokontroller, DSP yoki sanoat kompyuteri boʻlib, sensor maʼlumotlarini qabul qiladi, toʻgʻri va teskari kinematika/dinamika masalalarini yechadi hamda dvigatellarga boshqaruv signallarini beradi.
++ *Mexanik manipulyator (manipulator arm):* kinematik juftliklar orqali ketma-ket (yoki parallel) boğlangan qattiq böğinlar (_links_) majmuasi. U asos (_base_) bilan işçi aʼzo örtasida harakat uzatiş vazifasini bajaradi.
++ *Işçi aʼzo (end-effector / TCP):* manipulyatorning oxirgi böğiniga örnatiladigan va texnologik operatsiyani bevosita bajaruvçi moslama (qisqiç, payvandlaş gorelkasi, böyoq purkagiçi, lazerli kalla va h.k.).
++ *Ijroçi mexanizmlar va datçiklar (actuators & sensors):* böğinlarni harakatga keltiruvçi elektr dvigatellar (DC, BLDC, servo, qadamli), gidravlik va pnevmatik silindrlar; böğinlar burçagini ölçovçi enkoderlar, potensiometrlar hamda kuç-moment datçiklari.
++ *Boşqaruv tizimi (controller):* mikrokontroller, DSP yoki sanoat kompyuteri bölib, sensor maʼlumotlarini qabul qiladi, töğri va teskari kinematika/dinamika masalalarini yeçadi hamda dvigatellarga boşqaruv signallarini beradi.
 
 #figure(
   {
@@ -142,9 +142,9 @@ Robototexnik tizim --- bu tashqi muhit bilan uzviy bogʻliqlikda ishlovchi murak
       spacing: (14mm, 14mm),
       edge-stroke: 1pt + headingblue,
 
-      node((0, 0), b[*Boshqaruv tizimi* \ (kontroller / PLC)], width: 3cm, height: 1.3cm),
-      node((1, 0), b[*Ijrochi mexanizmlar* \ (actuators / motors)], width: 3cm, height: 1.3cm),
-      node((2, 0), b[*Mexanik manipulyator* \ va ishchi aʼzo (TCP)], width: 3cm, height: 1.3cm),
+      node((0, 0), b[*Boşqaruv tizimi* \ (kontroller / PLC)], width: 3cm, height: 1.3cm),
+      node((1, 0), b[*Ijroçi mexanizmlar* \ (actuators / motors)], width: 3cm, height: 1.3cm),
+      node((2, 0), b[*Mexanik manipulyator* \ va işçi aʼzo (TCP)], width: 3cm, height: 1.3cm),
       node(
         (1, 1),
         b[*Sensor tizimi* \ (proprioseptiv va \ eksteroseptiv)],
@@ -153,10 +153,10 @@ Robototexnik tizim --- bu tashqi muhit bilan uzviy bogʻliqlikda ishlovchi murak
         fill: orange.lighten(85%),
         stroke: 0.8pt + orng,
       ),
-      node((2, 1), b[*Tashqi muhit va \ texnologik obyekt*], width: 3cm, height: 1.3cm, fill: luma(245)),
+      node((2, 1), b[*Taşqi muhit va \ texnologik obyekt*], width: 3cm, height: 1.3cm, fill: luma(245)),
 
       edge((0, 0), (1, 0), "-|>", label: small[buyruq signali], label-sep: 12pt),
-      edge((1, 0), (2, 0), "-|>", label: small[moment / kuch], label-sep: 12pt),
+      edge((1, 0), (2, 0), "-|>", label: small[moment / kuç], label-sep: 12pt),
       edge((2, 0), (2, 1), "-|>", label: small[mexanik taʼsir], label-sep: 12pt),
       edge((2, 1), (1, 1), "-|>", stroke: 1pt + orng, label: small[muhit holati], label-sep: 12pt),
       edge(
@@ -173,14 +173,14 @@ Robototexnik tizim --- bu tashqi muhit bilan uzviy bogʻliqlikda ishlovchi murak
   caption: [Robototexnik tizimning yopiq aks aloqali funksional blok-sxemasi],
 ) <fig-block>
 
-= Kinematik boʻgʻinlar, erkinlik darajalari va Grübler formulasi
+= Kinematik böğinlar, erkinlik darajalari va Grübler formulasi
 
 == Kinematik juftlik turlari va koordinata sistemalari
 
-Robot manipulyatori boʻgʻinlar (_links_) va ularni tutashtiruvchi kinematik juftliklardan (_joints_) tashkil topadi. Eng koʻp tarqalgan 1 erkinlik darajali kinematik juftliklar:
+Robot manipulyatori böğinlar (_links_) va ularni tutaştiruvçi kinematik juftliklardan (_joints_) taşkil topadi. Eng köp tarqalgan 1 erkinlik darajali kinematik juftliklar:
 
-- *Aylanma juftlik (revolute joint --- R):* faqat bitta oʻq atrofida nisbiy burchakli burilish harakatiga ruxsat beradi ($theta$ burchak).
-- *Ilgarilanma juftlik (prismatic joint --- P):* faqat bitta oʻq boʻylab toʻgʻri chiziqli siljish harakatiga ruxsat beradi ($d$ masofa).
+- *Aylanma juftlik (revolute joint --- R):* faqat bitta öq atrofida nisbiy burçakli buriliş harakatiga ruxsat beradi ($theta$ burçak).
+- *Ilgarilanma juftlik (prismatic joint --- P):* faqat bitta öq böylab töğri çiziqli siljiş harakatiga ruxsat beradi ($d$ masofa).
 
 Murakkabroq kinematik juftliklarga silindrik ($C$, 2 DoF), universal ($U$, 2 DoF) va sferik ($S$, 3 DoF) birikmalar kiradi (@fig-kin).
 
@@ -238,29 +238,29 @@ Murakkabroq kinematik juftliklarga silindrik ($C$, 2 DoF), universal ($U$, 2 DoF
       content((5.7, 2.8), text(size: 7.5pt)[$z_b$])
     })
   },
-  caption: [Ochiq kinematik zanjirli 2R planar manipulyator va uning koordinata tizimlari],
+  caption: [Oçiq kinematik zanjirli 2R planar manipulyator va uning koordinata tizimlari],
 ) <fig-kin>
 
 == Erkinlik darajasi va Grübler formulasi
 
-Mexanizmning *erkinlik darajasi (DoF --- degrees of freedom)* u egallashi mumkin boʻlgan mustaqil fazoviy koordinatalar sonini bildiradi. Mexanizmlarning erkinlik darajasi *Grübler formulasi* orqali aniqlanadi:
+Mexanizmning *erkinlik darajasi (DoF --- degrees of freedom)* u egallaşi mumkin bölgan mustaqil fazoviy koordinatalar sonini bildiradi. Mexanizmlarning erkinlik darajasi *Grübler formulasi* orqali aniqlanadi:
 
 $ "DoF" = m (N - 1 - J) + sum_(i=1)^J f_i $
 
 bunda:
 
-- $m$ --- ishchi fazoning oʻlchami ($m = 6$ --- uch oʻlchamli fazoviy mexanizmlar uchun, $m = 3$ --- tekislikdagi mexanizmlar uchun);
-- $N$ --- mexanizmdagi jami boʻgʻinlar soni (qoʻzgʻalmas asos bilan birgalikda);
+- $m$ --- işçi fazoning ölçami ($m = 6$ --- uç ölçamli fazoviy mexanizmlar uçun, $m = 3$ --- tekislikdagi mexanizmlar uçun);
+- $N$ --- mexanizmdagi jami böğinlar soni (qözğalmas asos bilan birgalikda);
 - $J$ --- kinematik juftliklar (birikmalar) soni;
-- $f_i$ --- $i$-chi kinematik juftlikning erkinlik darajasi ($R$ va $P$ juftliklar uchun $f_i = 1$).
+- $f_i$ --- $i$-çi kinematik juftlikning erkinlik darajasi ($R$ va $P$ juftliklar uçun $f_i = 1$).
 
-Ochiq kinematik zanjirli (_serial chain_) robotlarda $N$ ta boʻgʻin va $J = N - 1$ ta 1 DoF li birikma boʻlsa, jami erkinlik darajasi birikmalar soniga teng boʻladi: $"DoF" = J$.
+Oçiq kinematik zanjirli (_serial chain_) robotlarda $N$ ta böğin va $J = N - 1$ ta 1 DoF li birikma bölsa, jami erkinlik darajasi birikmalar soniga teng böladi: $"DoF" = J$.
 
-= Sanoat robotlarining geometrik konfiguratsiyalari va ishchi sohasi
+= Sanoat robotlarining geometrik konfiguratsiyalari va işçi sohasi
 
 == Asosiy kinematik konfiguratsiyalar
 
-Sanoat robotlari dastlabki uchta asosiy boʻgʻinining harakat xarakteriga koʻra beshta geometrik guruhga boʻlinadi (@fig-conf, @tab-conf).
+Sanoat robotlari dastlabki uçta asosiy böğinining harakat xarakteriga köra beşta geometrik guruhga bölinadi (@fig-conf, @tab-conf).
 
 #figure(
   {
@@ -321,30 +321,30 @@ Sanoat robotlari dastlabki uchta asosiy boʻgʻinining harakat xarakteriga koʻr
       stroke: none,
       inset: (x: 4pt, y: 5pt),
       table.hline(stroke: 1pt),
-      table.header([*Konfiguratsiya*], [*Juftliklar*], [*Ishchi soha \ shakli*], [*Qoʻllanilish sohasi*]),
+      table.header([*Konfiguratsiya*], [*Juftliklar*], [*Işçi soha \ şakli*], [*Qöllaniliş sohasi*]),
       table.hline(stroke: 0.5pt),
       [*Dekart (Cartesian)*], [PPP], [Parallelepiped],
-      [Portal (gantry) robotlar, 3D printerlar, ogʻir yuk tashish va CNC stanoklarga xizmat koʻrsatish.],
+      [Portal (gantry) robotlar, 3D printerlar, oğir yuk taşiş va CNC stanoklarga xizmat körsatiş.],
       [*Silindrik*], [RPP], [Silindr / halqa],
-      [Kichik maydonda silindrik detallarga ishlov berish va quyuv ishlari.],
+      [Kiçik maydonda silindrik detallarga işlov beriş va quyuv işlari.],
       [*Sferik (polyar)*], [RRP], [Sfera sektori],
-      [Press ostiga detallarni uzatish, quyuv mashinalariga xizmat koʻrsatish.],
+      [Press ostiga detallarni uzatiş, quyuv maşinalariga xizmat körsatiş.],
       [*SCARA*], [RRP], [Vertikal silindr],
-      [Elektronikada platalarga detallarni oʻrnatish (_pick-and-place_), vertikal yigʻuv.],
+      [Elektronikada platalarga detallarni örnatiş (_pick-and-place_), vertikal yiğuv.],
       [*Antropomorf (Articulated)*], [RRR (6R)], [Murakkab sferik sirt],
-      [Payvandlash, boʻyash, kompleks yigʻuv (PUMA 560, FANUC, ABB).],
+      [Payvandlaş, böyaş, kompleks yiğuv (PUMA 560, FANUC, ABB).],
       table.hline(stroke: 1pt),
     )
   },
   caption: [Sanoat robotlarining kinematik konfiguratsiyalari tavsifi],
 ) <tab-conf>
 
-== Ishchi soha (workspace) va metrologik parametrlar
+== Işçi soha (workspace) va metrologik parametrlar
 
-Robotning *ishchi sohasi (workspace)* --- bu manipulyator ishchi nuqtasi (TCP) erisha oladigan barcha fazoviy nuqtalar toʻplamidir (@fig-ws):
+Robotning *işçi sohasi (workspace)* --- bu manipulyator işçi nuqtasi (TCP) erişa oladigan barça fazoviy nuqtalar töplamidir (@fig-ws):
 
-+ *Erishiladigan ishchi soha (reachable workspace):* robot kamida bitta yoʻnalish bilan erisha oladigan barcha nuqtalar toʻplami.
-+ *Epchillik ishchi sohasi (dextrous workspace):* robot ixtiyoriy yoʻnalish (_orientation_) bilan erisha oladigan nuqtalar toʻplami.
++ *Erişiladigan işçi soha (reachable workspace):* robot kamida bitta yönaliş bilan erişa oladigan barça nuqtalar töplami.
++ *Epçillik işçi sohasi (dextrous workspace):* robot ixtiyoriy yönaliş (_orientation_) bilan erişa oladigan nuqtalar töplami.
 
 #figure(
   {
@@ -364,47 +364,47 @@ Robotning *ishchi sohasi (workspace)* --- bu manipulyator ishchi nuqtasi (TCP) e
       line((0, 0), (-3.12, 1.8), stroke: 1.1pt + headingblue, mark: (end: "straight"))
       content((-1.5, 1.35), text(size: 7pt)[$R_"out" = L_1 + L_2$])
 
-      content((0, 2.5), text(size: 8pt, weight: "bold")[Erishiladigan ishchi soha])
+      content((0, 2.5), text(size: 8pt, weight: "bold")[Erişiladigan işçi soha])
     })
   },
-  caption: [2R tekislikdagi manipulyatorning halqasimon ishchi sohasi ($L_1 > L_2$)],
+  caption: [2R tekislikdagi manipulyatorning halqasimon işçi sohasi ($L_1 > L_2$)],
 ) <fig-ws>
 
-Sanoat robotlarining aniqlik koʻrsatkichlari:
+Sanoat robotlarining aniqlik körsatkiçlari:
 
-- *Takrorlanuvchanlik (repeatability):* robot avval oʻrgatilgan (_taught point_) nuqtaga qayta harakatlanganda qanchalik kichik ogʻish bilan borishi. Sanoat robotlarida bu koʻrsatkich $plus.minus 0.01 dots plus.minus 0.05 "mm"$ ni tashkil etadi.
-- *Absolyut aniqlik (accuracy):* dasturda hisoblangan (_computed point_) koordinataga robotning qanchalik aniq borishi.
+- *Takrorlanuvçanlik (repeatability):* robot avval örgatilgan (_taught point_) nuqtaga qayta harakatlanganda qançalik kiçik oğiş bilan borişi. Sanoat robotlarida bu körsatkiç $plus.minus 0.01 dots plus.minus 0.05 "mm"$ ni taşkil etadi.
+- *Absolyut aniqlik (accuracy):* dasturda hisoblangan (_computed point_) koordinataga robotning qançalik aniq borişi.
 
-= Sanoatda robotlarning roli va qoʻllanilish sohalari
+= Sanoatda robotlarning roli va qöllaniliş sohalari
 
-+ *Payvandlash (spot & arc welding):* avtomobil kuzovlarini yigʻishda 6 DoF li antropomorf robotlar yuqori tezlik va doimiy sifat bilan ishlaydi.
-+ *Materiallarni koʻchirish va yuklash (material handling):* CNC stanoklariga detallarni oʻrnatish hamda tayyor mahsulotlarni palletlarga joylash (_palletizing_).
-+ *Yigʻuv operatsiyalari (assembly):* SCARA va delta robotlari yordamida elektronikada mikrosxemalarni yuqori tezlikda yigʻish.
-+ *Sirtlarga ishlov berish (boʻyash, jilolash):* purkash va jilolashda gibrid kuch-vaziyat boshqaruvi (_hybrid position/force control_) qoʻllaniladi.
++ *Payvandlaş (spot & arc welding):* avtomobil kuzovlarini yiğişda 6 DoF li antropomorf robotlar yuqori tezlik va doimiy sifat bilan işlaydi.
++ *Materiallarni köçiriş va yuklaş (material handling):* CNC stanoklariga detallarni örnatiş hamda tayyor mahsulotlarni palletlarga joylaş (_palletizing_).
++ *Yiğuv operatsiyalari (assembly):* SCARA va delta robotlari yordamida elektronikada mikrosxemalarni yuqori tezlikda yiğiş.
++ *Sirtlarga işlov beriş (böyaş, jilolaş):* purkaş va jilolaşda gibrid kuç-vaziyat boşqaruvi (_hybrid position/force control_) qöllaniladi.
 
-= Tajriba topshiriqlari va misollar
+= Tajriba topşiriqlari va misollar
 
-== 1-topshiriq: erkinlik darajasini (DoF) hisoblash
+== 1-topşiriq: erkinlik darajasini (DoF) hisoblaş
 
-*1-masala.* Tekislikda harakatlanuvchi 3R ochiq kinematik zanjirli robot manipulyatori berilgan. Zanjirda 3 ta aylanma juftlik va 3 ta qoʻzgʻaluvchi boʻgʻin mavjud. Grübler formulasi yordamida robotning erkinlik darajasini hisoblang.
+*1-masala.* Tekislikda harakatlanuvçi 3R oçiq kinematik zanjirli robot manipulyatori berilgan. Zanjirda 3 ta aylanma juftlik va 3 ta qözğaluvçi böğin mavjud. Grübler formulasi yordamida robotning erkinlik darajasini hisoblang.
 
-*Yechish.* Tekislikdagi mexanizmlar uchun $m = 3$. Boʻgʻinlar soni $N = 3 + 1 = 4$ (3 ta qoʻzgʻaluvchi boʻgʻin va asos). Juftliklar soni $J = 3$, barchasi R-juftlik ($f_i = 1$):
+*Yeçiş.* Tekislikdagi mexanizmlar uçun $m = 3$. Böğinlar soni $N = 3 + 1 = 4$ (3 ta qözğaluvçi böğin va asos). Juftliklar soni $J = 3$, barçasi R-juftlik ($f_i = 1$):
 
 $ "DoF" = m (N - 1 - J) + sum_(i=1)^J f_i = 3 (4 - 1 - 3) + (1 + 1 + 1) = 3 dot 0 + 3 = 3 $
 
 *Javob:* robot 3 erkinlik darajasiga (3 DoF) ega.
 
-*2-masala.* 6R tipidagi PUMA 560 fazoviy sanoat robotining erkinlik darajasini hisoblang. U 6 ta aylanma juftlik va 6 ta qoʻzgʻaluvchi boʻgʻindan tashkil topgan.
+*2-masala.* 6R tipidagi PUMA 560 fazoviy sanoat robotining erkinlik darajasini hisoblang. U 6 ta aylanma juftlik va 6 ta qözğaluvçi böğindan taşkil topgan.
 
-*Yechish.* Fazoviy mexanizm uchun $m = 6$, boʻgʻinlar soni $N = 6 + 1 = 7$, juftliklar soni $J = 6$, har birining $f_i = 1$:
+*Yeçiş.* Fazoviy mexanizm uçun $m = 6$, böğinlar soni $N = 6 + 1 = 7$, juftliklar soni $J = 6$, har birining $f_i = 1$:
 
 $ "DoF" = 6 (7 - 1 - 6) + 6 dot 1 = 6 dot 0 + 6 = 6 $
 
 *Javob:* PUMA 560 roboti 6 erkinlik darajasiga (6 DoF) ega.
 
-*3-masala.* Fazoviy Stewart--Gough platformasining erkinlik darajasini hisoblang. Platforma qoʻzgʻalmas asos va harakatlanuvchi yuqori platformadan iborat boʻlib, ular 6 ta oyoq orqali bogʻlangan. Har bir oyoqda 1 ta universal ($f_i = 2$), 1 ta ilgarilanma ($f_i = 1$) va 1 ta sferik ($f_i = 3$) juftlik bor.
+*3-masala.* Fazoviy Stewart--Gough platformasining erkinlik darajasini hisoblang. Platforma qözğalmas asos va harakatlanuvçi yuqori platformadan iborat bölib, ular 6 ta oyoq orqali boğlangan. Har bir oyoqda 1 ta universal ($f_i = 2$), 1 ta ilgarilanma ($f_i = 1$) va 1 ta sferik ($f_i = 3$) juftlik bor.
 
-*Yechish.* Fazoviy mexanizm uchun $m = 6$. Jami boʻgʻinlar soni: 2 ta platforma va $6 times 2 = 12$ ta oyoq boʻgʻini, yaʼni $N = 14$. Jami juftliklar soni $J = 6 times 3 = 18$. Juftliklar erkinliklari yigʻindisi:
+*Yeçiş.* Fazoviy mexanizm uçun $m = 6$. Jami böğinlar soni: 2 ta platforma va $6 times 2 = 12$ ta oyoq böğini, yaʼni $N = 14$. Jami juftliklar soni $J = 6 times 3 = 18$. Juftliklar erkinliklari yiğindisi:
 
 $ sum_(i=1)^18 f_i = 6 times (2 + 1 + 3) = 36 $
 
@@ -412,33 +412,33 @@ $ "DoF" = 6 (14 - 1 - 18) + 36 = 6 dot (-5) + 36 = -30 + 36 = 6 $
 
 *Javob:* Stewart--Gough platformasi 6 erkinlik darajasiga (6 DoF) ega.
 
-== 2-topshiriq: 2R manipulyatorning ishchi sohasini hisoblash
+== 2-topşiriq: 2R manipulyatorning işçi sohasini hisoblaş
 
-Tekislikdagi 2R manipulyatorning boʻgʻin uzunliklari $L_1 = 0.85 "m"$ va $L_2 = 0.55 "m"$ ga teng.
+Tekislikdagi 2R manipulyatorning böğin uzunliklari $L_1 = 0.85 "m"$ va $L_2 = 0.55 "m"$ ga teng.
 
 #set enum(numbering: "a)")
-+ Manipulyatorning maksimal erishish radiusi ($R_"out"$) va minimal radiusini ($R_"in"$) toping.
-+ Ishchi soha yuzasini ($S$) hisoblang.
++ Manipulyatorning maksimal erişiş radiusi ($R_"out"$) va minimal radiusini ($R_"in"$) toping.
++ Işçi soha yuzasini ($S$) hisoblang.
 #set enum(numbering: "1.")
 
-*Yechish:*
+*Yeçiş:*
 
 $ R_"out" = L_1 + L_2 = 0.85 + 0.55 = 1.40 "m" $
 
 $ R_"in" = |L_1 - L_2| = |0.85 - 0.55| = 0.30 "m" $
 
-Ishchi soha yuzasi:
+Işçi soha yuzasi:
 
 $ S = pi (R_"out"^2 - R_"in"^2) = pi (1.40^2 - 0.30^2) = pi (1.96 - 0.09) = 1.87 pi approx 5.875 "m"^2 $
 
-*Javob:* $R_"out" = 1.40 "m"$, $R_"in" = 0.30 "m"$, ishchi soha yuzasi $S approx 5.88 "m"^2$.
+*Javob:* $R_"out" = 1.40 "m"$, $R_"in" = 0.30 "m"$, işçi soha yuzasi $S approx 5.88 "m"^2$.
 
-= Nazorat va mustaqil ish savollari
+= Nazorat va mustaqil iş savollari
 
-+ Avtomatlashtirishda qatʼiy (_fixed_) va moslashuvchan (_flexible_) avtomatlashtirish tizimlarining farqi nimada?
++ Avtomatlaştirişda qatʼiy (_fixed_) va moslaşuvçan (_flexible_) avtomatlaştiriş tizimlarining farqi nimada?
 + ISO 8373 standartiga muvofiq sanoat robotiga berilgan taʼrifni keltiring.
-+ Grübler formulasi nima uchun ishlatiladi va fazoviy hamda tekislikdagi mexanizmlar uchun $m$ koʻrsatkichi qanday tanlanadi?
-+ Antropomorf (_articulated_) va SCARA robotlarining tuzilishidagi farqlarni hamda asosiy qoʻllanilish sohalarini tushuntiring.
-+ Robotning takrorlanuvchanligi (_repeatability_) va absolyut aniqligi (_accuracy_) oʻrtasidagi farq nima?
-+ Ochiq (_serial_) va yopiq (_parallel_) kinematik zanjirli manipulyatorlarning ustunlik hamda kamchiliklarini qiyoslang.
-+ Erishiladigan va epchillik ishchi sohalari nima bilan farqlanadi?
++ Grübler formulasi nima uçun işlatiladi va fazoviy hamda tekislikdagi mexanizmlar uçun $m$ körsatkiçi qanday tanlanadi?
++ Antropomorf (_articulated_) va SCARA robotlarining tuzilişidagi farqlarni hamda asosiy qöllaniliş sohalarini tuşuntiring.
++ Robotning takrorlanuvçanligi (_repeatability_) va absolyut aniqligi (_accuracy_) örtasidagi farq nima?
++ Oçiq (_serial_) va yopiq (_parallel_) kinematik zanjirli manipulyatorlarning ustunlik hamda kamçiliklarini qiyoslang.
++ Erişiladigan va epçillik işçi sohalari nima bilan farqlanadi?
